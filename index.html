@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Rápido do Carlinhos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-900:#1B2A3D;
+  --navy-700:#28415C;
+  --paper-50:#FAF7F0;
+  --surface:#FFFFFF;
+  --ink:#242220;
+  --ink-soft:#6B655D;
+  --border:#E4DECF;
+  --tan-500:#C9A876;
+  --stamp-red:#B23A2E;
+  --ok-600:#3C8F5C;
+  --ok-100:#E6F2EA;
+  --amber-100:#FBEFD6;
+  --amber-700:#8A6200;
+  --radius:12px;
+  --shadow:0 2px 10px rgba(27,42,61,0.07), 0 1px 2px rgba(27,42,61,0.05);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--paper-50);color:var(--ink);}
+h1,h2,h3,h4{font-family:'Libre Franklin',sans-serif;margin:0;letter-spacing:.01em;}
+.mono{font-family:'Space Mono',monospace;}
+button{font-family:inherit;cursor:pointer;}
+a{color:inherit;}
+
+.app{display:flex;min-height:100vh;}
+.sidebar{
+  width:258px;flex-shrink:0;background:var(--navy-900);color:#fff;display:flex;flex-direction:column;
+  position:sticky;top:0;height:100vh;z-index:20;transition:transform .25s ease;
+}
+.brand{display:flex;align-items:center;gap:12px;padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.12);}
+.brand-mark{width:38px;height:38px;flex-shrink:0;background:var(--tan-500);border-radius:3px 3px 3px 3px;position:relative;}
+.brand-mark::before{content:'';position:absolute;top:-6px;left:6px;width:16px;height:7px;background:var(--tan-500);border-radius:3px 3px 0 0;}
+.brand-text h1{font-size:16px;color:#fff;line-height:1.15;font-weight:800;}
+.brand-text span{font-size:10.5px;color:#9CA9B8;letter-spacing:.03em;}
+
+.nav{padding:14px 12px;display:flex;flex-direction:column;gap:2px;flex:1;overflow-y:auto;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:9px;color:#C7D0DA;background:transparent;border:none;text-align:left;font-size:13.5px;font-weight:600;transition:background .15s ease,color .15s ease;}
+.nav-item svg{width:18px;height:18px;flex-shrink:0;opacity:.85;}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#fff;}
+.nav-item.active{background:var(--tan-500);color:var(--navy-900);}
+.sidebar-foot{padding:16px 20px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;color:#7C8896;}
+
+.menu-toggle{display:none;position:fixed;top:16px;left:16px;z-index:30;background:var(--navy-900);color:#fff;border:none;width:42px;height:42px;border-radius:9px;box-shadow:var(--shadow);align-items:center;justify-content:center;}
+.menu-toggle svg{width:20px;height:20px;}
+
+.main{flex:1;min-width:0;padding:32px 40px 60px;max-width:1200px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+.section-head h3{font-size:21px;font-weight:800;}
+.section-sub{font-size:12.5px;color:var(--ink-soft);margin-top:4px;}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:9px;font-size:13px;font-weight:700;border:none;transition:filter .15s ease;}
+.btn:hover{filter:brightness(1.05);}
+.btn-primary{background:var(--navy-900);color:#fff;}
+.btn-tan{background:var(--tan-500);color:var(--navy-900);}
+.btn-outline{background:transparent;color:var(--navy-900);border:1.5px solid var(--border);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+
+/* STAMP BADGE */
+.stamp{display:inline-flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border:1.5px dashed;border-radius:999px;transform:rotate(-4deg);}
+.stamp-pendente{color:var(--stamp-red);border-color:var(--stamp-red);}
+.stamp-andamento{color:var(--amber-700);border-color:var(--amber-700);}
+.stamp-concluido{color:var(--ok-600);border-color:var(--ok-600);}
+
+/* HERO / BUSCA */
+.hero{background:var(--navy-900);color:#fff;border-radius:16px;padding:34px 38px;margin-bottom:24px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;background:var(--tan-500);opacity:.12;border-radius:8px;transform:rotate(12deg);}
+.hero-eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tan-500);font-weight:700;}
+.hero h1{font-size:28px;margin-top:8px;}
+.hero p{max-width:560px;color:#C7D0DA;font-size:13.5px;margin-top:10px;line-height:1.6;}
+.search-wrap{margin-top:20px;max-width:520px;position:relative;}
+.search-wrap input{width:100%;padding:13px 16px 13px 42px;border-radius:10px;border:none;font-size:14px;font-family:inherit;}
+.search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink-soft);}
+#searchResults{margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+.search-hit{background:rgba(255,255,255,.08);border-radius:8px;padding:8px 12px;font-size:12.5px;display:flex;justify-content:space-between;gap:10px;}
+.search-hit span.tag{color:var(--tan-500);font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;}
+
+.grid{display:grid;gap:16px;}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
+
+.info-card{padding:18px 20px;}
+.info-card h4{font-size:14.5px;font-weight:700;margin-bottom:10px;}
+.task-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.task-list li{background:var(--paper-50);border-left:3px solid var(--navy-700);padding:9px 12px;border-radius:0 6px 6px 0;font-size:13px;display:flex;align-items:flex-start;gap:8px;}
+.task-list li input[type=checkbox]{margin-top:2px;accent-color:var(--navy-900);}
+.task-list li.done span{text-decoration:line-through;color:var(--ink-soft);}
+
+/* PROCESSOS */
+.proc-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.proc-row:last-child{border-bottom:none;}
+.proc-num{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;color:var(--navy-900);}
+.proc-assunto{flex:1;font-size:13px;min-width:160px;}
+
+/* LINKS / DOCUMENTOS */
+.doc-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);}
+.doc-row:last-child{border-bottom:none;}
+.doc-icon{width:32px;height:32px;border-radius:7px;background:var(--paper-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.doc-icon svg{width:16px;height:16px;color:var(--navy-900);}
+.doc-title{font-size:13px;font-weight:600;}
+.doc-meta{font-size:11px;color:var(--ink-soft);}
+
+.filters{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.filter-btn{padding:6px 13px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--ink-soft);}
+.filter-btn.active{background:var(--navy-900);color:#fff;border-color:var(--navy-900);}
+
+.law-card{padding:18px 20px;}
+.law-card h4{font-size:14px;font-weight:700;margin-bottom:6px;}
+.law-card p{font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin:0;}
+
+.add-form{display:grid;gap:9px;margin-top:10px;grid-template-columns:1fr 1fr;}
+.add-form input,.add-form select,.add-form textarea{grid-column:span 1;padding:9px 11px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;}
+.add-form textarea{resize:vertical;min-height:60px;}
+.add-form .full{grid-column:1/-1;}
+.empty-hint{font-size:12.5px;color:var(--ink-soft);font-style:italic;padding:6px 2px;}
+.starter-tag{font-size:10.5px;color:var(--ink-soft);font-style:italic;}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy-900);color:#fff;padding:12px 18px;border-radius:9px;font-size:13px;box-shadow:var(--shadow);z-index:100;transform:translateY(120%);transition:transform .25s ease;}
+.toast.show{transform:none;}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:0;top:0;transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);}
+  .menu-toggle{display:flex;}
+  .main{padding:80px 18px 60px;}
+  .hero{padding:26px 22px;}
+  .hero h1{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-text">
+        <h1>Guia Rápido</h1>
+        <span>do Carlinhos</span>
+      </div>
+    </div>
+    <nav class="nav" id="navList"></nav>
+    <div class="sidebar-foot">Central pessoal de consulta — URE São Bernardo do Campo</div>
+  </aside>
+
+  <main class="main">
+
+    <!-- INÍCIO -->
+    <section class="section" data-section="inicio">
+      <div class="hero">
+        <span class="hero-eyebrow">Central de consulta</span>
+        <h1>Tudo que você precisa achar rápido</h1>
+        <p>Orientações, processos, modelos de documentos, biblioteca de PDFs, legislação e favoritos — organizados em um só lugar.</p>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" id="buscaGlobal" placeholder="Pesquisar em modelos, biblioteca, legislação e favoritos...">
+        </div>
+        <div id="searchResults"></div>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card info-card" style="text-align:center;">
+          <div class="mono" style="font-size:22px;font-weight:700;" id="cntModelos">0</div>
+          <div style="font-size:11.5px;color:var(--ink-soft);">Modelos</div>
+        </div>
+        <div class="card info-card" style="text-align:center;">
+          <div class="mono" style="font-size:22px;font-weight:700;" id="cntBiblioteca">0</div>
+          <div style="font-size:11.5px;color:var(--ink-soft);">Biblioteca PDF</div>
+        </div>
+        <div class="card info-card" style="text-align:center;">
+          <div class="mono" style="font-size:22px;font-weight:700;" id="cntLegislacao">0</div>
+          <div style="font-size:11.5px;color:var(--ink-soft);">Legislação</div>
+        </div>
+        <div class="card info-card" style="text-align:center;">
+          <div class="mono" style="font-size:22px;font-weight:700;" id="cntFavoritos">0</div>
+          <div style="font-size:11.5px;color:var(--ink-soft);">Favoritos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA DA SUPERVISÃO -->
+    <section class="section" data-section="supervisao">
+      <div class="section-head">
+        <div><h3>Mapa da Supervisão</h3><p class="section-sub">Orientações gerais, tarefas do dia e processos em andamento.</p></div>
+      </div>
+
+      <div class="grid grid-3" style="margin-bottom:18px;">
+        <div class="card info-card">
+          <h4>📋 Orientações Gerais</h4>
+          <ul class="task-list" id="orientacoesList"></ul>
+          <div style="display:flex;gap:6px;margin-top:10px;">
+            <input type="text" id="novaOrientacao" placeholder="Nova orientação" style="flex:1;padding:8px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:12.5px;">
+            <button class="btn btn-tan btn-sm" id="addOrientacao">+</button>
+          </div>
+        </div>
+        <div class="card info-card">
+          <h4>✅ Tarefas Diárias</h4>
+          <ul class="task-list" id="tarefasList"></ul>
+          <div style="display:flex;gap:6px;margin-top:10px;">
+            <input type="text" id="novaTarefa" placeholder="Nova tarefa" style="flex:1;padding:8px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:12.5px;">
+            <button class="btn btn-tan btn-sm" id="addTarefa">+</button>
+          </div>
+        </div>
+        <div class="card info-card">
+          <h4>🔢 Processos Administrativos</h4>
+          <div id="processosList"></div>
+          <div class="add-form" style="margin-top:8px;">
+            <input type="text" id="procNumero" placeholder="Nº do processo">
+            <select id="procStatus">
+              <option value="pendente">Pendente</option>
+              <option value="andamento">Em andamento</option>
+              <option value="concluido">Concluído</option>
+            </select>
+            <input type="text" id="procAssunto" placeholder="Assunto" class="full">
+          </div>
+          <button class="btn btn-tan btn-sm" id="addProcesso" style="margin-top:8px;">Adicionar processo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODELOS -->
+    <section class="section" data-section="modelos">
+      <div class="section-head">
+        <div><h3>Modelos de Documentos</h3><p class="section-sub">Relatórios, formulários e modelos prontos para uso.</p></div>
+        <button class="btn btn-tan btn-sm" id="btnNovoModelo">+ Adicionar modelo</button>
+      </div>
+      <div class="filters" id="modeloFiltros"></div>
+      <div class="card" id="modeloFormCard" style="display:none;padding:18px;margin-bottom:16px;">
+        <div class="add-form">
+          <input type="text" id="modeloTitulo" placeholder="Nome do documento" class="full">
+          <select id="modeloCategoria">
+            <option>Relatórios Técnicos</option>
+            <option>Formulários</option>
+            <option>Outros</option>
+          </select>
+          <input type="url" id="modeloUrl" placeholder="Link do arquivo (Drive, SharePoint, etc.)">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn btn-primary btn-sm" id="salvarModelo">Salvar</button>
+          <button class="btn btn-outline btn-sm" id="cancelarModelo">Cancelar</button>
+        </div>
+      </div>
+      <div class="card"><div id="modeloList"></div></div>
+    </section>
+
+    <!-- BIBLIOTECA PDF -->
+    <section class="section" data-section="biblioteca">
+      <div class="section-head">
+        <div><h3>Biblioteca PDF</h3><p class="section-sub">Manuais e materiais de referência geral.</p></div>
+        <button class="btn btn-tan btn-sm" id="btnNovaBiblio">+ Adicionar documento</button>
+      </div>
+      <div class="card" id="biblioFormCard" style="display:none;padding:18px;margin-bottom:16px;">
+        <div class="add-form">
+          <input type="text" id="biblioTitulo" placeholder="Nome do documento" class="full">
+          <input type="url" id="biblioUrl" placeholder="Link do arquivo" class="full">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn btn-primary btn-sm" id="salvarBiblio">Salvar</button>
+          <button class="btn btn-outline btn-sm" id="cancelarBiblio">Cancelar</button>
+        </div>
+      </div>
+      <div class="card"><div id="biblioList"></div></div>
+    </section>
+
+    <!-- LEGISLAÇÃO -->
+    <section class="section" data-section="legislacao">
+      <div class="section-head">
+        <div><h3>Legislação</h3><p class="section-sub">Normas de referência para consulta rápida. Os exemplos abaixo são ponto de partida — edite ou substitua pelas que você mais consulta.</p></div>
+        <button class="btn btn-tan btn-sm" id="btnNovaLei">+ Adicionar norma</button>
+      </div>
+      <div class="card" id="leiFormCard" style="display:none;padding:18px;margin-bottom:16px;">
+        <div class="add-form">
+          <input type="text" id="leiTag" placeholder="Referência (ex.: Lei 10.261/68)">
+          <input type="text" id="leiTitulo" placeholder="Título/ementa">
+          <textarea id="leiTexto" placeholder="Resumo ou observação" class="full"></textarea>
+          <input type="url" id="leiUrl" placeholder="Link do texto oficial (opcional)" class="full">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn btn-primary btn-sm" id="salvarLei">Salvar</button>
+          <button class="btn btn-outline btn-sm" id="cancelarLei">Cancelar</button>
+        </div>
+      </div>
+      <div class="grid grid-3" id="legislacaoGrid"></div>
+    </section>
+
+    <!-- FAVORITOS -->
+    <section class="section" data-section="favoritos">
+      <div class="section-head">
+        <div><h3>Favoritos</h3><p class="section-sub">Atalhos rápidos para sistemas e páginas do dia a dia.</p></div>
+        <button class="btn btn-tan btn-sm" id="btnNovoFav">+ Adicionar favorito</button>
+      </div>
+      <div class="card" id="favFormCard" style="display:none;padding:18px;margin-bottom:16px;">
+        <div class="add-form">
+          <input type="text" id="favTitulo" placeholder="Nome do atalho" class="full">
+          <input type="url" id="favUrl" placeholder="Link" class="full">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn btn-primary btn-sm" id="salvarFav">Salvar</button>
+          <button class="btn btn-outline btn-sm" id="cancelarFav">Cancelar</button>
+        </div>
+      </div>
+      <div class="grid grid-3" id="favGrid"></div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CONFIG = { storagePrefix: 'guia-carlinhos' };
+
+const ICONS = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>',
+  map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20l-6-3V4l6 3 6-3 6 3v13l-6-3-6 3z"/><path d="M9 4v13M15 7v13"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  library:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  law:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l-3 6a3.5 3.5 0 0 0 6 0zM19 7l-3 6a3.5 3.5 0 0 0 6 0z"/><path d="M3 21h18M5 7h14M12 3l7 4M12 3 5 7"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>',
+};
+
+const NAV = [
+  {id:'inicio', label:'Início', icon:'home'},
+  {id:'supervisao', label:'Mapa da Supervisão', icon:'map'},
+  {id:'modelos', label:'Modelos de Documentos', icon:'doc'},
+  {id:'biblioteca', label:'Biblioteca PDF', icon:'library'},
+  {id:'legislacao', label:'Legislação', icon:'law'},
+  {id:'favoritos', label:'Favoritos', icon:'star'},
+];
+const navList = document.getElementById('navList');
+NAV.forEach(item=>{
+  const b = document.createElement('button');
+  b.className='nav-item'; b.dataset.target=item.id;
+  b.innerHTML = ICONS[item.icon]+'<span>'+item.label+'</span>';
+  b.onclick = ()=>goTo(item.id);
+  navList.appendChild(b);
+});
+function goTo(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active', s.dataset.section===id));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active', n.dataset.target===id));
+  document.getElementById('sidebar').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+goTo('inicio');
+document.getElementById('menuToggle').onclick = ()=>document.getElementById('sidebar').classList.toggle('open');
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+/* STORAGE — localStorage: dados pessoais, salvos neste navegador. */
+function sGet(key, fallback){ try{ const r=localStorage.getItem(key); return r?JSON.parse(r):fallback; }catch(e){ return fallback; } }
+function sSet(key, value){ try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){ console.error(e); } }
+const K = k => CONFIG.storagePrefix+':'+k;
+
+/* ORIENTAÇÕES */
+let ORIENTACOES = sGet(K('orientacoes'), [
+  'Certifique-se de validar a documentação antes do envio.',
+  'Prazo padrão para análise de processos: 5 dias úteis.',
+  'Em caso de dúvidas graves, acionar a chefia imediata.',
+]);
+function renderOrientacoes(){
+  document.getElementById('orientacoesList').innerHTML = ORIENTACOES.map((o,i)=>`
+    <li><span style="flex:1;">${o}</span><button onclick="removerOrientacao(${i})" style="border:none;background:none;color:var(--stamp-red);cursor:pointer;">${ICONS.trash}</button></li>
+  `).join('') || '<p class="empty-hint">Nenhuma orientação cadastrada.</p>';
+}
+function removerOrientacao(i){ ORIENTACOES.splice(i,1); sSet(K('orientacoes'), ORIENTACOES); renderOrientacoes(); }
+document.getElementById('addOrientacao').onclick = ()=>{
+  const v = document.getElementById('novaOrientacao').value.trim();
+  if(!v) return;
+  ORIENTACOES.push(v); sSet(K('orientacoes'), ORIENTACOES);
+  document.getElementById('novaOrientacao').value='';
+  renderOrientacoes();
+};
+
+/* TAREFAS DIÁRIAS */
+let TAREFAS = sGet(K('tarefas'), [
+  {t:'Verificar a fila de processos administrativos pendentes.', done:false},
+  {t:'Responder e-mails de solicitações externas.', done:false},
+  {t:'Atualizar a planilha de controle de supervisão.', done:false},
+]);
+function renderTarefas(){
+  document.getElementById('tarefasList').innerHTML = TAREFAS.map((tk,i)=>`
+    <li class="${tk.done?'done':''}">
+      <input type="checkbox" ${tk.done?'checked':''} onchange="toggleTarefa(${i})">
+      <span style="flex:1;">${tk.t}</span>
+      <button onclick="removerTarefa(${i})" style="border:none;background:none;color:var(--stamp-red);cursor:pointer;">${ICONS.trash}</button>
+    </li>
+  `).join('') || '<p class="empty-hint">Nenhuma tarefa cadastrada.</p>';
+}
+function toggleTarefa(i){ TAREFAS[i].done = !TAREFAS[i].done; sSet(K('tarefas'), TAREFAS); renderTarefas(); }
+function removerTarefa(i){ TAREFAS.splice(i,1); sSet(K('tarefas'), TAREFAS); renderTarefas(); }
+document.getElementById('addTarefa').onclick = ()=>{
+  const v = document.getElementById('novaTarefa').value.trim();
+  if(!v) return;
+  TAREFAS.push({t:v, done:false}); sSet(K('tarefas'), TAREFAS);
+  document.getElementById('novaTarefa').value='';
+  renderTarefas();
+};
+
+/* PROCESSOS ADMINISTRATIVOS */
+let PROCESSOS = sGet(K('processos'), []);
+function renderProcessos(){
+  const wrap = document.getElementById('processosList');
+  if(!PROCESSOS.length){ wrap.innerHTML = '<p class="empty-hint">Nenhum processo cadastrado ainda.</p>'; return; }
+  wrap.innerHTML = PROCESSOS.map((p,i)=>`
+    <div class="proc-row">
+      <span class="proc-num">${p.numero}</span>
+      <span class="proc-assunto">${p.assunto}</span>
+      <span class="stamp stamp-${p.status}">${p.status==='andamento'?'Andamento':p.status.charAt(0).toUpperCase()+p.status.slice(1)}</span>
+      <button onclick="removerProcesso(${i})" style="border:none;background:none;color:var(--stamp-red);cursor:pointer;">${ICONS.trash}</button>
+    </div>
+  `).join('');
+}
+function removerProcesso(i){ PROCESSOS.splice(i,1); sSet(K('processos'), PROCESSOS); renderProcessos(); }
+document.getElementById('addProcesso').onclick = ()=>{
+  const numero = document.getElementById('procNumero').value.trim();
+  const status = document.getElementById('procStatus').value;
+  const assunto = document.getElementById('procAssunto').value.trim();
+  if(!numero || !assunto){ toast('Preencha número e assunto.'); return; }
+  PROCESSOS.push({numero, status, assunto}); sSet(K('processos'), PROCESSOS);
+  document.getElementById('procNumero').value=''; document.getElementById('procAssunto').value='';
+  renderProcessos();
+  toast('Processo adicionado.');
+};
+
+/* MODELOS DE DOCUMENTOS */
+let MODELOS = sGet(K('modelos'), []);
+let filtroModelo = 'Todos';
+const CATEGORIAS_MODELO = ['Todos','Relatórios Técnicos','Formulários','Outros'];
+function renderFiltrosModelo(){
+  const wrap = document.getElementById('modeloFiltros'); wrap.innerHTML='';
+  CATEGORIAS_MODELO.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='filter-btn'+(c===filtroModelo?' active':'');
+    b.textContent=c;
+    b.onclick=()=>{ filtroModelo=c; renderFiltrosModelo(); renderModelos(); };
+    wrap.appendChild(b);
+  });
+}
+function renderModelos(){
+  const list = document.getElementById('modeloList');
+  const filtrados = filtroModelo==='Todos'?MODELOS:MODELOS.filter(m=>m.categoria===filtroModelo);
+  if(!filtrados.length){ list.innerHTML = '<p class="empty-hint" style="padding:16px;">Nenhum modelo cadastrado nesta categoria.</p>'; }
+  else{
+    list.innerHTML = filtrados.map(m=>`
+      <div class="doc-row">
+        <div class="doc-icon">${ICONS.doc}</div>
+        <div style="flex:1;"><div class="doc-title">${m.titulo}</div><div class="doc-meta">${m.categoria}</div></div>
+        <a class="btn btn-outline btn-sm" href="${m.url}" target="_blank" rel="noopener">Abrir</a>
+        <button class="btn btn-sm" style="background:#FBEAEA;color:#B4453C;" onclick="removerModelo(${m.id})">${ICONS.trash}</button>
+      </div>
+    `).join('');
+  }
+  document.getElementById('cntModelos').textContent = MODELOS.length;
+}
+function removerModelo(id){ MODELOS = MODELOS.filter(m=>m.id!==id); sSet(K('modelos'), MODELOS); renderModelos(); }
+document.getElementById('btnNovoModelo').onclick=()=>document.getElementById('modeloFormCard').style.display='block';
+document.getElementById('cancelarModelo').onclick=()=>document.getElementById('modeloFormCard').style.display='none';
+document.getElementById('salvarModelo').onclick=()=>{
+  const titulo=document.getElementById('modeloTitulo').value.trim();
+  const categoria=document.getElementById('modeloCategoria').value;
+  const url=document.getElementById('modeloUrl').value.trim();
+  if(!titulo||!url){ toast('Preencha título e link.'); return; }
+  MODELOS.push({id:Date.now(), titulo, categoria, url}); sSet(K('modelos'), MODELOS);
+  document.getElementById('modeloTitulo').value=''; document.getElementById('modeloUrl').value='';
+  document.getElementById('modeloFormCard').style.display='none';
+  renderModelos(); toast('Modelo adicionado.');
+};
+
+/* BIBLIOTECA PDF */
+let BIBLIOTECA = sGet(K('biblioteca'), []);
+function renderBiblioteca(){
+  const list = document.getElementById('biblioList');
+  if(!BIBLIOTECA.length){ list.innerHTML = '<p class="empty-hint" style="padding:16px;">Nenhum documento cadastrado ainda.</p>'; }
+  else{
+    list.innerHTML = BIBLIOTECA.map(d=>`
+      <div class="doc-row">
+        <div class="doc-icon">${ICONS.library}</div>
+        <div style="flex:1;"><div class="doc-title">${d.titulo}</div></div>
+        <a class="btn btn-outline btn-sm" href="${d.url}" target="_blank" rel="noopener">Abrir</a>
+        <button class="btn btn-sm" style="background:#FBEAEA;color:#B4453C;" onclick="removerBiblio(${d.id})">${ICONS.trash}</button>
+      </div>
+    `).join('');
+  }
+  document.getElementById('cntBiblioteca').textContent = BIBLIOTECA.length;
+}
+function removerBiblio(id){ BIBLIOTECA = BIBLIOTECA.filter(d=>d.id!==id); sSet(K('biblioteca'), BIBLIOTECA); renderBiblioteca(); }
+document.getElementById('btnNovaBiblio').onclick=()=>document.getElementById('biblioFormCard').style.display='block';
+document.getElementById('cancelarBiblio').onclick=()=>document.getElementById('biblioFormCard').style.display='none';
+document.getElementById('salvarBiblio').onclick=()=>{
+  const titulo=document.getElementById('biblioTitulo').value.trim();
+  const url=document.getElementById('biblioUrl').value.trim();
+  if(!titulo||!url){ toast('Preencha título e link.'); return; }
+  BIBLIOTECA.push({id:Date.now(), titulo, url}); sSet(K('biblioteca'), BIBLIOTECA);
+  document.getElementById('biblioTitulo').value=''; document.getElementById('biblioUrl').value='';
+  document.getElementById('biblioFormCard').style.display='none';
+  renderBiblioteca(); toast('Documento adicionado.');
+};
+
+/* LEGISLAÇÃO */
+let LEGISLACAO = sGet(K('legislacao'), [
+  {id:1, tag:'Lei 10.261/68', titulo:'Estatuto dos Funcionários Públicos Civis do Estado de SP', texto:'Regime jurídico dos servidores estatutários estaduais: direitos, deveres, licenças e regime disciplinar. Ponto de partida — confirme se ainda é a referência mais usada no seu dia a dia.', url:'', starter:true},
+  {id:2, tag:'LGPD', titulo:'Lei 13.709/2018 — Lei Geral de Proteção de Dados', texto:'Relevante para o tratamento de dados pessoais em processos e documentos administrativos. Ponto de partida — ajuste conforme sua rotina.', url:'', starter:true},
+]);
+function renderLegislacao(){
+  const grid = document.getElementById('legislacaoGrid');
+  if(!LEGISLACAO.length){ grid.innerHTML='<p class="empty-hint">Nenhuma norma cadastrada.</p>'; }
+  else{
+    grid.innerHTML = LEGISLACAO.map(l=>`
+      <div class="card law-card">
+        <span class="mono" style="font-size:11px;color:var(--stamp-red);font-weight:700;">${l.tag}</span>
+        ${l.starter?'<span class="starter-tag"> · exemplo inicial</span>':''}
+        <h4 style="margin-top:6px;">${l.titulo}</h4>
+        <p>${l.texto}</p>
+        ${l.url?`<a href="${l.url}" target="_blank" rel="noopener" style="font-size:12px;color:var(--navy-700);display:inline-block;margin-top:8px;">Ver texto oficial →</a>`:''}
+        <div style="margin-top:10px;"><button class="btn btn-sm" style="background:#FBEAEA;color:#B4453C;" onclick="removerLei(${l.id})">Remover</button></div>
+      </div>
+    `).join('');
+  }
+  document.getElementById('cntLegislacao').textContent = LEGISLACAO.length;
+}
+function removerLei(id){ LEGISLACAO = LEGISLACAO.filter(l=>l.id!==id); sSet(K('legislacao'), LEGISLACAO); renderLegislacao(); }
+document.getElementById('btnNovaLei').onclick=()=>document.getElementById('leiFormCard').style.display='block';
+document.getElementById('cancelarLei').onclick=()=>document.getElementById('leiFormCard').style.display='none';
+document.getElementById('salvarLei').onclick=()=>{
+  const tag=document.getElementById('leiTag').value.trim();
+  const titulo=document.getElementById('leiTitulo').value.trim();
+  const texto=document.getElementById('leiTexto').value.trim();
+  const url=document.getElementById('leiUrl').value.trim();
+  if(!tag||!titulo){ toast('Preencha referência e título.'); return; }
+  LEGISLACAO.push({id:Date.now(), tag, titulo, texto, url, starter:false}); sSet(K('legislacao'), LEGISLACAO);
+  ['leiTag','leiTitulo','leiTexto','leiUrl'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('leiFormCard').style.display='none';
+  renderLegislacao(); toast('Norma adicionada.');
+};
+
+/* FAVORITOS */
+let FAVORITOS = sGet(K('favoritos'), []);
+function renderFavoritos(){
+  const grid = document.getElementById('favGrid');
+  if(!FAVORITOS.length){ grid.innerHTML='<p class="empty-hint">Nenhum favorito cadastrado ainda.</p>'; }
+  else{
+    grid.innerHTML = FAVORITOS.map(f=>`
+      <div class="card info-card" style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+        <a href="${f.url}" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;">${ICONS.star} ${f.titulo}</a>
+        <button class="btn btn-sm" style="background:#FBEAEA;color:#B4453C;" onclick="removerFav(${f.id})">${ICONS.trash}</button>
+      </div>
+    `).join('');
+  }
+  document.getElementById('cntFavoritos').textContent = FAVORITOS.length;
+}
+function removerFav(id){ FAVORITOS = FAVORITOS.filter(f=>f.id!==id); sSet(K('favoritos'), FAVORITOS); renderFavoritos(); }
+document.getElementById('btnNovoFav').onclick=()=>document.getElementById('favFormCard').style.display='block';
+document.getElementById('cancelarFav').onclick=()=>document.getElementById('favFormCard').style.display='none';
+document.getElementById('salvarFav').onclick=()=>{
+  const titulo=document.getElementById('favTitulo').value.trim();
+  const url=document.getElementById('favUrl').value.trim();
+  if(!titulo||!url){ toast('Preencha nome e link.'); return; }
+  FAVORITOS.push({id:Date.now(), titulo, url}); sSet(K('favoritos'), FAVORITOS);
+  document.getElementById('favTitulo').value=''; document.getElementById('favUrl').value='';
+  document.getElementById('favFormCard').style.display='none';
+  renderFavoritos(); toast('Favorito adicionado.');
+};
+
+/* BUSCA GLOBAL */
+document.getElementById('buscaGlobal').addEventListener('input', (e)=>{
+  const q = e.target.value.trim().toLowerCase();
+  const out = document.getElementById('searchResults');
+  if(!q){ out.innerHTML=''; return; }
+  const hits = [
+    ...MODELOS.map(m=>({tag:'Modelo', titulo:m.titulo, section:'modelos'})),
+    ...BIBLIOTECA.map(b=>({tag:'Biblioteca', titulo:b.titulo, section:'biblioteca'})),
+    ...LEGISLACAO.map(l=>({tag:'Legislação', titulo:l.titulo, section:'legislacao'})),
+    ...FAVORITOS.map(f=>({tag:'Favorito', titulo:f.titulo, section:'favoritos'})),
+  ].filter(h=>h.titulo.toLowerCase().includes(q));
+  out.innerHTML = hits.length ? hits.map(h=>`
+    <div class="search-hit" onclick="goTo('${h.section}')" style="cursor:pointer;">
+      <span>${h.titulo}</span><span class="tag">${h.tag}</span>
+    </div>
+  `).join('') : '<div class="search-hit">Nenhum resultado encontrado.</div>';
+});
+
+/* INIT */
+renderOrientacoes();
+renderTarefas();
+renderProcessos();
+renderFiltrosModelo();
+renderModelos();
+renderBiblioteca();
+renderLegislacao();
+renderFavoritos();
+</script>
+</body>
+</html>
