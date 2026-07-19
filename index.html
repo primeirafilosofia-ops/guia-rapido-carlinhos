@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,10 +9,9 @@
 
 <title>Portal do Carlinhos</title>
 
-https://fonts.googleapis.com
-https://fonts.gstatic.com
-
-https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
 
 <style>
 
@@ -24,6 +24,8 @@ https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&disp
     --texto:#1F2937;
     --cinza:#6B7280;
     --sombra:0 6px 18px rgba(0,0,0,.10);
+    --aviso-bg:#FFF7E5;
+    --aviso-borda:#C9A876;
 }
 
 *{
@@ -36,6 +38,24 @@ body{
     font-family:'Inter',sans-serif;
     background:var(--fundo);
     color:var(--texto);
+}
+
+/* Banner fixo de aviso institucional */
+.aviso-fixo{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:var(--aviso-bg);
+    border-bottom:3px solid var(--aviso-borda);
+    color:#4B5563;
+    padding:10px 20px;
+    text-align:center;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.aviso-fixo strong{
+    color:var(--azul-escuro);
 }
 
 .sidebar{
@@ -122,6 +142,8 @@ body{
     border:none;
     border-radius:12px;
     box-shadow:var(--sombra);
+    font-family:inherit;
+    font-size:14px;
 }
 
 .section-title{
@@ -144,6 +166,7 @@ body{
     padding:20px;
     box-shadow:var(--sombra);
     transition:.2s;
+    display:block;
 }
 
 .link-card{
@@ -175,6 +198,14 @@ body{
     margin-bottom:8px;
 }
 
+.footer .footer-aviso{
+    font-size:12px;
+    color:var(--cinza);
+    max-width:600px;
+    margin:8px auto 0;
+    line-height:1.5;
+}
+
 @media(max-width:900px){
 
 .sidebar{
@@ -194,6 +225,11 @@ body{
 
 <body>
 
+<!-- Banner fixo: exigido para deixar clara a ausência de vínculo institucional em qualquer ponto de rolagem -->
+<div class="aviso-fixo">
+    <strong>Aviso:</strong> este é um portal pessoal e independente, sem vínculo oficial com a Secretaria da Educação, a Unidade Regional de Ensino ou qualquer órgão público.
+</div>
+
 <aside class="sidebar">
 
     <div class="logo">
@@ -202,15 +238,15 @@ body{
     </div>
 
     <nav class="menu">
-        #inicio🏠 Início</a>
-        #biblioteca📚 Biblioteca</a>
-        #modelos📄 Modelos</a>
-        #legislacao⚖️ Legislação</a>
-        #escolas🏫 Escolas</a>
-        #processos📋 Processos</a>
-        #setores🏢 Setores</a>
-        #links🔗 Links Úteis</a>
-        #documentos📁 Documentos</a>
+        <a href="#inicio">🏠 Início</a>
+        <a href="#biblioteca">📚 Biblioteca</a>
+        <a href="#modelos">📄 Modelos</a>
+        <a href="#legislacao">⚖️ Legislação</a>
+        <a href="#escolas">🏫 Escolas</a>
+        <a href="#processos">📋 Processos</a>
+        <a href="#setores">🏢 Setores</a>
+        <a href="#links">🔗 Links Úteis</a>
+        <a href="#documentos">📁 Documentos</a>
     </nav>
 
 </aside>
@@ -245,22 +281,22 @@ body{
 
 <div class="cards">
 
-    #
+    <a href="#biblioteca" class="card">
         <h4>📚 Biblioteca Técnica</h4>
         <p>Pareceres, legislação e materiais de formação.</p>
     </a>
 
-    #
+    <a href="#modelos" class="card">
         <h4>📄 Modelos</h4>
         <p>Despachos, relatórios e documentos oficiais.</p>
     </a>
 
-    #
+    <a href="#legislacao" class="card">
         <h4>⚖️ Legislação</h4>
         <p>Leis, decretos e resoluções.</p>
     </a>
 
-    #
+    <a href="#escolas" class="card">
         <h4>🏫 Escolas</h4>
         <p>Informações das unidades acompanhadas.</p>
     </a>
@@ -271,22 +307,22 @@ body{
 
 <div class="links-grid">
 
-    https://sei.sp.gov.br
+    <a href="https://sei.sp.gov.br" class="link-card" target="_blank" rel="noopener">
         <h4>SEI</h4>
         <p>Sistema Eletrônico de Informações</p>
     </a>
 
-    https://sed.educacao.sp.gov.br
+    <a href="https://sed.educacao.sp.gov.br" class="link-card" target="_blank" rel="noopener">
         <h4>SED</h4>
         <p>Secretaria Escolar Digital</p>
     </a>
 
-    https://portal.office.com
+    <a href="https://portal.office.com" class="link-card" target="_blank" rel="noopener">
         <h4>Microsoft 365</h4>
         <p>Outlook, Teams e OneDrive</p>
     </a>
 
-    https://copilot.microsoft.com
+    <a href="https://copilot.microsoft.com" class="link-card" target="_blank" rel="noopener">
         <h4>Microsoft Copilot</h4>
         <p>Assistente de IA</p>
     </a>
@@ -308,6 +344,12 @@ body{
         documentação e organização profissional.
     </p>
 
+    <p class="footer-aviso">
+        Este site é um projeto pessoal e independente de Carlos Renato do Amaral.
+        Não possui vínculo oficial com a Secretaria da Educação do Estado de São Paulo,
+        com a Unidade Regional de Ensino ou com qualquer órgão da administração pública.
+    </p>
+
     <p>
         © 2026 Carlos Renato do Amaral
     </p>
@@ -318,30 +360,41 @@ body{
 
 <script>
 
+/*
+  Cada item deve apontar para uma pasta compartilhada do Google Drive PESSOAL
+  (não institucional/corporativo — use sua conta Google pessoal).
+
+  Formato esperado do link (pasta compartilhada "qualquer pessoa com o link"):
+  https://drive.google.com/drive/folders/ID_DA_PASTA?usp=sharing
+
+  Como obter: abra a pasta no Google Drive > botão direito > Compartilhar >
+  "Restrito" > alterar para "Qualquer pessoa com o link" > Copiar link.
+  Substitua cada "COLE_AQUI_LINK_DRIVE" abaixo pelo link copiado.
+*/
 const DOCUMENTOS = [
 
 {
 titulo:"Biblioteca Técnica",
 descricao:"Acervo de legislação e formação",
-url:"COLE_AQUI_LINK_ONEDRIVE"
+url:"COLE_AQUI_LINK_DRIVE"
 },
 
 {
 titulo:"Modelos",
 descricao:"Modelos administrativos",
-url:"COLE_AQUI_LINK_ONEDRIVE"
+url:"COLE_AQUI_LINK_DRIVE"
 },
 
 {
 titulo:"Legislação",
 descricao:"Normativos e resoluções",
-url:"COLE_AQUI_LINK_ONEDRIVE"
+url:"COLE_AQUI_LINK_DRIVE"
 },
 
 {
 titulo:"Processos Estratégicos",
 descricao:"Documentação organizada",
-url:"COLE_AQUI_LINK_ONEDRIVE"
+url:"COLE_AQUI_LINK_DRIVE"
 }
 
 ];
@@ -355,7 +408,8 @@ grid.innerHTML =
 DOCUMENTOS.map(doc => `
 <a href="${doc.url}"
 class="link-card"
-target="_blank">
+target="_blank"
+rel="noopener">
 
 <h4>${doc.titulo}</h4>
 <p>${doc.descricao}</p>
