@@ -5,11 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Portal do Carlinhos</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+https://fonts.googleapis.com
+https://fonts.gstatic.com
+
+https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap
 
 <style>
 
@@ -17,10 +19,11 @@
     --azul:#0F4C81;
     --azul-escuro:#002855;
     --dourado:#C9A876;
-    --cinza:#F5F7FA;
-    --branco:#ffffff;
+    --fundo:#F5F7FA;
+    --branco:#FFFFFF;
     --texto:#1F2937;
-    --sombra:0 4px 12px rgba(0,0,0,.10);
+    --cinza:#6B7280;
+    --sombra:0 6px 18px rgba(0,0,0,.10);
 }
 
 *{
@@ -31,35 +34,33 @@
 
 body{
     font-family:'Inter',sans-serif;
-    background:var(--cinza);
+    background:var(--fundo);
     color:var(--texto);
 }
 
 .sidebar{
-    width:260px;
+    width:270px;
     height:100vh;
-    background:var(--azul-escuro);
     position:fixed;
     left:0;
     top:0;
-    color:white;
+    background:var(--azul-escuro);
     overflow-y:auto;
 }
 
 .logo{
-    padding:30px 20px;
-    border-bottom:1px solid rgba(255,255,255,.15);
+    padding:30px;
+    color:white;
+    border-bottom:1px solid rgba(255,255,255,.12);
 }
 
 .logo h1{
-    font-size:24px;
-    font-weight:800;
+    font-size:26px;
 }
 
 .logo p{
-    font-size:12px;
-    opacity:.8;
-    margin-top:5px;
+    font-size:13px;
+    opacity:.85;
 }
 
 .menu{
@@ -68,21 +69,19 @@ body{
 
 .menu a{
     display:block;
-    text-decoration:none;
     color:white;
-    padding:12px 15px;
-    border-radius:8px;
+    text-decoration:none;
+    padding:12px;
+    border-radius:10px;
     margin-bottom:6px;
-    transition:.2s;
-    font-size:14px;
 }
 
 .menu a:hover{
-    background:rgba(255,255,255,.12);
+    background:rgba(255,255,255,.10);
 }
 
 .main{
-    margin-left:260px;
+    margin-left:270px;
     padding:30px;
 }
 
@@ -95,87 +94,93 @@ body{
 }
 
 .hero h2{
-    font-size:34px;
-    margin-bottom:8px;
+    font-size:38px;
+    margin-bottom:10px;
 }
 
 .hero p{
-    opacity:.9;
+    max-width:800px;
+    line-height:1.6;
 }
 
-.cards{
+.disclaimer{
+    margin-top:20px;
+    background:#FFF7E5;
+    border-left:5px solid var(--dourado);
+    padding:15px;
+    border-radius:10px;
+    color:#4B5563;
+}
+
+.search{
     margin-top:25px;
+}
+
+.search input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    box-shadow:var(--sombra);
+}
+
+.section-title{
+    margin:35px 0 15px;
+    color:var(--azul-escuro);
+}
+
+.cards,
+.links-grid{
+
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
 }
 
-.card{
+.card,
+.link-card{
     background:white;
-    padding:20px;
     border-radius:16px;
+    padding:20px;
     box-shadow:var(--sombra);
-}
-
-.card h3{
-    margin-bottom:10px;
-    color:var(--azul);
-}
-
-.card ul{
-    margin-left:18px;
-}
-
-.card li{
-    margin-bottom:8px;
-}
-
-.section-title{
-    margin-top:35px;
-    margin-bottom:15px;
-    font-size:22px;
-    color:var(--azul-escuro);
-}
-
-.links-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+    transition:.2s;
 }
 
 .link-card{
-    background:white;
-    padding:18px;
-    border-radius:14px;
     text-decoration:none;
-    color:var(--texto);
-    box-shadow:var(--sombra);
-    transition:.2s;
-    display:block;
+    color:inherit;
 }
 
+.card:hover,
 .link-card:hover{
     transform:translateY(-4px);
 }
 
+.card h3,
 .link-card h4{
     color:var(--azul);
-    margin-bottom:5px;
+    margin-bottom:10px;
 }
 
 .footer{
     margin-top:40px;
+    padding:25px;
+    background:white;
+    border-radius:16px;
+    box-shadow:var(--sombra);
     text-align:center;
-    color:#64748B;
-    font-size:13px;
+}
+
+.footer p{
+    margin-bottom:8px;
 }
 
 @media(max-width:900px){
 
 .sidebar{
+    position:relative;
     width:100%;
     height:auto;
-    position:relative;
 }
 
 .main{
@@ -185,197 +190,183 @@ body{
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="sidebar">
+<aside class="sidebar">
 
     <div class="logo">
         <h1>Portal do Carlinhos</h1>
-        <p>Supervisor de Ensino</p>
+        <p>Projeto Pessoal de Apoio à Gestão Educacional</p>
     </div>
 
-    <div class="menu">
-        <a href="#dashboard">🏠 Dashboard</a>
-        <a href="#biblioteca">📚 Biblioteca Técnica</a>
-        <a href="#modelos">📑 Modelos</a>
-        <a href="#legislacao">⚖️ Legislação</a>
-        <a href="#escolas">🏫 Escolas</a>
-        <a href="#supervisao">👨‍🏫 Supervisão</a>
-        <a href="#processos">📋 Processos Estratégicos</a>
-        <a href="#links">🔗 Links Úteis</a>
-        <a href="#setores">🏢 Setores</a>
-        <a href="#favoritos">⭐ Favoritos</a>
+    <nav class="menu">
+        #inicio🏠 Início</a>
+        #biblioteca📚 Biblioteca</a>
+        #modelos📄 Modelos</a>
+        #legislacao⚖️ Legislação</a>
+        #escolas🏫 Escolas</a>
+        #processos📋 Processos</a>
+        #setores🏢 Setores</a>
+        #links🔗 Links Úteis</a>
+        #documentos📁 Documentos</a>
+    </nav>
+
+</aside>
+
+<main class="main">
+
+<section class="hero" id="inicio">
+
+    <h2>Portal do Carlinhos</h2>
+
+    <p>
+        Espaço pessoal para organização de informações,
+        legislação educacional, modelos administrativos,
+        gestão escolar, bibliotecas digitais e materiais de estudo.
+    </p>
+
+    <div class="disclaimer">
+        <strong>Aviso Importante</strong><br>
+        Este portal possui caráter pessoal e independente.
+        Não representa oficialmente a Secretaria da Educação,
+        a Unidade Regional de Ensino ou qualquer órgão público.
     </div>
+
+</section>
+
+<div class="search">
+    <input type="text"
+           placeholder="Pesquisar conteúdo...">
+</div>
+
+<h2 class="section-title">Acesso Rápido</h2>
+
+<div class="cards">
+
+    #
+        <h4>📚 Biblioteca Técnica</h4>
+        <p>Pareceres, legislação e materiais de formação.</p>
+    </a>
+
+    #
+        <h4>📄 Modelos</h4>
+        <p>Despachos, relatórios e documentos oficiais.</p>
+    </a>
+
+    #
+        <h4>⚖️ Legislação</h4>
+        <p>Leis, decretos e resoluções.</p>
+    </a>
+
+    #
+        <h4>🏫 Escolas</h4>
+        <p>Informações das unidades acompanhadas.</p>
+    </a>
 
 </div>
 
-<div class="main">
+<h2 class="section-title" id="links">Links Mais Utilizados</h2>
 
-    <section class="hero" id="dashboard">
-        <h2>Portal do Carlinhos</h2>
+<div class="links-grid">
 
-        <p>
-            Central de Supervisão, Gestão Escolar, Legislação,
-            Processos Estratégicos e Biblioteca Digital.
-        </p>
-    </section>
+    https://sei.sp.gov.br
+        <h4>SEI</h4>
+        <p>Sistema Eletrônico de Informações</p>
+    </a>
 
-    <div class="cards">
+    https://sed.educacao.sp.gov.br
+        <h4>SED</h4>
+        <p>Secretaria Escolar Digital</p>
+    </a>
 
-        <div class="card">
-            <h3>📌 Pendências</h3>
-            <ul>
-                <li>Plano de Trabalho do Diretor</li>
-                <li>Gestão Democrática</li>
-                <li>Conselho de Escola</li>
-            </ul>
-        </div>
+    https://portal.office.com
+        <h4>Microsoft 365</h4>
+        <p>Outlook, Teams e OneDrive</p>
+    </a>
 
-        <div class="card">
-            <h3>📅 Esta Semana</h3>
-            <ul>
-                <li>Visitas escolares</li>
-                <li>Acompanhamento de processos</li>
-                <li>Reuniões agendadas</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>📊 Indicadores</h3>
-            <ul>
-                <li>Escolas vinculadas</li>
-                <li>Processos em andamento</li>
-                <li>Pendências críticas</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>⭐ Favoritos</h3>
-            <ul>
-                <li>SEI</li>
-                <li>SED</li>
-                <li>Microsoft 365</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <h2 class="section-title" id="links">Links Mais Utilizados</h2>
-
-    <div class="links-grid">
-
-        <a href="https://sei.sp.gov.br" class="link-card" target="_blank" rel="noopener">
-            <h4>SEI</h4>
-            <p>Sistema Eletrônico de Informações</p>
-        </a>
-
-        <a href="https://sed.educacao.sp.gov.br" class="link-card" target="_blank" rel="noopener">
-            <h4>SED</h4>
-            <p>Secretaria Escolar Digital</p>
-        </a>
-
-        <a href="https://portal.office.com" class="link-card" target="_blank" rel="noopener">
-            <h4>Microsoft 365</h4>
-            <p>Outlook, Teams e OneDrive</p>
-        </a>
-
-        <a href="https://onedrive.live.com" class="link-card" target="_blank" rel="noopener">
-            <h4>OneDrive</h4>
-            <p>Biblioteca de Arquivos</p>
-        </a>
-
-        <a href="https://chat.openai.com" class="link-card" target="_blank" rel="noopener">
-            <h4>ChatGPT</h4>
-            <p>Assistente de IA</p>
-        </a>
-
-        <a href="https://copilot.microsoft.com" class="link-card" target="_blank" rel="noopener">
-            <h4>Microsoft Copilot</h4>
-            <p>IA Integrada ao Microsoft 365</p>
-        </a>
-
-    </div>
-
-    <h2 class="section-title">Acesso Rápido</h2>
-
-    <div class="cards">
-
-        <div class="card" id="biblioteca">
-            <h3>📚 Biblioteca Técnica</h3>
-            <p>Legislação, Resoluções, Pareceres e Formação.</p>
-        </div>
-
-        <div class="card" id="modelos">
-            <h3>📄 Modelos</h3>
-            <p>Despachos, Relatórios, Termos de Visita e Pareceres.</p>
-        </div>
-
-        <div class="card" id="escolas">
-            <h3>🏫 Escolas</h3>
-            <p>Cadastro das unidades escolares acompanhadas.</p>
-        </div>
-
-        <div class="card" id="setores">
-            <h3>🏢 Setores</h3>
-            <p>SEFREP, SEAPE, SEMAT, SEINTEC e demais contatos.</p>
-        </div>
-
-    </div>
-
-    <h2 class="section-title" id="documentos">📁 Documentos (OneDrive Institucional)</h2>
-
-    <div class="links-grid" id="documentos-grid"></div>
-
-    <div class="footer">
-        Portal do Carlinhos • Supervisor de Ensino • Versão 2.0
-    </div>
+    https://copilot.microsoft.com
+        <h4>Microsoft Copilot</h4>
+        <p>Assistente de IA</p>
+    </a>
 
 </div>
+
+<h2 class="section-title" id="documentos">
+📁 Biblioteca de Documentos
+</h2>
+
+<div class="links-grid" id="documentos-grid"></div>
+
+<footer class="footer">
+
+    <p><strong>Portal do Carlinhos</strong></p>
+
+    <p>
+        Projeto pessoal para gestão educacional,
+        documentação e organização profissional.
+    </p>
+
+    <p>
+        © 2026 Carlos Renato do Amaral
+    </p>
+
+</footer>
+
+</main>
 
 <script>
-// ============================================================
-// CONFIG — Links das pastas institucionais no OneDrive (M365)
-// Substitua cada "URL_AQUI" pelo link real da pasta compartilhada.
-// Como gerar: OneDrive > pasta > botão direito > Compartilhar >
-// Copiar link (acesso institucional).
-// ============================================================
-const DOCUMENTOS = [
-    {
-        titulo: "Biblioteca Técnica",
-        descricao: "Legislação, resoluções, pareceres e formação",
-        url: "URL_AQUI"
-    },
-    {
-        titulo: "Modelos",
-        descricao: "Despachos, relatórios e termos de visita",
-        url: "URL_AQUI"
-    },
-    {
-        titulo: "Legislação",
-        descricao: "Diários oficiais, decretos e resoluções SEDUC",
-        url: "URL_AQUI"
-    },
-    {
-        titulo: "Processos Estratégicos",
-        descricao: "Documentação de acompanhamento de processos SEI",
-        url: "URL_AQUI"
-    }
-];
 
-function renderDocumentos() {
-    const grid = document.getElementById('documentos-grid');
-    grid.innerHTML = DOCUMENTOS.map(doc => `
-        <a href="${doc.url}" class="link-card" target="_blank" rel="noopener">
-            <h4>${doc.titulo}</h4>
-            <p>${doc.descricao}</p>
-        </a>
-    `).join('');
+const DOCUMENTOS = [
+
+{
+titulo:"Biblioteca Técnica",
+descricao:"Acervo de legislação e formação",
+url:"COLE_AQUI_LINK_ONEDRIVE"
+},
+
+{
+titulo:"Modelos",
+descricao:"Modelos administrativos",
+url:"COLE_AQUI_LINK_ONEDRIVE"
+},
+
+{
+titulo:"Legislação",
+descricao:"Normativos e resoluções",
+url:"COLE_AQUI_LINK_ONEDRIVE"
+},
+
+{
+titulo:"Processos Estratégicos",
+descricao:"Documentação organizada",
+url:"COLE_AQUI_LINK_ONEDRIVE"
 }
 
-renderDocumentos();
+];
+
+function carregarDocumentos(){
+
+const grid =
+document.getElementById('documentos-grid');
+
+grid.innerHTML =
+DOCUMENTOS.map(doc => `
+<a href="${doc.url}"
+class="link-card"
+target="_blank">
+
+<h4>${doc.titulo}</h4>
+<p>${doc.descricao}</p>
+
+</a>
+`).join('');
+
+}
+
+carregarDocumentos();
+
 </script>
 
 </body>
