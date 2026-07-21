@@ -1,424 +1,680 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Portal do Carlinhos</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
-
 <style>
-
 :root{
-    --azul:#0F4C81;
-    --azul-escuro:#002855;
-    --dourado:#C9A876;
-    --fundo:#F5F7FA;
-    --branco:#FFFFFF;
-    --texto:#1F2937;
-    --cinza:#6B7280;
-    --sombra:0 6px 18px rgba(0,0,0,.10);
-    --aviso-bg:#FFF7E5;
-    --aviso-borda:#C9A876;
+--azul:#0F4C81;
+--azul-escuro:#002855;
+--dourado:#C9A876;
+--fundo:#F5F7FA;
+--branco:#FFFFFF;
+--texto:#1F2937;
+--cinza:#6B7280;
+--sombra:0 6px 18px rgba(0,0,0,.10);
+--aviso-bg:#FFF7E5;
+--aviso-borda:#C9A876;
 }
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
-
 body{
-    font-family:'Inter',sans-serif;
-    background:var(--fundo);
-    color:var(--texto);
+font-family:'Inter',sans-serif;
+background:var(--fundo);
+color:var(--texto);
 }
-
 /* Banner fixo de aviso institucional */
 .aviso-fixo{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:var(--aviso-bg);
-    border-bottom:3px solid var(--aviso-borda);
-    color:#4B5563;
-    padding:10px 20px;
-    text-align:center;
-    font-size:13px;
-    line-height:1.5;
+position:sticky;
+top:0;
+z-index:1000;
+background:var(--aviso-bg);
+border-bottom:3px solid var(--aviso-borda);
+color:#4B5563;
+padding:10px 20px;
+text-align:center;
+font-size:13px;
+line-height:1.5;
 }
-
 .aviso-fixo strong{
-    color:var(--azul-escuro);
+color:var(--azul-escuro);
 }
-
 .sidebar{
-    width:270px;
-    height:100vh;
-    position:fixed;
-    left:0;
-    top:0;
-    background:var(--azul-escuro);
-    overflow-y:auto;
+width:270px;
+height:100vh;
+position:fixed;
+left:0;
+top:0;
+background:var(--azul-escuro);
+overflow-y:auto;
 }
-
 .logo{
-    padding:30px;
-    color:white;
-    border-bottom:1px solid rgba(255,255,255,.12);
+padding:30px;
+color:white;
+border-bottom:1px solid rgba(255,255,255,.12);
 }
-
 .logo h1{
-    font-size:26px;
+font-size:26px;
 }
-
 .logo p{
-    font-size:13px;
-    opacity:.85;
+font-size:13px;
+opacity:.85;
 }
-
 .menu{
-    padding:15px;
+padding:15px;
 }
-
 .menu a{
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:6px;
+display:block;
+color:white;
+text-decoration:none;
+padding:12px;
+border-radius:10px;
+margin-bottom:6px;
 }
-
 .menu a:hover{
-    background:rgba(255,255,255,.10);
+background:rgba(255,255,255,.10);
 }
-
 .main{
-    margin-left:270px;
-    padding:30px;
+margin-left:270px;
+padding:30px;
 }
-
 .hero{
-    background:linear-gradient(135deg,var(--azul),var(--azul-escuro));
-    color:white;
-    padding:40px;
-    border-radius:18px;
-    box-shadow:var(--sombra);
+background:linear-gradient(135deg,var(--azul),var(--azul-escuro));
+color:white;
+padding:40px;
+border-radius:18px;
+box-shadow:var(--sombra);
 }
-
 .hero h2{
-    font-size:38px;
-    margin-bottom:10px;
+font-size:38px;
+margin-bottom:10px;
 }
-
 .hero p{
-    max-width:800px;
-    line-height:1.6;
+max-width:800px;
+line-height:1.6;
 }
-
 .disclaimer{
-    margin-top:20px;
-    background:#FFF7E5;
-    border-left:5px solid var(--dourado);
-    padding:15px;
-    border-radius:10px;
-    color:#4B5563;
+margin-top:20px;
+background:#FFF7E5;
+border-left:5px solid var(--dourado);
+padding:15px;
+border-radius:10px;
+color:#4B5563;
 }
-
 .search{
-    margin-top:25px;
+margin-top:25px;
 }
-
 .search input{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    box-shadow:var(--sombra);
-    font-family:inherit;
-    font-size:14px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+box-shadow:var(--sombra);
+font-family:inherit;
+font-size:14px;
 }
-
 .section-title{
-    margin:35px 0 15px;
-    color:var(--azul-escuro);
+margin:35px 0 15px;
+color:var(--azul-escuro);
 }
-
 .cards,
 .links-grid{
-
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
-
 .card,
 .link-card{
-    background:white;
-    border-radius:16px;
-    padding:20px;
-    box-shadow:var(--sombra);
-    transition:.2s;
-    display:block;
+background:white;
+border-radius:16px;
+padding:20px;
+box-shadow:var(--sombra);
+transition:.2s;
+display:block;
 }
-
 .link-card{
-    text-decoration:none;
-    color:inherit;
+text-decoration:none;
+color:inherit;
 }
-
 .card:hover,
 .link-card:hover{
-    transform:translateY(-4px);
+transform:translateY(-4px);
 }
-
 .card h3,
 .link-card h4{
-    color:var(--azul);
-    margin-bottom:10px;
+color:var(--azul);
+margin-bottom:10px;
 }
-
 .footer{
-    margin-top:40px;
-    padding:25px;
-    background:white;
-    border-radius:16px;
-    box-shadow:var(--sombra);
-    text-align:center;
+margin-top:40px;
+padding:25px;
+background:white;
+border-radius:16px;
+box-shadow:var(--sombra);
+text-align:center;
 }
-
 .footer p{
-    margin-bottom:8px;
+margin-bottom:8px;
+}
+.footer .footer-aviso{
+font-size:12px;
+color:var(--cinza);
+max-width:600px;
+margin:8px auto 0;
+line-height:1.5;
 }
 
-.footer .footer-aviso{
-    font-size:12px;
-    color:var(--cinza);
-    max-width:600px;
-    margin:8px auto 0;
-    line-height:1.5;
+/* ===================== BASE LEGAL (Biblioteca Legislativa) ===================== */
+.leg-controls{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin:20px 0 10px;
+}
+.leg-search{
+flex:1;
+min-width:220px;
+padding:14px;
+border:none;
+border-radius:12px;
+box-shadow:var(--sombra);
+font-family:inherit;
+font-size:14px;
+}
+.leg-filtros{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+.leg-filtro-btn{
+background:white;
+border:none;
+box-shadow:var(--sombra);
+padding:12px 16px;
+border-radius:12px;
+font-size:13px;
+font-weight:600;
+color:var(--cinza);
+cursor:pointer;
+font-family:inherit;
+}
+.leg-filtro-btn.active[data-area="todos"]{ background:var(--azul-escuro); color:white; }
+.leg-filtro-btn.active[data-area="educacional"]{ background:var(--azul); color:white; }
+.leg-filtro-btn.active[data-area="rfb"]{ background:var(--dourado); color:var(--azul-escuro); }
+.leg-contador{
+font-size:12px;
+color:var(--cinza);
+margin-bottom:14px;
+}
+.leg-grupo{ margin-bottom:24px; }
+.leg-grupo-titulo{
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:.04em;
+color:var(--azul-escuro);
+font-weight:700;
+margin-bottom:10px;
+}
+.leg-item{
+background:white;
+border-radius:14px;
+padding:18px;
+box-shadow:var(--sombra);
+margin-bottom:10px;
+transition:.2s;
+}
+.leg-item:hover{ transform:translateY(-2px); }
+.leg-item-head{
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:baseline;
+}
+.leg-item-titulo{
+font-weight:600;
+color:var(--azul-escuro);
+font-size:14.5px;
+}
+.leg-badge{
+font-size:10px;
+padding:3px 10px;
+border-radius:20px;
+font-weight:700;
+text-transform:uppercase;
+white-space:nowrap;
+}
+.leg-badge.educacional{ background:rgba(15,76,129,.12); color:var(--azul); }
+.leg-badge.rfb{ background:rgba(201,168,118,.30); color:#8a6d2f; }
+.leg-item-desc{
+font-size:13px;
+color:var(--cinza);
+margin:8px 0 10px;
+line-height:1.5;
+}
+.leg-item-footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:12px;
+}
+.leg-item-modulo{ color:#9aa0a8; }
+.leg-item-link{
+color:var(--azul);
+font-weight:600;
+text-decoration:none;
+}
+.leg-item-link:hover{ text-decoration:underline; }
+.leg-empty{
+text-align:center;
+color:var(--cinza);
+padding:30px 0;
+font-size:14px;
 }
 
 @media(max-width:900px){
-
 .sidebar{
-    position:relative;
-    width:100%;
-    height:auto;
+position:relative;
+width:100%;
+height:auto;
 }
-
 .main{
-    margin-left:0;
+margin-left:0;
 }
-
 }
-
 </style>
 </head>
-
 <body>
-
 <!-- Banner fixo: exigido para deixar clara a ausência de vínculo institucional em qualquer ponto de rolagem -->
 <div class="aviso-fixo">
-    <strong>Aviso:</strong> este é um portal pessoal e independente, sem vínculo oficial com a Secretaria da Educação, a Unidade Regional de Ensino ou qualquer órgão público.
+<strong>Aviso:</strong> este é um portal pessoal e independente, sem vínculo oficial com a Secretaria da Educação, a Unidade Regional de Ensino ou qualquer órgão público.
 </div>
 
 <aside class="sidebar">
-
-    <div class="logo">
-        <h1>Portal do Carlinhos</h1>
-        <p>Projeto Pessoal de Apoio Organizacional</p>
-    </div>
-
-    <nav class="menu">
-        <a href="#inicio">🏠 Início</a>
-        <a href="#biblioteca">📚 Biblioteca</a>
-        <a href="#modelos">📄 Modelos</a>
-        <a href="#legislacao">⚖️ Legislação</a>
-        <a href="#escolas">🏫 Escolas</a>
-        <a href="#processos">📋 Processos</a>
-        <a href="#setores">🏢 Setores</a>
-        <a href="#links">🔗 Links Úteis</a>
-        <a href="#documentos">📁 Documentos</a>
-    </nav>
-
+<div class="logo">
+<h1>Portal do Carlinhos</h1>
+<p>Projeto Pessoal de Apoio Organizacional</p>
+</div>
+<nav class="menu">
+<a href="#inicio">🏠 Início</a>
+<a href="#biblioteca">📚 Biblioteca</a>
+<a href="#modelos">📄 Modelos</a>
+<a href="#legislacao">⚖️ Legislação</a>
+<a href="#escolas">🏫 Escolas</a>
+<a href="#processos">📋 Processos</a>
+<a href="#setores">🏢 Setores</a>
+<a href="#links">🔗 Links Úteis</a>
+<a href="#documentos">📁 Documentos</a>
+</nav>
 </aside>
 
 <main class="main">
-
 <section class="hero" id="inicio">
-
-    <h2>Portal do Carlinhos</h2>
-
-    <p>
-        Espaço pessoal destinado à organização de informações, documentos, referências, links úteis e materiais de consulta para apoio às atividades profissionais.
-    </p>
-<!--
-  //  <div class="disclaimer">
-        <strong>Aviso Importante</strong><br>
-        Este portal possui caráter pessoal e independente.
-        Não representa oficialmente a Secretaria da Educação,
-        a Unidade Regional de Ensino ou qualquer órgão público.
-    </div>
-// -->
+<h2>Portal do Carlinhos</h2>
+<p>
+Espaço pessoal destinado à organização de informações, documentos, referências, links úteis e materiais de consulta para apoio às atividades profissionais.
+</p>
 </section>
 
 <div class="search">
-    <input type="text"
-           placeholder="Pesquisar conteúdo...">
+<input type="text" placeholder="Pesquisar conteúdo...">
 </div>
 
 <h2 class="section-title">Acesso Rápido</h2>
-
 <div class="cards">
-
-    <a href="#biblioteca" class="card">
-        <h4>📚 Biblioteca Técnica</h4>
-        <p>Materiais de apoio.</p>
-    </a>
-
-    <a href="#modelos" class="card">
-        <h4>📄 Modelos</h4>
-        <p>Documentos.</p>
-    </a>
-
-    <a href="#legislacao" class="card">
-        <h4>⚖️ Legislação</h4>
-        <p>Leis, decretos e resoluções.</p>
-    </a>
-
-    <a href="#escolas" class="card">
-        <h4>🏫 Escolas</h4>
-        <p>Informações das unidades acompanhadas.</p>
-    </a>
-
+<a href="#biblioteca" class="card">
+<h4>📚 Biblioteca Técnica</h4>
+<p>Materiais de apoio.</p>
+</a>
+<a href="#modelos" class="card">
+<h4>📄 Modelos</h4>
+<p>Documentos.</p>
+</a>
+<a href="#legislacao" class="card">
+<h4>⚖️ Legislação</h4>
+<p>Leis, decretos e resoluções.</p>
+</a>
+<a href="#escolas" class="card">
+<h4>🏫 Escolas</h4>
+<p>Informações das unidades acompanhadas.</p>
+</a>
 </div>
 
+<!-- ===================== NOVA SEÇÃO: BASE LEGAL ===================== -->
+<section id="legislacao">
+  <h2 class="section-title">⚖️ Legislação — Base Legal</h2>
+  <p style="color:var(--cinza); font-size:13.5px; max-width:700px; margin-bottom:10px;">
+    Compilado normativo aplicável à atuação como Assistente Técnico (URE-SBC / SEDUC-SP) e à preparação para o concurso de Auditor-Fiscal da Receita Federal (RFB).
+  </p>
+
+  <div class="leg-controls">
+    <input type="text" class="leg-search" id="leg-busca" placeholder="Buscar por lei, tema ou órgão (ex.: LRF, LDB, EC 132)...">
+    <div class="leg-filtros" id="leg-filtros">
+      <button class="leg-filtro-btn active" data-area="todos">Todos</button>
+      <button class="leg-filtro-btn" data-area="educacional">Educacional (URE)</button>
+      <button class="leg-filtro-btn" data-area="rfb">RFB (Concurso)</button>
+    </div>
+  </div>
+
+  <p class="leg-contador" id="leg-contador"></p>
+  <div id="leg-lista"></div>
+</section>
+
 <h2 class="section-title" id="links">Links Mais Utilizados</h2>
-
 <div class="links-grid">
-
-    <a href="https://sei.sp.gov.br" class="link-card" target="_blank" rel="noopener">
-        <h4>SEI</h4>
-        <p>Sistema Eletrônico de Informações</p>
-    </a>
-
-    <a href="https://sed.educacao.sp.gov.br" class="link-card" target="_blank" rel="noopener">
-        <h4>SED</h4>
-        <p>Secretaria Escolar Digital</p>
-    </a>
-
-    <a href="https://portal.office.com" class="link-card" target="_blank" rel="noopener">
-        <h4>Microsoft 365</h4>
-        <p>Outlook, Teams e OneDrive</p>
-    </a>
-
-    <a href="https://copilot.microsoft.com" class="link-card" target="_blank" rel="noopener">
-        <h4>Microsoft Copilot</h4>
-        <p>Assistente de IA</p>
-    </a>
-
+<a href="https://sei.sp.gov.br" class="link-card" target="_blank" rel="noopener">
+<h4>SEI</h4>
+<p>Sistema Eletrônico de Informações</p>
+</a>
+<a href="https://sed.educacao.sp.gov.br" class="link-card" target="_blank" rel="noopener">
+<h4>SED</h4>
+<p>Secretaria Escolar Digital</p>
+</a>
+<a href="https://portal.office.com" class="link-card" target="_blank" rel="noopener">
+<h4>Microsoft 365</h4>
+<p>Outlook, Teams e OneDrive</p>
+</a>
+<a href="https://copilot.microsoft.com" class="link-card" target="_blank" rel="noopener">
+<h4>Microsoft Copilot</h4>
+<p>Assistente de IA</p>
+</a>
 </div>
 
 <h2 class="section-title" id="documentos">
 📁 Biblioteca de Documentos
 </h2>
-
 <div class="links-grid" id="documentos-grid"></div>
 
 <footer class="footer">
-
-    <p><strong>Portal do Carlinhos</strong></p>
-<!--
-    <p>
-        Espaço pessoal destinado à organização de informações, documentos, referências, links úteis e materiais de consulta para apoio às atividades profissionais.
-    </p>
--->
-    <p class="footer-aviso">
-        Este site é um projeto pessoal e independente de Carlos Renato do Amaral.
-        Não possui vínculo oficial com a Secretaria da Educação do Estado de São Paulo,
-        com a Unidade Regional de Ensino ou com qualquer órgão da administração pública.
-    </p>
-
-    <p>
-        © 2026 Carlos Renato do Amaral
-    </p>
-
+<p><strong>Portal do Carlinhos</strong></p>
+<p class="footer-aviso">
+Este site é um projeto pessoal e independente de Carlos Renato do Amaral.
+Não possui vínculo oficial com a Secretaria da Educação do Estado de São Paulo,
+com a Unidade Regional de Ensino ou com qualquer órgão da administração pública.
+</p>
+<p>
+© 2026 Carlos Renato do Amaral
+</p>
 </footer>
-
 </main>
 
 <script>
-
 /*
-  Cada item deve apontar para uma pasta compartilhada do Google Drive PESSOAL
-  (não institucional/corporativo — use sua conta Google pessoal).
-
-  Formato esperado do link (pasta compartilhada "qualquer pessoa com o link"):
-  https://drive.google.com/drive/folders/ID_DA_PASTA?usp=sharing
-
-  Como obter: abra a pasta no Google Drive > botão direito > Compartilhar >
-  "Restrito" > alterar para "Qualquer pessoa com o link" > Copiar link.
-  Substitua cada "COLE_AQUI_LINK_DRIVE" abaixo pelo link copiado.
+Cada item deve apontar para uma pasta compartilhada do Google Drive PESSOAL
+(não institucional/corporativo — use sua conta Google pessoal).
+Formato esperado do link (pasta compartilhada "qualquer pessoa com o link"):
+https://drive.google.com/drive/folders/ID_DA_PASTA?usp=sharing
+Como obter: abra a pasta no Google Drive > botão direito > Compartilhar >
+"Restrito" > alterar para "Qualquer pessoa com o link" > Copiar link.
+Substitua cada "COLE_AQUI_LINK_DRIVE" abaixo pelo link copiado.
 */
 const DOCUMENTOS = [
-
 {
 titulo:"Biblioteca Técnica",
 descricao:"Acervo de legislação e formação",
 url:"COLE_AQUI_LINK_DRIVE"
 },
-
 {
 titulo:"Modelos",
 descricao:"Modelos administrativos",
 url:"COLE_AQUI_LINK_DRIVE"
 },
-
 {
 titulo:"Legislação",
 descricao:"Normativos e resoluções",
 url:"COLE_AQUI_LINK_DRIVE"
 },
-
 {
 titulo:"Processos Estratégicos",
 descricao:"Documentação organizada",
 url:"COLE_AQUI_LINK_DRIVE"
 }
-
 ];
 
 function carregarDocumentos(){
-
 const grid =
 document.getElementById('documentos-grid');
-
 grid.innerHTML =
 DOCUMENTOS.map(doc => `
 <a href="${doc.url}"
 class="link-card"
 target="_blank"
 rel="noopener">
-
 <h4>${doc.titulo}</h4>
 <p>${doc.descricao}</p>
-
 </a>
 `).join('');
-
 }
 
 carregarDocumentos();
 
-</script>
+/* ===================== BASE LEGAL — CONFIG + RENDER ===================== */
+/*
+Para adicionar um novo item, insira um novo objeto em LEGISLACAO_DATA
+seguindo a mesma estrutura: { area, modulo, titulo, descricao, link }
+area: "educacional" (URE/SEDUC-SP) ou "rfb" (concurso Auditor-Fiscal)
+*/
+const LEGISLACAO_DATA = [
+  // ---------- EDUCACIONAL (SEDUC-SP / URE-SBC) ----------
+  { area:"educacional", modulo:"1.1 Módulos Constitucionais e Gerais de Educação",
+    titulo:"Constituição Federal de 1988 — Arts. 205 a 214",
+    descricao:"Princípios norteadores da educação, deveres do Estado, colaboração entre entes e financiamento do ensino.",
+    link:"https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" },
+  { area:"educacional", modulo:"1.1 Módulos Constitucionais e Gerais de Educação",
+    titulo:"Lei Federal nº 9.394/1996 (LDB)",
+    descricao:"Diretrizes e Bases da Educação Nacional, com atualizações sobre inclusão, educação digital e carga horária.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l9394.htm" },
+  { area:"educacional", modulo:"1.1 Módulos Constitucionais e Gerais de Educação",
+    titulo:"Lei Federal nº 13.005/2014 (PNE)",
+    descricao:"Aprova o Plano Nacional de Educação e define as 20 metas estratégicas para a década.",
+    link:"https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l13005.htm" },
+  { area:"educacional", modulo:"1.1 Módulos Constitucionais e Gerais de Educação",
+    titulo:"Constituição do Estado de São Paulo de 1989 — Arts. 237 a 258",
+    descricao:"Normas específicas do sistema estadual paulista de educação.",
+    link:"https://www.al.sp.gov.br/norma/138136" },
 
+  { area:"educacional", modulo:"1.2 Estatuto do Servidor, Carreira do Magistério e Avaliação",
+    titulo:"Lei Estadual nº 10.261/1968",
+    descricao:"Estatuto dos Funcionários Públicos Civis do Estado de São Paulo — deveres, proibições, regime disciplinar e licenças.",
+    link:"https://www.al.sp.gov.br/legislacao/lei-10261" },
+  { area:"educacional", modulo:"1.2 Estatuto do Servidor, Carreira do Magistério e Avaliação",
+    titulo:"Lei Complementar Estadual nº 444/1985",
+    descricao:"Estatuto do Magistério Paulista — princípios gerais da carreira docente e especialista em educação.",
+    link:"https://www.al.sp.gov.br/legislacao/lc-444" },
+  { area:"educacional", modulo:"1.2 Estatuto do Servidor, Carreira do Magistério e Avaliação",
+    titulo:"Lei Complementar Estadual nº 1.374/2022",
+    descricao:"Novo Plano de Carreira e Remuneração dos Docentes da Rede Estadual — normas de avaliação e subsídio.",
+    link:"https://www.al.sp.gov.br/legislacao/lc-1374" },
+  { area:"educacional", modulo:"1.2 Estatuto do Servidor, Carreira do Magistério e Avaliação",
+    titulo:"LC Estadual nº 836/1997 e LC nº 1.143/2011",
+    descricao:"Regulamentam a evolução funcional por via acadêmica e não acadêmica (cursos EFAPE e títulos).",
+    link:"https://www.al.sp.gov.br/legislacao/lc-836" },
+  { area:"educacional", modulo:"1.2 Estatuto do Servidor, Carreira do Magistério e Avaliação",
+    titulo:"Resolução SEDUC nº 16/2026",
+    descricao:"Procedimentos e critérios da Avaliação de Desempenho Funcional vinculados à LC 1.374/2022.",
+    link:"" },
+
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"Decreto Estadual nº 66.800/2022",
+    descricao:"Reorganiza a SEDUC-SP e estabelece as atribuições das UREs e Diretorias de Ensino.",
+    link:"https://www.al.sp.gov.br/legislacao/decreto-66800" },
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"Resolução SEDUC nº 15/2026",
+    descricao:"Atuação do Supervisor de Ensino/Educacional nas UREs e acompanhamento pedagógico das unidades escolares.",
+    link:"" },
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"Lei Federal nº 11.738/2008",
+    descricao:"Piso Salarial Profissional Nacional do magistério e composição de jornada (1/3 hora-atividade).",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l11738.htm" },
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"EC Estadual nº 49/2020 e LC Estadual nº 1.354/2020 (SPPREV)",
+    descricao:"Reforma da Previdência dos servidores públicos estaduais de SP e regras de aposentadoria do magistério.",
+    link:"https://www.spprev.sp.gov.br" },
+
+  { area:"educacional", modulo:"1.4 Educação Inclusiva, Saúde Ocupacional e Direitos Sindicais",
+    titulo:"Lei Federal nº 13.146/2015 (LBI)",
+    descricao:"Estatuto da Pessoa com Deficiência — direito à educação inclusiva em todos os níveis.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l13146.htm" },
+  { area:"educacional", modulo:"1.4 Educação Inclusiva, Saúde Ocupacional e Direitos Sindicais",
+    titulo:"Decreto Federal nº 7.611/2011 e Resolução CNE/CEB nº 4/2009",
+    descricao:"Normatizam o Atendimento Educacional Especializado (AEE) na Educação Básica.",
+    link:"https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/decreto/d7611.htm" },
+  { area:"educacional", modulo:"1.4 Educação Inclusiva, Saúde Ocupacional e Direitos Sindicais",
+    titulo:"Saúde do Servidor — DPME e NR-5/CIPA",
+    descricao:"Regras do Departamento de Perícias Médicas do Estado para licenças de saúde e previdência ocupacional.",
+    link:"https://www.dpme.sp.gov.br" },
+  { area:"educacional", modulo:"1.4 Educação Inclusiva, Saúde Ocupacional e Direitos Sindicais",
+    titulo:"Direito de Greve no Serviço Público",
+    descricao:"CF art. 37, VII; Lei nº 7.783/1989; MI 670, 708 e 712 do STF — Tema 545 da Repercussão Geral (desconto de dias parados).",
+    link:"https://jurisprudencia.stf.jus.br" },
+
+  // ---------- RFB (CONCURSO AUDITOR-FISCAL) ----------
+  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+    titulo:"Constituição Federal — Arts. 37 a 41, 145 a 162, 163 a 169",
+    descricao:"Administração Pública, Sistema Tributário Nacional e Finanças Públicas.",
+    link:"https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" },
+  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+    titulo:"Lei Federal nº 8.112/1990",
+    descricao:"Estatuto dos Servidores Públicos Civis da União — provimento, vacância, direitos, deveres e PAD.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm" },
+  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+    titulo:"Lei Federal nº 14.133/2021",
+    descricao:"Nova Lei de Licitações e Contratos — regime unificado de licitações públicas e modalidades licitatórias.",
+    link:"https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm" },
+  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+    titulo:"Lei Federal nº 9.784/1999",
+    descricao:"Regula o Processo Administrativo no âmbito da Administração Pública Federal.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l9784.htm" },
+  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+    titulo:"Lei Federal nº 8.429/1992 (alterada pela Lei nº 14.230/2021)",
+    descricao:"Lei de Improbidade Administrativa e saneamento da gestão pública.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l8429.htm" },
+  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+    titulo:"Lei Federal nº 12.527/2011 (LAI) e Lei nº 13.709/2018 (LGPD)",
+    descricao:"Transparência pública, acesso à informação e proteção de dados pessoais.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l12527.htm" },
+
+  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
+    titulo:"Código Tributário Nacional — CTN (Lei nº 5.172/1966)",
+    descricao:"Normas gerais de direito tributário: obrigação, crédito, lançamento, imunidades e vigência.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l5172compilado.htm" },
+  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
+    titulo:"Emenda Constitucional nº 132/2023 (Reforma Tributária)",
+    descricao:"Altera o Sistema Tributário Nacional, criando o IBS, CBS e Imposto Seletivo. Prioridade máxima para o concurso.",
+    link:"https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm" },
+  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
+    titulo:"Decreto nº 70.235/1972",
+    descricao:"Regulamenta o Processo Administrativo Fiscal (PAF) e o contencioso administrativo de créditos tributários federais.",
+    link:"https://www.planalto.gov.br/ccivil_03/decreto/d70235cons.htm" },
+  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
+    titulo:"Decreto nº 6.759/2009 (Regulamento Aduaneiro)",
+    descricao:"Administração das atividades aduaneiras, fiscalização, controle e tributação do comércio exterior.",
+    link:"https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/decreto/d6759.htm" },
+  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
+    titulo:"Lei nº 8.137/1990",
+    descricao:"Define os crimes contra a ordem tributária, econômica e contra as relações de consumo.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l8137.htm" },
+  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
+    titulo:"Decreto-Lei nº 1.455/1976",
+    descricao:"Dispõe sobre bagagem, apreensão e pena de perdimento de mercadorias no comércio exterior.",
+    link:"https://www.planalto.gov.br/ccivil_03/decreto-lei/del1455.htm" },
+
+  { area:"rfb", modulo:"2.3 Direito Financeiro, Previdenciário e Responsabilidade Fiscal",
+    titulo:"Lei Complementar nº 101/2000 (LRF)",
+    descricao:"Lei de Responsabilidade Fiscal — normas de finanças públicas voltadas à responsabilidade na gestão fiscal.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm" },
+  { area:"rfb", modulo:"2.3 Direito Financeiro, Previdenciário e Responsabilidade Fiscal",
+    titulo:"Lei Federal nº 4.320/1964",
+    descricao:"Normas gerais de Direito Financeiro para elaboração e controle dos orçamentos e balanços públicos.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l4320.htm" },
+  { area:"rfb", modulo:"2.3 Direito Financeiro, Previdenciário e Responsabilidade Fiscal",
+    titulo:"Lei Federal nº 8.212/1991 (Custeio) e Lei nº 8.213/1991 (Benefícios)",
+    descricao:"Organização da Seguridade Social, plano de custeio, contribuições sociais e benefícios do RGPS.",
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm" },
+];
+
+const legState = { area:"todos", busca:"" };
+
+function legNormaliza(str){
+  return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+}
+
+function legFiltrar(){
+  const termo = legNormaliza(legState.busca);
+  return LEGISLACAO_DATA.filter(item=>{
+    const areaOk = legState.area === "todos" || item.area === legState.area;
+    if(!areaOk) return false;
+    if(!termo) return true;
+    const alvo = legNormaliza(item.titulo + " " + item.descricao + " " + item.modulo);
+    return alvo.includes(termo);
+  });
+}
+
+function legAgrupar(lista){
+  const grupos = {};
+  lista.forEach(item=>{
+    const chave = item.area + "::" + item.modulo;
+    if(!grupos[chave]) grupos[chave] = { area:item.area, modulo:item.modulo, itens:[] };
+    grupos[chave].itens.push(item);
+  });
+  return Object.values(grupos).sort((a,b)=> a.modulo.localeCompare(b.modulo));
+}
+
+function renderLegislacao(){
+  const lista = legFiltrar();
+  const container = document.getElementById("leg-lista");
+  const contador = document.getElementById("leg-contador");
+  if(!container) return;
+  contador.textContent = `${lista.length} item(ns) encontrado(s)`;
+
+  if(lista.length === 0){
+    container.innerHTML = `<div class="leg-empty">Nenhum item encontrado para os filtros atuais.</div>`;
+    return;
+  }
+
+  const grupos = legAgrupar(lista);
+  container.innerHTML = grupos.map(grupo => `
+    <div class="leg-grupo">
+      <div class="leg-grupo-titulo">${grupo.modulo}</div>
+      ${grupo.itens.map(item => `
+        <div class="leg-item">
+          <div class="leg-item-head">
+            <span class="leg-item-titulo">${item.titulo}</span>
+            <span class="leg-badge ${item.area}">${item.area === 'educacional' ? 'URE' : 'RFB'}</span>
+          </div>
+          <div class="leg-item-desc">${item.descricao}</div>
+          <div class="leg-item-footer">
+            <span class="leg-item-modulo"></span>
+            ${item.link ? `<a class="leg-item-link" href="${item.link}" target="_blank" rel="noopener">Link oficial ↗</a>` : `<span class="leg-item-modulo">Fonte: Diário Oficial / SEDUC-SP</span>`}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `).join("");
+}
+
+document.getElementById("leg-busca").addEventListener("input", e=>{
+  legState.busca = e.target.value;
+  renderLegislacao();
+});
+
+document.getElementById("leg-filtros").addEventListener("click", e=>{
+  const btn = e.target.closest(".leg-filtro-btn");
+  if(!btn) return;
+  legState.area = btn.dataset.area;
+  document.querySelectorAll(".leg-filtro-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderLegislacao();
+});
+
+renderLegislacao();
+</script>
 </body>
 </html>
