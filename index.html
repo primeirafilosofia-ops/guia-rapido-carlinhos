@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -258,6 +259,62 @@ text-decoration:none;
 .leg-item-link:hover{ text-decoration:underline; }
 .leg-empty{
 text-align:center;
+padding:30px;
+color:#9aa0a8;
+font-size:13px;
+}
+
+/* ===== MÓDULO FREQUÊNCIA (reaproveita .leg-search / .leg-filtros / .leg-item shell) ===== */
+.freq-item-top{
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:flex-start;
+flex-wrap:wrap;
+}
+.freq-tags{ display:flex; gap:6px; flex-wrap:wrap; }
+.freq-badge{
+font-size:10px;
+padding:3px 9px;
+border-radius:20px;
+font-weight:700;
+text-transform:uppercase;
+white-space:nowrap;
+}
+.freq-badge.sigla{ background:rgba(15,76,129,.12); color:var(--azul); }
+.freq-badge.bfe{ background:#EEF1F4; color:var(--cinza); font-family:monospace; text-transform:none; }
+.freq-badge.extinta{ background:#F1F1F1; color:#9aa0a8; }
+.freq-badge.vigente{ background:rgba(46,125,50,.12); color:#2e7d32; }
+.freq-vinculos{
+margin-top:12px;
+border-top:1px solid #EEF1F4;
+}
+.freq-vinculo-row{
+display:grid;
+grid-template-columns:110px 1fr;
+gap:4px 14px;
+padding:10px 0;
+border-bottom:1px solid #EEF1F4;
+font-size:12.5px;
+}
+.freq-vinculo-nome{
+font-weight:700;
+color:var(--azul-escuro);
+font-size:11.5px;
+text-transform:uppercase;
+letter-spacing:.03em;
+}
+.freq-vinculo-campo{ color:var(--texto); }
+.freq-vinculo-campo b{ color:var(--cinza); font-weight:600; }
+.freq-doc{
+font-size:12.5px;
+color:var(--cinza);
+line-height:1.5;
+margin:10px 0 0;
+padding-top:10px;
+border-top:1px solid #EEF1F4;
+}
+.freq-doc b{ color:var(--texto); }
 color:var(--cinza);
 padding:30px 0;
 font-size:14px;
@@ -354,18 +411,19 @@ margin-bottom:10px;
 }
 .proc-row{
 display:flex;
-align-items:center;
-gap:10px;
-padding:9px 0;
+align-items:flex-start;
+gap:12px;
+padding:10px 0;
 border-top:1px solid #EEF1F4;
 flex-wrap:wrap;
 }
 .proc-row:first-of-type{ border-top:none; }
 .proc-row-nome{
-flex:1 1 220px;
+flex:1 1 180px;
 font-size:13.5px;
 font-weight:600;
 color:var(--texto);
+padding-top:9px;
 }
 .proc-row-nome .proc-tag-opcional{
 font-weight:400;
@@ -374,14 +432,33 @@ color:#9aa0a8;
 margin-left:6px;
 }
 .proc-sei-input{
-flex:1 1 200px;
+flex:0 0 auto;
+width:17ch;
 padding:8px 10px;
 border:1px solid #D6DEE6;
 border-radius:8px;
-font-size:13px;
+font-size:12.5px;
 font-family:inherit;
+font-variant-numeric:tabular-nums;
+white-space:nowrap;
+}
+.proc-row-baselegal{
+flex:2 1 240px;
+font-size:12px;
+color:var(--cinza);
+line-height:1.5;
+padding-top:2px;
+}
+.proc-row-baselegal ul{
+margin:0;
+padding-left:16px;
+}
+.proc-row-baselegal li{
+margin-bottom:2px;
 }
 .proc-badge{
+flex:0 0 auto;
+margin-top:8px;
 font-size:10.5px;
 padding:3px 10px;
 border-radius:20px;
@@ -439,6 +516,24 @@ text-decoration:none;
 font-size:11px;
 color:#9aa0a8;
 }
+.proc-legislacao-vazio-inline{
+color:#9aa0a8;
+font-style:italic;
+}
+font-size:11.5px;
+text-transform:uppercase;
+letter-spacing:.04em;
+color:var(--azul-escuro);
+font-weight:700;
+margin:18px 0 8px;
+}
+.proc-legislacao-tema:first-of-type{ margin-top:0; }
+.proc-legislacao-vazio{
+font-size:12.5px;
+color:#9aa0a8;
+font-style:italic;
+padding:2px 0 10px;
+}
 
 @media(max-width:900px){
 .sidebar{
@@ -465,6 +560,7 @@ margin-left:0;
 <a href="#legislacao">⚖️ Legislação</a>
 <a href="#escolas">🏫 Escolas</a>
 <a href="#processos">📋 Processos Estratégicos</a>
+<a href="#frequencia">🗓️ Registro de Frequência</a>
 <a href="#setores">🏢 Setores</a>
 <a href="#links">🔗 Links Úteis</a>
 <a href="#documentos">📁 Documentos</a>
@@ -551,8 +647,35 @@ Espaço pessoal destinado à organização de informações, documentos, referê
 
   <!-- MÓDULO 2: Unidade Escolar -->
   <div class="proc-view" id="proc-view-escolas">
-    <div id="proc-escolas-lista"></div>
+    <div class="proc-subtabs" id="proc-subtabs-escolas">
+      <button class="proc-subtab-btn active" data-proc-subtab-esc="processos-escolas">Processos</button>
+      <button class="proc-subtab-btn" data-proc-subtab-esc="legislacao-escolas">Legislação</button>
+    </div>
+    <div class="proc-subview active" id="proc-sub-processos-escolas">
+      <div id="proc-escolas-lista"></div>
+    </div>
+    <div class="proc-subview" id="proc-sub-legislacao-escolas"></div>
   </div>
+</section>
+
+<!-- ===================== NOVA SEÇÃO: REGISTRO DE FREQUÊNCIA ===================== -->
+<section id="frequencia">
+  <h2 class="section-title">🗓️ Registro de Frequência — Quadro Normativo</h2>
+  <p style="color:var(--cinza); font-size:13.5px; max-width:700px; margin-bottom:10px;">
+    Consulta rápida de ocorrências de frequência (QM/ADM): limite, fundamento legal, documentação exigida, desconto e efeito na frequência, por vínculo (Efetivo / Categoria "F" / Categoria "O"). Fonte: Quadro Normativo QM/ADM.
+  </p>
+
+  <div class="leg-controls">
+    <input type="text" class="leg-search" id="freq-busca" placeholder="Buscar por ocorrência, sigla, código BFE ou norma...">
+    <div class="leg-filtros" id="freq-filtros">
+      <button class="leg-filtro-btn active" data-status="todos">Todas</button>
+      <button class="leg-filtro-btn" data-status="vigente">Vigentes</button>
+      <button class="leg-filtro-btn" data-status="extinta">Extintas</button>
+    </div>
+  </div>
+
+  <p class="leg-contador" id="freq-contador"></p>
+  <div id="freq-lista"></div>
 </section>
 
 <h2 class="section-title" id="links">Links Mais Utilizados</h2>
@@ -857,14 +980,315 @@ document.getElementById("leg-filtros").addEventListener("click", e=>{
   const btn = e.target.closest(".leg-filtro-btn");
   if(!btn) return;
   legState.area = btn.dataset.area;
-  document.querySelectorAll(".leg-filtro-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll("#leg-filtros .leg-filtro-btn").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
   renderLegislacao();
 });
 
 renderLegislacao();
 
+/* ===================== MÓDULO: REGISTRO DE FREQUÊNCIA ===================== */
+/*
+FREQUENCIA_OCORRENCIAS: transcrito do Quadro Normativo QM/ADM v3
+(Desenvolvido por Wilmar G. Oliveira Junior, 04/08/2023).
+Cada ocorrência tem variações por vínculo (Efetivo / Categoria "F" /
+Categoria "O") — nem toda ocorrência se aplica aos 3 vínculos; onde a
+fonte diz "NÃO PREVÊ" ou "NÃO SE APLICA", o vínculo foi mantido e
+marcado como tal no próprio campo, para transparência.
+*/
+const FREQUENCIA_OCORRENCIAS = [
+  {
+    id:"abonada", nome:"Abonada", sigla:"A", fichaCem:"A", bfe:["043","286"], extinta:true,
+    observacaoExtincao:"EXTINTA — Lei Complementar nº 1.361, de 21/10/2021 — vigência: 01/11/2021.",
+    variacoes:[], documentacao:"", desconto:"", frequencia:""
+  },
+  {
+    id:"justificada", nome:"Justificada", sigla:"J", fichaCem:"J", bfe:["215","287","390"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"24 por ano (2 por mês)", fundamento:"§1º do Artigo 67 da LC 1374/2022 (QM)" },
+      { vinculo:"Categoria F", limite:"03 por ano (01 ao mês)", fundamento:"LC 1.093/2009 e Art. 18, §3º do Decreto 54.682/2009, alt. Decreto nº 62.031/16" },
+      { vinculo:"Categoria O", limite:"03 por ano (01 ao mês)", fundamento:"LC 1.093/2009 e Art. 18, §3º do Decreto 54.682/2009, alt. Decreto nº 62.031/16" }
+    ],
+    documentacao:"Requerimento de Faltas (dia subsequente à falta).",
+    desconto:"Vencimento do salário.",
+    frequencia:"Falta para todos os efeitos legais. Dias intercalados sem expediente são considerados apenas para efeito de desconto."
+  },
+  {
+    id:"injustificada", nome:"Injustificada", sigla:"I", fichaCem:"I", bfe:["288","375","391"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"15 consecutivas / 20 interpoladas (01/01 a 31/12)", fundamento:"Alínea J, inciso I, Artigo 24 da LC 1361/2021" },
+      { vinculo:"Categoria F", limite:"15 consecutivas / 20 interpoladas (01/01 a 31/12)", fundamento:"Alínea J, inciso I, Artigo 24 da LC 1361/2021" },
+      { vinculo:"Categoria O", limite:"01 no período contratual", fundamento:"LC 1.093/2009 e Art. 19 do Decreto 54.682/2009" }
+    ],
+    documentacao:"Falta de assinatura na folha de ponto em dia letivo, ou faltas às aulas que gerem falta-dia, sem requerimento de caracterização de faltas.",
+    desconto:"Vencimento do salário.",
+    frequencia:"Faltas para todos os efeitos legais, inclusive para processo de Abandono de Cargo/Função ou por Frequência Irregular ou extinção contratual."
+  },
+  {
+    id:"medica", nome:"Médica", sigla:"FM", fichaCem:"FM", bfe:["356","357","275"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"6 por ano (1 ao mês)", fundamento:"L.C. 1.041/08 c/c LC 1374/22" },
+      { vinculo:"Categoria F", limite:"6 por ano (1 ao mês)", fundamento:"L.C. 1.041/08, Art. 16-X-L 500/74, Art. 3º da L.C. 318/83 c/c LC 1374/22" },
+      { vinculo:"Categoria O", limite:"6 por ano (1 ao mês)", fundamento:"L.C. 1.041/08, Art. 22 do Decreto 54.682/2009 c/c LC 1374/22" }
+    ],
+    documentacao:"Comunicação prévia (quando possível); requerimento no dia subsequente; anexar atestado médico.",
+    desconto:"Nenhum.",
+    frequencia:"Efetivo exercício para fins de aposentadoria e disponibilidade. Não desconta para aposentadoria, mas desconta para fins de Licença-Prêmio."
+  },
+  {
+    id:"medica-parcial", nome:"Médica Parcial", sigla:"C", fichaCem:"C", bfe:["278"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"QAE/QSE — até 3 horas, sem limite", fundamento:"Alínea D, inciso V, Artigo 80 da LC 1374/2022" },
+      { vinculo:"Categoria F", limite:"QM — até 2 horas", fundamento:"§1º do Artigo 70 da LC 1374/2022" },
+      { vinculo:"Categoria O", limite:"1 vez ao mês e até 3 vezes ao ano", fundamento:"§1º do Artigo 70 da LC 1374/2022" }
+    ],
+    documentacao:"Comprovante de comparecimento. Faz jus o docente com CH completa (32 aulas/40 horas). Obs.: não soma as aulas em caso de acúmulo.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"doacao-sangue", nome:"Doação de Sangue", sigla:"DS", fichaCem:"DS", bfe:["324","325"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"Homem: 4x/ano (intervalo 60 dias); Mulher: 3x/ano (intervalo 90 dias)", fundamento:"Arts. 122 e 324 da Lei 10.261/68; Art. 286 §2º da R.G.S." },
+      { vinculo:"Categoria F", limite:"Homem: 4x/ano (intervalo 60 dias); Mulher: 3x/ano (intervalo 90 dias)", fundamento:"Art. 16, inciso XII da Lei 500/74; Art. 286 §2º da R.G.S." },
+      { vinculo:"Categoria O", limite:"—", fundamento:"Art. 286 §2º da R.G.S." }
+    ],
+    documentacao:"Atestado fornecido por órgão oficial ou conveniado.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"gala", nome:"Gala (Casamento)", sigla:"G", fichaCem:"G", bfe:["037","284"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"8 dias a partir do casamento civil", fundamento:"Art. 78 da Lei 10.261/68" },
+      { vinculo:"Categoria F", limite:"8 dias a partir do casamento civil", fundamento:"Arts. 15 e 16 da Lei 500/74" },
+      { vinculo:"Categoria O", limite:"2 dias a partir do casamento civil", fundamento:"Art. 13, I da LC 1.093/09" }
+    ],
+    documentacao:"Certidão de casamento.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"servico-obrigatorio", nome:"Serviço Obrigatório por Lei", sigla:"SO", fichaCem:"SO", bfe:["039"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"Não tem limite", fundamento:"Art. 78-V da Lei 10.261/68" },
+      { vinculo:"Categoria F", limite:"Não tem limite", fundamento:"Art. 16-V da Lei 500/74" },
+      { vinculo:"Categoria O", limite:"Não tem limite", fundamento:"Art. 13, III da LC 1.093/09" }
+    ],
+    documentacao:"Declaração de: a) órgãos da Secretaria (UP); b) Tribunal do Júri; c) Tribunal Eleitoral; d) audiência no Fórum; e) autoridades estaduais, federais e municipais quando de interesse coletivo.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"licenca-paternidade", nome:"Licença Paternidade", sigla:"SPA", fichaCem:"SPA", bfe:["059"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"5 dias", fundamento:"C.F./88 - Art. 7º, XIX e 39, §3º" },
+      { vinculo:"Categoria F", limite:"5 dias", fundamento:"C.E./89 - Art. 124, §3º" },
+      { vinculo:"Categoria O", limite:"5 dias", fundamento:"L.C. 1.054/08 e Comunicado CRHE 2/89" }
+    ],
+    documentacao:"Certidão de nascimento.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"nojo-primeiro-grau", nome:"Nojo (cônjuge, filhos, pais, irmãos e companheiro)", sigla:"N", fichaCem:"N", bfe:["038","285"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"8 dias a partir da data de óbito", fundamento:"Art. 78-III e IV da Lei 10.261/68" },
+      { vinculo:"Categoria F", limite:"8 dias a partir da data de óbito", fundamento:"Art. 16-III e IV da Lei 500/74, DNG de 4, DOE 05/07/83 e LC 318/83, art. 1º, II" },
+      { vinculo:"Categoria O", limite:"02 dias a partir da data de óbito", fundamento:"Art. 13, II da LC 1.093/09" }
+    ],
+    documentacao:"Atestado de óbito.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"nojo-segundo-grau", nome:"Nojo (avós, netos, sogros, padrasto e madrasta)", sigla:"N", fichaCem:"N", bfe:["149","225"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"2 dias a partir da data do óbito", fundamento:"Art. 78-III e IV da Lei 10.261/68" },
+      { vinculo:"Categoria F", limite:"2 dias a partir da data do óbito", fundamento:"Art. 16-III e IV da Lei 500/74, DNG de 4, DOE 05/07/83 e LC 318/83, art. 1º, II" },
+      { vinculo:"Categoria O", limite:"Não prevê", fundamento:"—" }
+    ],
+    documentacao:"Atestado de óbito.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"gestante-maternidade", nome:"Gestante / Maternidade", sigla:"LG", fichaCem:"LG", bfe:["137","138","139","140","279","296","311","353","402","482"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"180 dias", fundamento:"Art. 7º da CF/88; L. 10.261/68 - Art. 198, I (red. LC 1054/08) e art. 324; L. 500/74 - Art. 25" },
+      { vinculo:"Categoria F", limite:"180 dias", fundamento:"L. 10.261/68 - Art. 198, II (red. LC 1054/08); L. 500/74 - Art. 26" },
+      { vinculo:"Categoria O", limite:"180 dias*", fundamento:"L. 10.261/68 - Art. 198, § único (red. LC 1054/08); L. 500/74 - Art. 26; Com. Conjunto UCRH/CAF nº 3/15; §2º art. 181 L. 10.261/68 (red. LC 1123/10) e Parecer PA nº 64/15. *Despacho Normativo do Governador, 9/3/2023, vigência 10/03/2023" }
+    ],
+    documentacao:"Efetivo, Cat. P e F: certidão de nascimento (podendo retroagir ao 8º mês). Cat. O: certidão de nascimento.",
+    desconto:"Nenhum.",
+    frequencia:"Frequente."
+  },
+  {
+    id:"licenca-adocao-guarda", nome:"Licença Adoção / Guarda", sigla:"LA", fichaCem:"LA", bfe:["138","139","140","297","298","299"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"180 ou 05 dias para criança de até 7 anos (homem e mulher)", fundamento:"LC 367/84 e LC 1.054/08" },
+      { vinculo:"Categoria F", limite:"180 ou 05 dias para criança de até 7 anos (homem e mulher)", fundamento:"LC 367/84 e LC 1.054/08" },
+      { vinculo:"Categoria O", limite:"120 dias para criança de até 7 anos (mulher)", fundamento:"LC 367/84 e LC 1.054/08" }
+    ],
+    documentacao:"Termo de Guarda ou Adoção definitiva, requerido no prazo de 15 dias contados do termo.",
+    desconto:"Nenhum.",
+    frequencia:"Não especificado com clareza na fonte — confirmar antes de publicar."
+  },
+  {
+    id:"licenca-saude", nome:"Licença Saúde / Auxílio Doença", sigla:"LS", fichaCem:"LS", bfe:["001","257","350","344","361","380","485"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"A partir de 02 dias", fundamento:"Art. 181-I e 191 a 193 da L. 10.261/68; Art. 81 (red. LC 318/83)" },
+      { vinculo:"Categoria F", limite:"A partir de 02 dias", fundamento:"Art. 25-II da Lei 500/74" },
+      { vinculo:"Categoria O", limite:"Até 15 dias com o mesmo CID concedido pelo Estado", fundamento:"L-Art. 476 CLT, Arts. 59 a 63 da Lei 8.213/91 (red. Lei 9.528/97 e Dec. 3.048/99)" }
+    ],
+    documentacao:"Servidor deve registrar no app SOU.SP.GOV.BR os dados da Licença Saúde (agendar 1 dia caso já tenha apresentado atestado). Categoria O: após o 16º dia pelo mesmo CID (menor que 2 meses), pela Previdência Social, desde que não receba benefício e/ou tenha contribuído por 12 meses.",
+    desconto:"Nenhum.",
+    frequencia:"Efetivo/Cat. F: conta para fins de aposentadoria. Categoria O: verificar na Previdência Social após o 16º dia."
+  },
+  {
+    id:"licenca-saude-familia", nome:"Licença Saúde Pessoa da Família", sigla:'LF / LF-1 (desc. 1/3) / LF-2 (desc. 2/3) / LF-4 (sem remuneração)', fichaCem:"LF", bfe:["002","347","348","349"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"A partir de 02 dias", fundamento:"Art. 199 da Lei 10.261/68" },
+      { vinculo:"Categoria F", limite:"A partir de 02 dias", fundamento:"Arts. 191/193-I da Lei 10.261/68 c/c 25-III/25 da Lei 500/74" },
+      { vinculo:"Categoria O", limite:"Não prevê", fundamento:"—" }
+    ],
+    documentacao:"A partir de 02 dias, entregar cópia do atestado médico até 48h após a emissão. Familiar deve passar por perícia médica.",
+    desconto:"Até 30 dias sem desconto; de 1/3 de 1 a 3 meses; de 2/3 de 3 a 6 meses; sem vencimentos do 7º ao 20º mês.",
+    frequencia:"Desconta para aposentadoria especial. Após 23/09/2003, conta para aposentadoria normal."
+  },
+  {
+    id:"licenca-acidente-trabalho", nome:"Licença Acidente de Trabalho / Auxílio Acidente de Trabalho", sigla:"LAT", fichaCem:"LAT", bfe:["007","103","362"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"Até 4 anos", fundamento:"Art. 78-VI c/c art. 181-II, 194 a 197 e 324 da Lei 10.261/68" },
+      { vinculo:"Categoria F", limite:"Até 4 anos", fundamento:"Art. 16-VI e 25-I da Lei 500/74" },
+      { vinculo:"Categoria O", limite:"Sem carência", fundamento:"Legislação Federal Arts. 19 a 22 da Lei 8.213/91 (red. Lei 9.528/97 e Dec. 3.048/99, Arts. 72 a 75)" }
+    ],
+    documentacao:"Efetivo/Cat. F: registrar no app SOU.SP.GOV.BR os dados da Licença Saúde. Categoria O: protocolar em até 7 dias do ocorrido no protocolo da D.E., em 2 vias, junto à Previdência Social.",
+    desconto:"Nenhum.",
+    frequencia:"Todos os fins."
+  },
+  {
+    id:"licenca-premio", nome:"Licença Prêmio", sigla:"LP", fichaCem:"LP", bfe:["009","205"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"Parcelas múltiplas de 15 dias", fundamento:"Art. 78-IX c/c Arts. 181-IX, 209 a 214 e 324 da Lei 10.261/68; alt. alínea H, inciso I, art. 24 da LC 1361/2021" },
+      { vinculo:"Categoria F", limite:"Parcelas múltiplas de 15 dias", fundamento:"Art. 16-VII e 25-VI da Lei 500/74; alt. alínea H, inciso I, art. 24 da LC 1361/2021" },
+      { vinculo:"Categoria O", limite:"Não prevê", fundamento:"—" }
+    ],
+    documentacao:"A cada 5 anos de efetivo exercício, não ultrapassando 25 faltas no período. Obs.: a partir de 01/11/2021, as faltas abonadas deixam de ser computadas como ausências no cálculo do bloco de Licença-Prêmio.",
+    desconto:"Nenhum.",
+    frequencia:"Todos os fins."
+  },
+  {
+    id:"licenca-premio-pecunia", nome:"Licença Prêmio Pecúnia", sigla:"Anotar no verso", fichaCem:"—", bfe:[], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"30 dias", fundamento:"Alínea C, inciso VII, art. 24 da LC 1.361/2021" },
+      { vinculo:"Categoria F", limite:"30 dias", fundamento:"Alínea C, inciso VII, art. 24 da LC 1.361/2021" },
+      { vinculo:"Categoria O", limite:"Não prevê", fundamento:"—" }
+    ],
+    documentacao:"Apenas 1 bloco por certidão. Não pode ter sofrido falta justificada ou injustificada no ano anterior à solicitação. Requerer 4 meses antes do aniversário. Não ter usufruído a certidão no mesmo ano em que requerer a pecúnia.",
+    desconto:"Nenhum.",
+    frequencia:"Não se aplica."
+  },
+  {
+    id:"licenca-compulsoria", nome:"Licença Compulsória", sigla:"LC", fichaCem:"LC", bfe:["006"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo", limite:"Até 5 dias / acima de 5 dias (passar por perícia médica)", fundamento:"Art. 78-VIII c/c art. 181-VIII, 206 a 208 e 324 da Lei 10.261/68; Art. 517-C do Dec. 41.981/63 (CLF)" },
+      { vinculo:"Categoria F", limite:"Até 5 dias / acima de 5 dias (passar por perícia médica)", fundamento:"Art. 16-V e 25-V da Lei 500/74" },
+      { vinculo:"Categoria O", limite:"Até 5 dias / acima de 5 dias (passar por perícia médica)", fundamento:"Art. 16-V e 25-V da Lei 500/74" }
+    ],
+    documentacao:"Atestado médico com CID de suspeita de doença infectocontagiosa. Apresentar laudo em até 5 dias eliminando a suspeita.",
+    desconto:"Nenhum.",
+    frequencia:"Todos os fins."
+  },
+  {
+    id:"licenca-interesses-particulares", nome:"Licença para Tratar de Interesses Particulares", sigla:"LSV", fichaCem:"LSV", bfe:["107","237","264"], extinta:false,
+    variacoes:[
+      { vinculo:"Efetivo / Cat. P", limite:"Até 2 anos", fundamento:"Art. 202 da Lei 10.261/68" },
+      { vinculo:"Categoria F", limite:"Não prevê", fundamento:"—" },
+      { vinculo:"Categoria O", limite:"Não prevê", fundamento:"—" }
+    ],
+    documentacao:"A cada 5 anos de efetivo exercício. Pode usufruir saldo em até 3 anos a partir do início da licença.",
+    desconto:"Servidor deve recolher a taxa do IAMSPE (obrigatório). Pode contribuir para o RPPS (opcional).",
+    frequencia:"Conta para aposentadoria caso o servidor opte por recolher a contribuição previdenciária."
+  }
+];
+
+const freqState = { status:"todos", busca:"" };
+
+function freqFiltrar(){
+  const termo = legNormaliza(freqState.busca);
+  return FREQUENCIA_OCORRENCIAS.filter(item=>{
+    const statusOk = freqState.status === "todos"
+      || (freqState.status === "extinta" && item.extinta)
+      || (freqState.status === "vigente" && !item.extinta);
+    if(!statusOk) return false;
+    if(!termo) return true;
+    const alvoBase = legNormaliza([item.nome, item.sigla, item.fichaCem, item.documentacao, ...(item.bfe||[])].join(" "));
+    const alvoVinculos = legNormaliza(item.variacoes.map(v => v.fundamento + " " + v.limite).join(" "));
+    return alvoBase.includes(termo) || alvoVinculos.includes(termo);
+  });
+}
+
+function renderFrequencia(){
+  const lista = freqFiltrar();
+  const container = document.getElementById("freq-lista");
+  const contador = document.getElementById("freq-contador");
+  if(!container) return;
+  contador.textContent = `${lista.length} ocorrência(s) encontrada(s)`;
+
+  if(lista.length === 0){
+    container.innerHTML = `<div class="leg-empty">Nenhuma ocorrência encontrada para os filtros atuais.</div>`;
+    return;
+  }
+
+  container.innerHTML = lista.map(item => `
+    <div class="leg-item">
+      <div class="freq-item-top">
+        <span class="leg-item-titulo">${item.nome}</span>
+        <div class="freq-tags">
+          <span class="freq-badge sigla">Ficha 100: ${item.sigla}</span>
+          ${item.extinta ? `<span class="freq-badge extinta">Extinta</span>` : `<span class="freq-badge vigente">Vigente</span>`}
+          ${(item.bfe||[]).map(codigo => `<span class="freq-badge bfe">BFE ${codigo}</span>`).join("")}
+        </div>
+      </div>
+      ${item.extinta ? `
+        <p class="leg-item-desc">${item.observacaoExtincao}</p>
+      ` : `
+        <div class="freq-vinculos">
+          ${item.variacoes.map(v => `
+            <div class="freq-vinculo-row">
+              <div class="freq-vinculo-nome">${v.vinculo}</div>
+              <div class="freq-vinculo-campo"><b>Limite:</b> ${v.limite}</div>
+              <div></div>
+              <div class="freq-vinculo-campo"><b>Fundamento:</b> ${v.fundamento}</div>
+            </div>
+          `).join("")}
+        </div>
+        <p class="freq-doc"><b>Documentação:</b> ${item.documentacao}</p>
+        <p class="freq-doc"><b>Desconto:</b> ${item.desconto} &nbsp;|&nbsp; <b>Frequência:</b> ${item.frequencia}</p>
+      `}
+    </div>
+  `).join("");
+}
+
+document.getElementById("freq-busca").addEventListener("input", e=>{
+  freqState.busca = e.target.value;
+  renderFrequencia();
+});
+
+document.getElementById("freq-filtros").addEventListener("click", e=>{
+  const btn = e.target.closest(".leg-filtro-btn");
+  if(!btn) return;
+  freqState.status = btn.dataset.status;
+  document.querySelectorAll("#freq-filtros .leg-filtro-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderFrequencia();
+});
+
+renderFrequencia();
+
 /* ===================== PROCESSOS ESTRATÉGICOS — CONFIG + RENDER ===================== */
+
 
 /*
 PROCESSOS_SUPERVISAO: números abaixo são EXEMPLO DE FORMATO
@@ -872,22 +1296,85 @@ PROCESSOS_SUPERVISAO: números abaixo são EXEMPLO DE FORMATO
 processo assim que estiver disponível.
 */
 const PROCESSOS_SUPERVISAO = [
-  { id:"ptm", nome:"PTM - Plano de Trabalho Mensal", numeroSei:"015.12345678/26-00" },
-  { id:"termos-visita", nome:"Termos de Visita", numeroSei:"015.12345678/26-00" },
-  { id:"relatorios-supervisao", nome:"Relatórios de Supervisão", numeroSei:"015.12345678/26-00" }
+  {
+    id:"ptm",
+    nome:"PTM - Plano de Trabalho Mensal",
+    numeroSei:"015.12345678/26-00",
+    baseLegal:[
+      "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
+      "PTM – Registro e monitoramento mensal das atividades desenvolvidas"
+    ]
+  },
+  {
+    id:"termos-visita",
+    nome:"Termos de Visita",
+    numeroSei:"015.12345678/26-00",
+    baseLegal:[
+      "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
+      "Decreto 66.800/2022 – Planejamento, acompanhamento e controle das atividades funcionais"
+    ]
+  },
+  {
+    id:"relatorios-supervisao",
+    nome:"Relatórios de Supervisão",
+    numeroSei:"015.12345678/26-00",
+    baseLegal:[
+      "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
+      "Decreto 66.800/2022 – Planejamento, acompanhamento e controle das atividades funcionais"
+    ]
+  }
 ];
 
 /*
-LEGISLACAO_PROCESSOS: base normativa específica dos Processos Estratégicos
-(pode repetir itens já presentes na seção #legislacao geral — aqui é o
-contexto direto de cada processo SEI). 1 exemplo incluso; adicione outros
-no mesmo formato: { titulo, resumo, link }
+LEGISLACAO_SUPERVISAO: subsídios rápidos organizados por TEMA, cobrindo
+as normas que mais impactam a rotina da Equipe de Supervisão (além da
+base legal específica de cada processo SEI, que fica na aba Processos SEI).
+Formato: { tema, itens:[{ titulo, resumo, link }] }.
+Temas com itens:[] são placeholders — adicione as normas conforme
+identificar a necessidade (pecar pelo excesso é intencional aqui).
 */
-const LEGISLACAO_PROCESSOS = [
+const LEGISLACAO_SUPERVISAO = [
   {
-    titulo:"Lei Complementar nº 679/1992",
-    resumo:"Norma de base: institui e regulamenta o regime de trabalho, as atribuições e os critérios de avaliação de desempenho e controle das atividades dos servidores.",
-    link:""
+    tema:"Atribuições do Supervisor de Ensino",
+    itens:[
+      {
+        titulo:"Lei Complementar nº 679/1992",
+        resumo:"Norma de base: institui e regulamenta o regime de trabalho, as atribuições e os critérios de avaliação de desempenho e controle das atividades dos servidores.",
+        link:""
+      },
+      {
+        titulo:"Decreto nº 66.800/2022",
+        resumo:"Planejamento, acompanhamento e controle das atividades funcionais da Supervisão.",
+        link:""
+      }
+    ]
+  },
+  {
+    tema:"Transporte Escolar",
+    itens:[
+      {
+        titulo:"Resolução SEDUC nº 161/2025",
+        resumo:"Institui o Programa de Transporte Escolar Paulista (TESP); revoga a Resolução SE nº 27/2011 e atualiza critérios de concessão, modalidades e procedimentos.",
+        link:""
+      },
+      {
+        titulo:"Lei nº 15.692/2015",
+        resumo:"Institui o Passe Livre estudantil. Alunos beneficiários não fazem jus ao TESP (art. 8º da Res. SEDUC 161/2025).",
+        link:""
+      }
+    ]
+  },
+  {
+    tema:"Matrícula, Frequência e Calendário Escolar",
+    itens:[]
+  },
+  {
+    tema:"Educação Especial e Inclusão",
+    itens:[]
+  },
+  {
+    tema:"Merenda e Alimentação Escolar",
+    itens:[]
   }
 ];
 
@@ -919,15 +1406,55 @@ const MODELOS_FORMULARIOS = [
 ];
 
 /*
+LEGISLACAO_ESCOLAS: subsídios rápidos por TEMA para a Unidade Escolar —
+mesmo critério da Equipe de Supervisão. Temas com itens:[] são
+placeholders para você preencher conforme a demanda das escolas.
+*/
+const LEGISLACAO_ESCOLAS = [
+  {
+    tema:"Transporte Escolar",
+    itens:[
+      {
+        titulo:"Resolução SEDUC nº 161/2025",
+        resumo:"Define o papel da unidade escolar no registro, análise e verificação de benefícios do Programa de Transporte Escolar Paulista (TESP), incluindo a checagem de incompatibilidade com o Passe Livre (Lei nº 15.692/2015).",
+        link:""
+      }
+    ]
+  },
+  {
+    tema:"Matrícula e Frequência",
+    itens:[]
+  },
+  {
+    tema:"Educação Especial e Inclusão",
+    itens:[]
+  },
+  {
+    tema:"Merenda e Alimentação Escolar",
+    itens:[]
+  },
+  {
+    tema:"Uniforme e Material Escolar",
+    itens:[]
+  },
+  {
+    tema:"Segurança Escolar e Ocorrências",
+    itens:[]
+  }
+];
+/*
 TIPOS_PROCESSO_ESCOLAR: os 3 primeiros são fixos/obrigatórios para toda
 escola. Compensação e Recesso são opcionais (nem toda escola tem).
+baseLegal: breve fundamentação (uma linha) do processo. Deixado em ""
+onde não pude confirmar a norma exata via busca — preencha com a
+resolução/portaria que você usa na prática antes de publicar.
 */
 const TIPOS_PROCESSO_ESCOLAR = [
-  { id:"planoTrabalhoDiretor", nome:"Plano de Trabalho do Diretor", obrigatorio:true },
-  { id:"horarioAdministrativo", nome:"Horário Administrativo", obrigatorio:true },
-  { id:"feriasDiretor", nome:"Férias do Diretor", obrigatorio:true },
-  { id:"compensacao", nome:"Compensação", obrigatorio:false },
-  { id:"recesso", nome:"Recesso", obrigatorio:false }
+  { id:"planoTrabalhoDiretor", nome:"Plano de Trabalho do Diretor", obrigatorio:true, baseLegal:"" },
+  { id:"horarioAdministrativo", nome:"Horário Administrativo", obrigatorio:true, baseLegal:"" },
+  { id:"feriasDiretor", nome:"Férias do Diretor", obrigatorio:true, baseLegal:"" },
+  { id:"compensacao", nome:"Compensação", obrigatorio:false, baseLegal:"" },
+  { id:"recesso", nome:"Recesso", obrigatorio:false, baseLegal:"" }
 ];
 
 /*
@@ -1026,8 +1553,11 @@ function renderProcessosSei(){
         const valor = procGetSupervisaoValor(p.id);
         return `
         <div class="proc-row">
-          <div class="proc-row-nome">${p.nome}</div>
           <input class="proc-sei-input" type="text" placeholder="Nº do processo SEI" value="${valor}" data-proc-action="update-supervisao" data-id="${p.id}">
+          <div class="proc-row-nome">${p.nome}</div>
+          <div class="proc-row-baselegal">
+            <ul>${(p.baseLegal || []).map(item => `<li>${item}</li>`).join("")}</ul>
+          </div>
           <span class="proc-badge ${valor ? 'preenchido' : 'pendente'}">${valor ? 'Preenchido' : 'Pendente'}</span>
         </div>`;
       }).join("")}
@@ -1040,13 +1570,36 @@ function renderLegislacaoProcessos(){
   if(!el) return;
   el.innerHTML = `
     <div class="proc-card">
-      <h3>Legislação de Referência</h3>
-      ${LEGISLACAO_PROCESSOS.map(lei => `
-        <div class="proc-lei-item">
-          <h4>${lei.titulo}</h4>
-          <p>${lei.resumo}</p>
-          ${lei.link ? `<a href="${lei.link}" target="_blank" rel="noopener">Ver norma completa ↗</a>` : ""}
-        </div>
+      <h3>Legislação — Subsídios Rápidos (Equipe de Supervisão)</h3>
+      ${LEGISLACAO_SUPERVISAO.map(grupo => `
+        <div class="proc-legislacao-tema">${grupo.tema}</div>
+        ${grupo.itens.length ? grupo.itens.map(lei => `
+          <div class="proc-lei-item">
+            <h4>${lei.titulo}</h4>
+            <p>${lei.resumo}</p>
+            ${lei.link ? `<a href="${lei.link}" target="_blank" rel="noopener">Ver norma completa ↗</a>` : ""}
+          </div>
+        `).join("") : `<div class="proc-legislacao-vazio">Nenhuma norma cadastrada ainda para este tema.</div>`}
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderLegislacaoEscolas(){
+  const el = document.getElementById("proc-sub-legislacao-escolas");
+  if(!el) return;
+  el.innerHTML = `
+    <div class="proc-card">
+      <h3>Legislação — Subsídios Rápidos (Unidade Escolar)</h3>
+      ${LEGISLACAO_ESCOLAS.map(grupo => `
+        <div class="proc-legislacao-tema">${grupo.tema}</div>
+        ${grupo.itens.length ? grupo.itens.map(lei => `
+          <div class="proc-lei-item">
+            <h4>${lei.titulo}</h4>
+            <p>${lei.resumo}</p>
+            ${lei.link ? `<a href="${lei.link}" target="_blank" rel="noopener">Ver norma completa ↗</a>` : ""}
+          </div>
+        `).join("") : `<div class="proc-legislacao-vazio">Nenhuma norma cadastrada ainda para este tema.</div>`}
       `).join("")}
     </div>
   `;
@@ -1088,8 +1641,9 @@ function renderEscolasProcessos(){
         const valor = procGetEscolaValor(escola.id, tipo.id);
         return `
         <div class="proc-row">
-          <div class="proc-row-nome">${tipo.nome}${tipo.obrigatorio ? "" : '<span class="proc-tag-opcional">(opcional)</span>'}</div>
           <input class="proc-sei-input" type="text" placeholder="Nº do processo SEI" value="${valor}" data-proc-action="update-escola" data-escola="${escola.id}" data-tipo="${tipo.id}">
+          <div class="proc-row-nome">${tipo.nome}${tipo.obrigatorio ? "" : '<span class="proc-tag-opcional">(opcional)</span>'}</div>
+          <div class="proc-row-baselegal">${tipo.baseLegal ? tipo.baseLegal : '<span class="proc-legislacao-vazio-inline">Base legal a definir</span>'}</div>
           <span class="proc-badge ${valor ? 'preenchido' : 'pendente'}">${valor ? 'Preenchido' : 'Pendente'}</span>
         </div>`;
       }).join("")}
@@ -1103,6 +1657,7 @@ function renderProcessosEstrategicos(){
   renderLegislacaoProcessos();
   renderModelos();
   renderEscolasProcessos();
+  renderLegislacaoEscolas();
 }
 
 document.getElementById("proc-tabs").addEventListener("click", e => {
@@ -1124,6 +1679,16 @@ document.getElementById("proc-subtabs").addEventListener("click", e => {
   document.getElementById("proc-sub-processos-sei").classList.toggle("active", subtab === "processos-sei");
   document.getElementById("proc-sub-legislacao").classList.toggle("active", subtab === "legislacao-proc");
   document.getElementById("proc-sub-modelos").classList.toggle("active", subtab === "modelos");
+});
+
+document.getElementById("proc-subtabs-escolas").addEventListener("click", e => {
+  const btn = e.target.closest("[data-proc-subtab-esc]");
+  if(!btn) return;
+  const subtab = btn.dataset.procSubtabEsc;
+  document.querySelectorAll("#proc-subtabs-escolas .proc-subtab-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("proc-sub-processos-escolas").classList.toggle("active", subtab === "processos-escolas");
+  document.getElementById("proc-sub-legislacao-escolas").classList.toggle("active", subtab === "legislacao-escolas");
 });
 
 document.addEventListener("change", e => {
