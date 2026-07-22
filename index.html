@@ -31,22 +31,6 @@ font-family:'Inter',sans-serif;
 background:var(--fundo);
 color:var(--texto);
 }
-/* Banner fixo de aviso institucional */
-.aviso-fixo{
-position:sticky;
-top:0;
-z-index:1000;
-background:var(--aviso-bg);
-border-bottom:3px solid var(--aviso-borda);
-color:#4B5563;
-padding:10px 20px;
-text-align:center;
-font-size:13px;
-line-height:1.5;
-}
-.aviso-fixo strong{
-color:var(--azul-escuro);
-}
 .sidebar{
 width:270px;
 height:100vh;
@@ -279,6 +263,183 @@ padding:30px 0;
 font-size:14px;
 }
 
+/* ===================== PROCESSOS ESTRATÉGICOS - GESTÃO ADMINISTRATIVA ===================== */
+.proc-intro{
+color:var(--cinza);
+font-size:13.5px;
+max-width:700px;
+margin-bottom:16px;
+}
+.proc-dash{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+.proc-stat{
+background:white;
+border-radius:14px;
+padding:14px 20px;
+box-shadow:var(--sombra);
+text-align:center;
+flex:1 1 150px;
+}
+.proc-stat-num{
+font-size:1.7em;
+font-weight:700;
+color:var(--azul-escuro);
+}
+.proc-stat-label{
+font-size:.78em;
+color:var(--cinza);
+}
+.proc-tabs,
+.proc-subtabs{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:16px;
+}
+.proc-tab-btn{
+background:white;
+border:none;
+box-shadow:var(--sombra);
+padding:12px 18px;
+border-radius:12px;
+font-size:13px;
+font-weight:600;
+color:var(--cinza);
+cursor:pointer;
+font-family:inherit;
+}
+.proc-tab-btn.active{
+background:var(--azul-escuro);
+color:white;
+}
+.proc-subtab-btn{
+background:white;
+border:1px solid rgba(15,76,129,.18);
+padding:8px 14px;
+border-radius:20px;
+font-size:12.5px;
+font-weight:600;
+color:var(--azul);
+cursor:pointer;
+font-family:inherit;
+}
+.proc-subtab-btn.active{
+background:var(--azul);
+color:white;
+border-color:var(--azul);
+}
+.proc-view,
+.proc-subview{
+display:none;
+}
+.proc-view.active,
+.proc-subview.active{
+display:block;
+}
+.proc-card{
+background:white;
+border-radius:14px;
+padding:18px 20px;
+box-shadow:var(--sombra);
+margin-bottom:16px;
+}
+.proc-card h3{
+color:var(--azul-escuro);
+font-size:15px;
+margin-bottom:10px;
+}
+.proc-row{
+display:flex;
+align-items:center;
+gap:10px;
+padding:9px 0;
+border-top:1px solid #EEF1F4;
+flex-wrap:wrap;
+}
+.proc-row:first-of-type{ border-top:none; }
+.proc-row-nome{
+flex:1 1 220px;
+font-size:13.5px;
+font-weight:600;
+color:var(--texto);
+}
+.proc-row-nome .proc-tag-opcional{
+font-weight:400;
+font-size:11.5px;
+color:#9aa0a8;
+margin-left:6px;
+}
+.proc-sei-input{
+flex:1 1 200px;
+padding:8px 10px;
+border:1px solid #D6DEE6;
+border-radius:8px;
+font-size:13px;
+font-family:inherit;
+}
+.proc-badge{
+font-size:10.5px;
+padding:3px 10px;
+border-radius:20px;
+font-weight:700;
+text-transform:uppercase;
+white-space:nowrap;
+}
+.proc-badge.pendente{ background:#FDEAEA; color:#B3312C; }
+.proc-badge.preenchido{ background:rgba(15,76,129,.10); color:var(--azul); }
+.proc-lei-item{
+padding:10px 0;
+border-top:1px solid #EEF1F4;
+}
+.proc-lei-item:first-of-type{ border-top:none; }
+.proc-lei-item h4{
+font-size:13.5px;
+color:var(--azul-escuro);
+margin-bottom:4px;
+}
+.proc-lei-item p{
+font-size:12.5px;
+color:var(--cinza);
+line-height:1.5;
+}
+.proc-lei-item a{
+font-size:12px;
+color:var(--azul);
+font-weight:600;
+}
+.proc-modelo-cat{
+margin:14px 0 6px;
+font-size:11.5px;
+font-weight:700;
+color:var(--cinza);
+text-transform:uppercase;
+letter-spacing:.04em;
+}
+.proc-modelo-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:9px 12px;
+border-radius:8px;
+background:var(--fundo);
+margin-bottom:6px;
+}
+.proc-modelo-row a{
+color:var(--azul);
+font-weight:600;
+font-size:13px;
+text-decoration:none;
+}
+.proc-modelo-row a:hover{ text-decoration:underline; }
+.proc-modelo-fonte{
+font-size:11px;
+color:#9aa0a8;
+}
+
 @media(max-width:900px){
 .sidebar{
 position:relative;
@@ -292,11 +453,6 @@ margin-left:0;
 </style>
 </head>
 <body>
-<!-- Banner fixo: exigido para deixar clara a ausência de vínculo institucional em qualquer ponto de rolagem -->
-<div class="aviso-fixo">
-<strong>Aviso:</strong> este é um portal pessoal e independente, sem vínculo oficial com a Secretaria da Educação, a Unidade Regional de Ensino ou qualquer órgão público.
-</div>
-
 <aside class="sidebar">
 <div class="logo">
 <h1>Portal do Carlinhos</h1>
@@ -308,7 +464,7 @@ margin-left:0;
 <a href="#modelos">📄 Modelos</a>
 <a href="#legislacao">⚖️ Legislação</a>
 <a href="#escolas">🏫 Escolas</a>
-<a href="#processos">📋 Processos</a>
+<a href="#processos">📋 Processos Estratégicos</a>
 <a href="#setores">🏢 Setores</a>
 <a href="#links">🔗 Links Úteis</a>
 <a href="#documentos">📁 Documentos</a>
@@ -365,6 +521,38 @@ Espaço pessoal destinado à organização de informações, documentos, referê
 
   <p class="leg-contador" id="leg-contador"></p>
   <div id="leg-lista"></div>
+</section>
+
+<!-- ===================== NOVA SEÇÃO: PROCESSOS ESTRATÉGICOS ===================== -->
+<section id="processos">
+  <h2 class="section-title">📋 Processos Estratégicos - Gestão Administrativa</h2>
+  <p class="proc-intro">
+    Controle dos processos SEI da Equipe de Supervisão e das Unidades Escolares, legislação de referência e modelos/formulários (hospedados no OneDrive institucional).
+  </p>
+
+  <div class="proc-dash" id="proc-dashboard"></div>
+
+  <div class="proc-tabs" id="proc-tabs">
+    <button class="proc-tab-btn active" data-proc-tab="supervisao">Equipe de Supervisão</button>
+    <button class="proc-tab-btn" data-proc-tab="escolas">Unidade Escolar</button>
+  </div>
+
+  <!-- MÓDULO 1: Equipe de Supervisão -->
+  <div class="proc-view active" id="proc-view-supervisao">
+    <div class="proc-subtabs" id="proc-subtabs">
+      <button class="proc-subtab-btn active" data-proc-subtab="processos-sei">Processos SEI</button>
+      <button class="proc-subtab-btn" data-proc-subtab="legislacao-proc">Legislação</button>
+      <button class="proc-subtab-btn" data-proc-subtab="modelos">Modelos e Formulários</button>
+    </div>
+    <div class="proc-subview active" id="proc-sub-processos-sei"></div>
+    <div class="proc-subview" id="proc-sub-legislacao"></div>
+    <div class="proc-subview" id="proc-sub-modelos"></div>
+  </div>
+
+  <!-- MÓDULO 2: Unidade Escolar -->
+  <div class="proc-view" id="proc-view-escolas">
+    <div id="proc-escolas-lista"></div>
+  </div>
 </section>
 
 <h2 class="section-title" id="links">Links Mais Utilizados</h2>
@@ -675,6 +863,293 @@ document.getElementById("leg-filtros").addEventListener("click", e=>{
 });
 
 renderLegislacao();
+
+/* ===================== PROCESSOS ESTRATÉGICOS — CONFIG + RENDER ===================== */
+
+/*
+PROCESSOS_SUPERVISAO: números abaixo são EXEMPLO DE FORMATO
+(015.12345678/26-00). Substitua "numeroSei" pelo número real de cada
+processo assim que estiver disponível.
+*/
+const PROCESSOS_SUPERVISAO = [
+  { id:"ptm", nome:"PTM - Plano de Trabalho Mensal", numeroSei:"015.12345678/26-00" },
+  { id:"termos-visita", nome:"Termos de Visita", numeroSei:"015.12345678/26-00" },
+  { id:"relatorios-supervisao", nome:"Relatórios de Supervisão", numeroSei:"015.12345678/26-00" }
+];
+
+/*
+LEGISLACAO_PROCESSOS: base normativa específica dos Processos Estratégicos
+(pode repetir itens já presentes na seção #legislacao geral — aqui é o
+contexto direto de cada processo SEI). 1 exemplo incluso; adicione outros
+no mesmo formato: { titulo, resumo, link }
+*/
+const LEGISLACAO_PROCESSOS = [
+  {
+    titulo:"Lei Complementar nº 679/1992",
+    resumo:"Norma de base: institui e regulamenta o regime de trabalho, as atribuições e os critérios de avaliação de desempenho e controle das atividades dos servidores.",
+    link:""
+  }
+];
+
+/*
+MODELOS_FORMULARIOS: cada item aponta para um arquivo no ONEDRIVE
+INSTITUCIONAL (conta corporativa SEDUC-SP), não pessoal — mantendo o
+GitHub Pages "limpo", só com código.
+
+Formato esperado do link de compartilhamento do OneDrive/SharePoint
+institucional:
+https://[tenant]-my.sharepoint.com/:b:/g/personal/usuario_seduc_sp_gov_br/ID?e=xxxx
+(ou o link de biblioteca/pasta do SharePoint, se for compartilhamento em
+pasta institucional em vez de arquivo individual)
+
+Como obter: no OneDrive/SharePoint > clique direito no arquivo >
+Compartilhar > copiar link > confirme que o nível de acesso está de
+acordo com a política da SEDUC-SP (ex.: "Pessoas da organização com o
+link"). Substitua cada "COLE_AQUI_LINK_ONEDRIVE" pelo link copiado.
+*/
+const MODELOS_FORMULARIOS = [
+  { categoria:"TRE", nome:"TRE - Solicitação", url:"COLE_AQUI_LINK_ONEDRIVE" },
+  { categoria:"TRE", nome:"TRE - Despacho", url:"COLE_AQUI_LINK_ONEDRIVE" },
+  { categoria:"Termos de Visita", nome:"Sugestão de Termo de Visita", url:"COLE_AQUI_LINK_ONEDRIVE" },
+  { categoria:"Termos de Visita", nome:"Parecer", url:"COLE_AQUI_LINK_ONEDRIVE" },
+  { categoria:"Recesso e Férias", nome:"Compensação (exemplo de recesso de final de ano)", url:"COLE_AQUI_LINK_ONEDRIVE" },
+  { categoria:"Recesso e Férias", nome:"Alteração de Férias", url:"COLE_AQUI_LINK_ONEDRIVE" },
+  { categoria:"Documentos", nome:"Produção de Documentos", url:"COLE_AQUI_LINK_ONEDRIVE" },
+  { categoria:"PTM", nome:"PTM - Plano de Trabalho do Diretor", url:"COLE_AQUI_LINK_ONEDRIVE" }
+];
+
+/*
+TIPOS_PROCESSO_ESCOLAR: os 3 primeiros são fixos/obrigatórios para toda
+escola. Compensação e Recesso são opcionais (nem toda escola tem).
+*/
+const TIPOS_PROCESSO_ESCOLAR = [
+  { id:"planoTrabalhoDiretor", nome:"Plano de Trabalho do Diretor", obrigatorio:true },
+  { id:"horarioAdministrativo", nome:"Horário Administrativo", obrigatorio:true },
+  { id:"feriasDiretor", nome:"Férias do Diretor", obrigatorio:true },
+  { id:"compensacao", nome:"Compensação", obrigatorio:false },
+  { id:"recesso", nome:"Recesso", obrigatorio:false }
+];
+
+/*
+ESCOLAS_PROCESSOS: adicione ou remova unidades escolares EDITANDO ESTE
+ARRAY diretamente no código-fonte. Não há botão de adicionar/remover na
+interface pública (o portal pode ser acessado por supervisores e
+escolas — nenhuma ação destrutiva fica visível para o usuário).
+*/
+const ESCOLAS_PROCESSOS = [
+  {
+    id:"escola_joao_ramalho",
+    nome:"EE João Ramalho",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"015.00058550/2026-97",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:""
+    }
+  },
+  {
+    id:"escola_wallace_cockane",
+    nome:"EE Wallace Cockane Simonsen",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:""
+    }
+  }
+];
+
+const PROC_STORAGE_KEY = "processosEstrategicos_v1";
+
+function procCarregarEstado(){
+  try{
+    const raw = window.localStorage.getItem(PROC_STORAGE_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return {
+    supervisao: PROCESSOS_SUPERVISAO.map(p => ({ id:p.id, numeroSei:p.numeroSei })),
+    escolas: ESCOLAS_PROCESSOS.map(e => ({ id:e.id, processos:{ ...e.processos } }))
+  };
+}
+
+// Nota: os valores digitados no campo "Nº SEI" ficam salvos apenas no
+// navegador de quem edita (localStorage é local, não sincroniza entre
+// visitantes). A fonte oficial dos números é sempre o CONFIG acima —
+// mantenha-o atualizado antes de publicar.
+let procState = procCarregarEstado();
+
+function procSalvar(){
+  window.localStorage.setItem(PROC_STORAGE_KEY, JSON.stringify(procState));
+}
+
+function procGetSupervisaoValor(id){
+  const item = procState.supervisao.find(p => p.id === id);
+  return item ? item.numeroSei : "";
+}
+
+function procGetEscolaValor(escolaId, tipoId){
+  const escola = procState.escolas.find(e => e.id === escolaId);
+  return escola && escola.processos ? (escola.processos[tipoId] || "") : "";
+}
+
+function renderProcDashboard(){
+  let total = 0, preenchidos = 0;
+  PROCESSOS_SUPERVISAO.forEach(p => {
+    total++;
+    if(procGetSupervisaoValor(p.id)) preenchidos++;
+  });
+  ESCOLAS_PROCESSOS.forEach(escola => {
+    TIPOS_PROCESSO_ESCOLAR.forEach(tipo => {
+      const habilitado = tipo.obrigatorio || (escola.processos && tipo.id in escola.processos);
+      if(!habilitado) return;
+      total++;
+      if(procGetEscolaValor(escola.id, tipo.id)) preenchidos++;
+    });
+  });
+  const pendentes = total - preenchidos;
+  const el = document.getElementById("proc-dashboard");
+  if(!el) return;
+  el.innerHTML = `
+    <div class="proc-stat"><div class="proc-stat-num">${ESCOLAS_PROCESSOS.length}</div><div class="proc-stat-label">Unidades Escolares</div></div>
+    <div class="proc-stat"><div class="proc-stat-num">${preenchidos}</div><div class="proc-stat-label">Processos com Nº SEI</div></div>
+    <div class="proc-stat"><div class="proc-stat-num">${pendentes}</div><div class="proc-stat-label">Processos Pendentes</div></div>
+  `;
+}
+
+function renderProcessosSei(){
+  const el = document.getElementById("proc-sub-processos-sei");
+  if(!el) return;
+  el.innerHTML = `
+    <div class="proc-card">
+      <h3>Processos SEI</h3>
+      ${PROCESSOS_SUPERVISAO.map(p => {
+        const valor = procGetSupervisaoValor(p.id);
+        return `
+        <div class="proc-row">
+          <div class="proc-row-nome">${p.nome}</div>
+          <input class="proc-sei-input" type="text" placeholder="Nº do processo SEI" value="${valor}" data-proc-action="update-supervisao" data-id="${p.id}">
+          <span class="proc-badge ${valor ? 'preenchido' : 'pendente'}">${valor ? 'Preenchido' : 'Pendente'}</span>
+        </div>`;
+      }).join("")}
+    </div>
+  `;
+}
+
+function renderLegislacaoProcessos(){
+  const el = document.getElementById("proc-sub-legislacao");
+  if(!el) return;
+  el.innerHTML = `
+    <div class="proc-card">
+      <h3>Legislação de Referência</h3>
+      ${LEGISLACAO_PROCESSOS.map(lei => `
+        <div class="proc-lei-item">
+          <h4>${lei.titulo}</h4>
+          <p>${lei.resumo}</p>
+          ${lei.link ? `<a href="${lei.link}" target="_blank" rel="noopener">Ver norma completa ↗</a>` : ""}
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderModelos(){
+  const el = document.getElementById("proc-sub-modelos");
+  if(!el) return;
+  const categorias = [];
+  const porCategoria = {};
+  MODELOS_FORMULARIOS.forEach(m => {
+    if(!porCategoria[m.categoria]){ porCategoria[m.categoria] = []; categorias.push(m.categoria); }
+    porCategoria[m.categoria].push(m);
+  });
+  el.innerHTML = `
+    <div class="proc-card">
+      <h3>Modelos e Formulários</h3>
+      <p class="proc-modelo-fonte" style="margin-bottom:12px;">Arquivos hospedados no OneDrive institucional (SEDUC-SP).</p>
+      ${categorias.map(cat => `
+        <div class="proc-modelo-cat">${cat}</div>
+        ${porCategoria[cat].map(m => `
+          <div class="proc-modelo-row">
+            <a href="${m.url}" target="_blank" rel="noopener">${m.nome}</a>
+            <span class="proc-modelo-fonte">📄 PDF · OneDrive</span>
+          </div>
+        `).join("")}
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderEscolasProcessos(){
+  const el = document.getElementById("proc-escolas-lista");
+  if(!el) return;
+  el.innerHTML = ESCOLAS_PROCESSOS.map(escola => `
+    <div class="proc-card">
+      <h3>${escola.nome}</h3>
+      ${TIPOS_PROCESSO_ESCOLAR.filter(tipo => tipo.obrigatorio || (escola.processos && tipo.id in escola.processos)).map(tipo => {
+        const valor = procGetEscolaValor(escola.id, tipo.id);
+        return `
+        <div class="proc-row">
+          <div class="proc-row-nome">${tipo.nome}${tipo.obrigatorio ? "" : '<span class="proc-tag-opcional">(opcional)</span>'}</div>
+          <input class="proc-sei-input" type="text" placeholder="Nº do processo SEI" value="${valor}" data-proc-action="update-escola" data-escola="${escola.id}" data-tipo="${tipo.id}">
+          <span class="proc-badge ${valor ? 'preenchido' : 'pendente'}">${valor ? 'Preenchido' : 'Pendente'}</span>
+        </div>`;
+      }).join("")}
+    </div>
+  `).join("");
+}
+
+function renderProcessosEstrategicos(){
+  renderProcDashboard();
+  renderProcessosSei();
+  renderLegislacaoProcessos();
+  renderModelos();
+  renderEscolasProcessos();
+}
+
+document.getElementById("proc-tabs").addEventListener("click", e => {
+  const btn = e.target.closest("[data-proc-tab]");
+  if(!btn) return;
+  const tab = btn.dataset.procTab;
+  document.querySelectorAll("#proc-tabs .proc-tab-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("proc-view-supervisao").classList.toggle("active", tab === "supervisao");
+  document.getElementById("proc-view-escolas").classList.toggle("active", tab === "escolas");
+});
+
+document.getElementById("proc-subtabs").addEventListener("click", e => {
+  const btn = e.target.closest("[data-proc-subtab]");
+  if(!btn) return;
+  const subtab = btn.dataset.procSubtab;
+  document.querySelectorAll("#proc-subtabs .proc-subtab-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("proc-sub-processos-sei").classList.toggle("active", subtab === "processos-sei");
+  document.getElementById("proc-sub-legislacao").classList.toggle("active", subtab === "legislacao-proc");
+  document.getElementById("proc-sub-modelos").classList.toggle("active", subtab === "modelos");
+});
+
+document.addEventListener("change", e => {
+  const el = e.target.closest("[data-proc-action]");
+  if(!el) return;
+  const action = el.dataset.procAction;
+
+  if(action === "update-supervisao"){
+    const item = procState.supervisao.find(p => p.id === el.dataset.id);
+    if(item){ item.numeroSei = el.value.trim(); }
+    procSalvar();
+    renderProcDashboard();
+  }
+
+  if(action === "update-escola"){
+    const escola = procState.escolas.find(x => x.id === el.dataset.escola);
+    if(escola){
+      if(!escola.processos) escola.processos = {};
+      escola.processos[el.dataset.tipo] = el.value.trim();
+    }
+    procSalvar();
+    renderProcDashboard();
+  }
+});
+
+renderProcessosEstrategicos();
 </script>
 </body>
 </html>
