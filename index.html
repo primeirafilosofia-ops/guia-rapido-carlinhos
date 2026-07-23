@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -66,6 +67,27 @@ margin-bottom:6px;
 }
 .menu a:hover{
 background:rgba(255,255,255,.10);
+}
+.sidebar-contador{
+margin:0 15px 15px;
+padding:14px 16px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.12);
+border-radius:12px;
+text-align:center;
+}
+.sidebar-contador-num{
+font-size:28px;
+font-weight:700;
+color:var(--dourado);
+line-height:1.1;
+}
+.sidebar-contador-label{
+font-size:11px;
+color:rgba(255,255,255,.75);
+text-transform:uppercase;
+letter-spacing:.5px;
+margin-top:4px;
 }
 .main{
 margin-left:270px;
@@ -552,6 +574,10 @@ margin-left:0;
 <div class="logo">
 <h1>Portal do Carlinhos</h1>
 <p>Projeto Pessoal de Apoio Organizacional</p>
+</div>
+<div class="sidebar-contador" id="sidebar-contador-escolas">
+<div class="sidebar-contador-num" id="sidebar-contador-escolas-num">0</div>
+<div class="sidebar-contador-label">Unidades Escolares</div>
 </div>
 <nav class="menu">
 <a href="#inicio">🏠 Início</a>
@@ -1450,11 +1476,12 @@ onde não pude confirmar a norma exata via busca — preencha com a
 resolução/portaria que você usa na prática antes de publicar.
 */
 const TIPOS_PROCESSO_ESCOLAR = [
-  { id:"planoTrabalhoDiretor", nome:"Plano de Trabalho do Diretor", obrigatorio:true, baseLegal:"" },
+  { id:"planoTrabalhoDiretor", nome:"Plano de Trabalho Mensal - Diretor", obrigatorio:true, baseLegal:"" },
   { id:"horarioAdministrativo", nome:"Horário Administrativo", obrigatorio:true, baseLegal:"" },
   { id:"feriasDiretor", nome:"Férias do Diretor", obrigatorio:true, baseLegal:"" },
-  { id:"compensacao", nome:"Compensação", obrigatorio:false, baseLegal:"" },
-  { id:"recesso", nome:"Recesso", obrigatorio:false, baseLegal:"" }
+  { id:"compensacao", nome:"Compensação", obrigatorio:true, baseLegal:"" },
+  { id:"recesso", nome:"Recesso", obrigatorio:true, baseLegal:"" },
+  { id:"outros", nome:"Outros", obrigatorio:true, baseLegal:"" }
 ];
 
 /*
@@ -1465,23 +1492,1043 @@ escolas — nenhuma ação destrutiva fica visível para o usuário).
 */
 const ESCOLAS_PROCESSOS = [
   {
-    id:"escola_joao_ramalho",
+    id:"escola_009283",
+    codigo:"009283",
+    nome:"EE 20 De Agosto",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008936",
+    codigo:"008936",
+    nome:"EE Adail Luiz Miller, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009441",
+    codigo:"009441",
+    nome:"EE Alfredo Burkart, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009180",
+    codigo:"009180",
+    nome:"EE Amadeu Olivério, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009325",
+    codigo:"009325",
+    nome:"EE Anésia Loureiro Gama, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008990",
+    codigo:"008990",
+    nome:"EE Antonio Caputo",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009039",
+    codigo:"009039",
+    nome:"EE Antonio Nascimento, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_921105",
+    codigo:"921105",
+    nome:"EE Ayrton Senna da Silva",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009088",
+    codigo:"009088",
+    nome:"EE Baeta Neves, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009573",
+    codigo:"009573",
+    nome:"EE Bonifácio de Carvalho, Coronel",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_042055",
+    codigo:"042055",
+    nome:"EE Brazilia Tondi de Lima",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009246",
+    codigo:"009246",
+    nome:"EE Carlos Pezzolo, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_011809",
+    codigo:"011809",
+    nome:"EE Celso Furtado",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_915750",
+    codigo:"915750",
+    nome:"EE Célio Luiz Negrini, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_910764",
+    codigo:"910764",
+    nome:"EE Clarice de Magalhães Castro, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009124",
+    codigo:"009124",
+    nome:"EE Clóvis de Lucca, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009337",
+    codigo:"009337",
+    nome:"EE Cynira Pires dos Santos, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_041269",
+    codigo:"041269",
+    nome:"EE Domingos Peixoto da Silva, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009436",
+    codigo:"009436",
+    nome:"EE Edgar Alves da Cunha, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008849",
+    codigo:"008849",
+    nome:"EE Euclydes Deslandes, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_041257",
+    codigo:"041257",
+    nome:"EE Faustina Pinheiro da Silva, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008801",
+    codigo:"008801",
+    nome:"EE Fausto Cardoso Figueira de Mello, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_904958",
+    codigo:"904958",
+    nome:"EE Francisco Cristiano Lima Freitas",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008758",
+    codigo:"008758",
+    nome:"EE Francisco Emygdio Pereira Neto, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008886",
+    codigo:"008886",
+    nome:"EE Francisco Prestes Maia, Eng.º",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009581",
+    codigo:"009581",
+    nome:"EE Idalina Macedo Costa Sodré, Dona",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_046516",
+    codigo:"046516",
+    nome:"EE Ismael da Silva Junior, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008977",
+    codigo:"008977",
+    nome:"EE Jacob Casseb, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_041294",
+    codigo:"041294",
+    nome:"EE Jean Piaget",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008813",
+    codigo:"008813",
+    nome:"EE João Batista Bernardes",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008837",
+    codigo:"008837",
+    nome:"EE João Firmino Correia de Araújo, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009404",
+    codigo:"009404",
+    nome:"EE Joana Motta, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009261",
+    codigo:"009261",
     nome:"EE João Ramalho",
     processos:{
       planoTrabalhoDiretor:"",
       horarioAdministrativo:"015.00058550/2026-97",
       feriasDiretor:"",
       compensacao:"",
-      recesso:""
+      recesso:"",
+      outros:""
     }
   },
   {
-    id:"escola_wallace_cockane",
-    nome:"EE Wallace Cockane Simonsen",
+    id:"escola_009167",
+    codigo:"009167",
+    nome:"EE Joaquim Moreira Bernardes, Prof.",
     processos:{
       planoTrabalhoDiretor:"",
       horarioAdministrativo:"",
-      feriasDiretor:""
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009003",
+    codigo:"009003",
+    nome:"EE Jorge Rahme, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009106",
+    codigo:"009106",
+    nome:"EE José Fornari, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008928",
+    codigo:"008928",
+    nome:"EE José Gonçalves de Andrade Figueira, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008904",
+    codigo:"008904",
+    nome:"EE José Jorge do Amaral, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_041270",
+    codigo:"041270",
+    nome:"EE Julieta Vianna Simões de Sant'anna, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008825",
+    codigo:"008825",
+    nome:"EE Laudo Ferreira de Camargo, Ministro",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009234",
+    codigo:"009234",
+    nome:"EE Lauro Gomes de Almeida",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_902020",
+    codigo:"902020",
+    nome:"EE Luis dos Santos, Metalúrgico",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009155",
+    codigo:"009155",
+    nome:"EE Luiza Collaço Queiroz Fonseca, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_922924",
+    codigo:"922924",
+    nome:"EE Marco Antonio Prudente de Toledo, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_908757",
+    codigo:"908757",
+    nome:"EE Maria Auxiliadora Marques, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009477",
+    codigo:"009477",
+    nome:"EE Maria da Conceição Moura Branco, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_038519",
+    codigo:"038519",
+    nome:"EE Maria Cristina Schmidt Miranda, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009210",
+    codigo:"009210",
+    nome:"EE Maria Iracema Munhoz",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009118",
+    codigo:"009118",
+    nome:"EE Maria Luiza Ferrari Cícero, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_011808",
+    codigo:"011808",
+    nome:"EE Maria Nilde Mascellani",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_041282",
+    codigo:"041282",
+    nome:"EE Maria Osório Teixeira, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008916",
+    codigo:"008916",
+    nome:"EE Maria Pires, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_917515",
+    codigo:"917515",
+    nome:"EE Maria Regina Demarchi Fanani",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009350",
+    codigo:"009350",
+    nome:"EE Maria Trujilo Torloni",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_907182",
+    codigo:"907182",
+    nome:"EE Mario Franciscon",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_904971",
+    codigo:"904971",
+    nome:"EE Maristela Vieira, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008898",
+    codigo:"008898",
+    nome:"EE Mathias Octávio Roxo Nobre, Dr.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009131",
+    codigo:"009131",
+    nome:"EE Mauricio Antunes Ferraz, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_924428",
+    codigo:"924428",
+    nome:"EE Mauricio de Castro (São Pedro)",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009015",
+    codigo:"009015",
+    nome:"EE Mizuho Abundância",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_041300",
+    codigo:"041300",
+    nome:"EE Nail Franco de Mello Boni, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_921543",
+    codigo:"921543",
+    nome:"EE Nelson Monteiro Palma, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_908745",
+    codigo:"908745",
+    nome:"EE Neusa Figueiredo Marçal, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_913807",
+    codigo:"913807",
+    nome:"EE Omar Daibert, Reverendo",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008771",
+    codigo:"008771",
+    nome:"EE Omar Donato Bassani",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_042043",
+    codigo:"042043",
+    nome:"EE Palmira Grassiotto Ferreira da Silva, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008874",
+    codigo:"008874",
+    nome:"EE Robert Kennedy, Senador",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009313",
+    codigo:"009313",
+    nome:"EE Rudge Ramos",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_011806",
+    codigo:"011806",
+    nome:"EE Ruth de Souza",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_042031",
+    codigo:"042031",
+    nome:"EE Santa Dalmolin Demarchi",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_008941",
+    codigo:"008941",
+    nome:"EE Santa Olimpia",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_923904",
+    codigo:"923904",
+    nome:"EE Sergio Vieira De Mello, Diplomata",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_924210",
+    codigo:"924210",
+    nome:"EE Tereza Delta",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_908769",
+    codigo:"908769",
+    nome:"EE Vilma Aparecida Anselmo Silveira, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_039548",
+    codigo:"039548",
+    nome:"EE Vladimir Herzog, Jornalista",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_906669",
+    codigo:"906669",
+    nome:"EE Walker da Costa Barbosa, Prof.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009295",
+    codigo:"009295",
+    nome:"EE Wallace Cockrane Simonsen",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009258",
+    codigo:"009258",
+    nome:"EE Yolanda Noronha do Nascimento, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_009465",
+    codigo:"009465",
+    nome:"EE Yolanda Ascêncio, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
+    }
+  },
+  {
+    id:"escola_906670",
+    codigo:"906670",
+    nome:"EE Yvone Frutuoso Prodossimo, Profª.",
+    processos:{
+      planoTrabalhoDiretor:"",
+      horarioAdministrativo:"",
+      feriasDiretor:"",
+      compensacao:"",
+      recesso:"",
+      outros:""
     }
   }
 ];
@@ -1651,6 +2698,12 @@ function renderEscolasProcessos(){
   `).join("");
 }
 
+function renderSidebarContadorEscolas(){
+  const el = document.getElementById("sidebar-contador-escolas-num");
+  if(!el) return;
+  el.textContent = ESCOLAS_PROCESSOS.length;
+}
+
 function renderProcessosEstrategicos(){
   renderProcDashboard();
   renderProcessosSei();
@@ -1658,6 +2711,7 @@ function renderProcessosEstrategicos(){
   renderModelos();
   renderEscolasProcessos();
   renderLegislacaoEscolas();
+  renderSidebarContadorEscolas();
 }
 
 document.getElementById("proc-tabs").addEventListener("click", e => {
