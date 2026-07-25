@@ -341,6 +341,44 @@ color:var(--cinza);
 padding:30px 0;
 font-size:14px;
 }
+  /* ===== MÓDULO COMPETÊNCIAS (reaproveita .leg-search / .leg-filtros / .leg-item shell) ===== */
+.leg-filtro-btn.active[data-categoria="todos"]{ background:var(--azul-escuro); color:white; }
+.leg-filtro-btn.active[data-categoria="direcao"]{ background:var(--azul); color:white; }
+.leg-filtro-btn.active[data-categoria="supervisao"]{ background:var(--dourado); color:var(--azul-escuro); }
+.leg-filtro-btn.active[data-categoria="pedagogico"]{ background:#2e7d32; color:white; }
+.leg-filtro-btn.active[data-categoria="tecnico"]{ background:var(--cinza); color:white; }
+.leg-filtro-btn.active[data-categoria="apoio"]{ background:#9aa0a8; color:white; }
+
+.leg-badge.direcao{ background:rgba(15,76,129,.12); color:var(--azul); }
+.leg-badge.supervisao{ background:rgba(201,168,118,.30); color:#8a6d2f; }
+.leg-badge.pedagogico{ background:rgba(46,125,50,.12); color:#2e7d32; }
+.leg-badge.tecnico{ background:#EEF1F4; color:var(--cinza); }
+.leg-badge.apoio{ background:#F1F1F1; color:#6B7280; }
+
+.comp-bloco{ margin-top:10px; }
+.comp-bloco-titulo{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color:var(--cinza);
+  font-weight:700;
+  margin-bottom:4px;
+}
+.comp-lista{
+  margin:0;
+  padding-left:16px;
+  font-size:12.5px;
+  color:var(--texto);
+  line-height:1.5;
+}
+.comp-lista li{ margin-bottom:2px; }
+.comp-ref-lista{
+  margin:0;
+  padding-left:18px;
+  font-size:13px;
+  color:var(--texto);
+  line-height:1.7;
+}
 
 /* ===================== PROCESSOS ESTRATÉGICOS - GESTÃO ADMINISTRATIVA ===================== */
 .proc-intro{
@@ -587,6 +625,7 @@ margin-left:0;
 <a href="#escolas">🏫 Escolas</a>
 <a href="#processos">📋 Processos Estratégicos</a>
 <a href="#frequencia">🗓️ Registro de Frequência</a>
+<a href="#competencias">🧭 Competências</a>
 <a href="#setores">🏢 Setores</a>
 <a href="#links">🔗 Links Úteis</a>
 <a href="#documentos">📁 Documentos</a>
@@ -724,6 +763,52 @@ Espaço pessoal destinado à organização de informações, documentos, referê
 </a>
 </div>
 
+  <!-- ===================== NOVA SEÇÃO: COMPETÊNCIAS ===================== -->
+<section id="competencias">
+  <h2 class="section-title">🧭 Competências e Responsabilidade Funcional</h2>
+  <p style="color:var(--cinza); font-size:13.5px; max-width:700px; margin-bottom:10px;">
+    Atribuições legais, base normativa e produtos obrigatórios por cargo/função na estrutura da URE e Unidade Escolar. Consulte também Direitos e Deveres, Responsabilidade Funcional e Órgãos de Controle.
+  </p>
+
+  <div class="leg-controls">
+    <input type="text" class="leg-search" id="comp-busca" placeholder="Buscar por cargo, atribuição ou base legal...">
+    <div class="leg-filtros" id="comp-filtros">
+      <button class="leg-filtro-btn active" data-categoria="todos">Todos</button>
+      <button class="leg-filtro-btn" data-categoria="direcao">Direção</button>
+      <button class="leg-filtro-btn" data-categoria="supervisao">Supervisão</button>
+      <button class="leg-filtro-btn" data-categoria="pedagogico">Pedagógico</button>
+      <button class="leg-filtro-btn" data-categoria="tecnico">Técnico/Administrativo</button>
+      <button class="leg-filtro-btn" data-categoria="apoio">Apoio Operacional</button>
+    </div>
+  </div>
+
+  <p class="leg-contador" id="comp-contador"></p>
+  <div id="comp-lista"></div>
+
+  <div class="proc-card">
+    <h3>Direitos e Deveres do Servidor</h3>
+    <div class="comp-bloco">
+      <div class="comp-bloco-titulo">Direitos</div>
+      <ul class="comp-ref-lista" id="comp-direitos"></ul>
+    </div>
+    <div class="comp-bloco">
+      <div class="comp-bloco-titulo">Deveres</div>
+      <ul class="comp-ref-lista" id="comp-deveres"></ul>
+    </div>
+  </div>
+
+  <div class="proc-card">
+    <h3>Responsabilidade Funcional — Hipóteses</h3>
+    <ul class="comp-ref-lista" id="comp-responsabilidade"></ul>
+  </div>
+
+  <div class="proc-card">
+    <h3>Órgãos de Controle</h3>
+    <ul class="comp-ref-lista" id="comp-orgaos"></ul>
+  </div>
+</section>
+
+  
 <h2 class="section-title" id="documentos">
 📁 Biblioteca de Documentos
 </h2>
@@ -854,6 +939,23 @@ const LEGISLACAO_DATA = [
     titulo:"EC Estadual nº 49/2020 e LC Estadual nº 1.354/2020 (SPPREV)",
     descricao:"Reforma da Previdência dos servidores públicos estaduais de SP e regras de aposentadoria do magistério.",
     link:"https://www.spprev.sp.gov.br" },
+
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"Lei Complementar Estadual nº 1.080/2008",
+    descricao:"Regula o cargo de Assistente Técnico e o Executivo Público na Administração Pública paulista.",
+    link:"" },
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"Lei Complementar Estadual nº 1.034/2008",
+    descricao:"Institui o cargo de Executivo Público e disciplina suas atribuições no serviço público estadual.",
+    link:"" },
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"Decreto Estadual nº 69.665/2025",
+    descricao:"Reorganiza atribuições de cargos de direção/chefia (Chefe de Serviço e Chefe de Seção) na estrutura da SEDUC-SP. VERIFICAR: possível duplicidade/conflito com Decreto 66.800/2022 já cadastrado.",
+    link:"" },
+  { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
+    titulo:"Resolução SEDUC nº 108/2025",
+    descricao:"Disciplina atribuições da Dirigente Regional de Ensino e cargos de chefia da URE.",
+    link:"" },
 
   { area:"educacional", modulo:"1.4 Educação Inclusiva, Saúde Ocupacional e Direitos Sindicais",
     titulo:"Lei Federal nº 13.146/2015 (LBI)",
@@ -1255,6 +1357,167 @@ function freqFiltrar(){
   });
 }
 
+
+//
+
+/* ===================== MÓDULO: COMPETÊNCIAS E RESPONSABILIDADE FUNCIONAL ===================== */
+/*
+COMPETENCIAS_DATA: transcrito do "Manual de Competências, Responsabilidades
+e Conformidade Administrativa". categoria usada para filtro/badge.
+baseLegal segue o mesmo padrão de string-livre usado em PROCESSOS_SUPERVISAO
+(sem necessidade de referenciar IDs do LEGISLACAO_DATA).
+*/
+const COMPETENCIAS_DATA = [
+  { id:"dirigente-regional", titulo:"Coordenadora Geral – Dirigente Regional de Ensino", categoria:"direcao",
+    baseLegal:["LC 444/1985","LC 836/1997","Decreto 69.665/2025 (verificar conflito com Decreto 66.800/2022)","Resolução SEDUC 108/2025"],
+    atribuicoes:["Representar institucionalmente a URE","Gerir recursos humanos e materiais","Determinar prioridades administrativas","Acompanhar metas e indicadores","Responder pelos resultados regionais"],
+    produtos:[] },
+  { id:"supervisor-ensino", titulo:"Supervisor de Ensino", categoria:"supervisao",
+    baseLegal:["LC 444/1985","LC 836/1997","Normas da Supervisão Educacional"],
+    atribuicoes:["Fiscalizar unidades escolares","Produzir Termo de Visita","Emitir pareceres","Acompanhar atos escolares","Orientar equipes gestoras"],
+    produtos:["Termos de Visita","Relatórios","Pareceres Técnicos"] },
+  { id:"pec", titulo:"Professor Especialista em Currículo (PEC)", categoria:"pedagogico",
+    baseLegal:[],
+    atribuicoes:["Orientação curricular","Formação continuada","Acompanhamento pedagógico","Monitoramento dos indicadores"],
+    produtos:[] },
+  { id:"diretor-escolar", titulo:"Diretor Escolar", categoria:"direcao",
+    baseLegal:[],
+    atribuicoes:["Gestão pedagógica","Gestão administrativa","Prestação de contas","Cumprimento da legislação educacional"],
+    produtos:[] },
+  { id:"vice-diretor", titulo:"Vice-Diretor Escolar", categoria:"direcao",
+    baseLegal:[],
+    atribuicoes:["Auxiliar a direção","Substituir o diretor","Acompanhar frequência e rotina escolar"],
+    produtos:[] },
+  { id:"coordenador-pedagogico", titulo:"Coordenador de Gestão Pedagógica", categoria:"pedagogico",
+    baseLegal:[],
+    atribuicoes:["Planejamento pedagógico","Formação docente","Monitoramento da aprendizagem"],
+    produtos:[] },
+  { id:"professor", titulo:"Professor", categoria:"pedagogico",
+    baseLegal:[],
+    atribuicoes:["Planejamento das aulas","Avaliação dos estudantes","Registro escolar","Cumprimento da proposta pedagógica"],
+    produtos:[] },
+  { id:"assistente-tecnico", titulo:"Assistente Técnico", categoria:"tecnico",
+    baseLegal:["LC 1.080/2008","Lei 10.261/1968"],
+    atribuicoes:["Produção de pareceres","Monitoramento de processos","Análise técnica","Planejamento administrativo"],
+    produtos:[] },
+  { id:"executivo-publico", titulo:"Executivo Público", categoria:"tecnico",
+    baseLegal:["LC 1.034/2008","LC 1.080/2008","Lei 10.261/1968"],
+    atribuicoes:["Instrução processual","Produção de informações","Análise documental","Elaboração de relatórios"],
+    produtos:[] },
+  { id:"oficial-administrativo", titulo:"Oficial Administrativo", categoria:"tecnico",
+    baseLegal:[],
+    atribuicoes:["Organização documental","Protocolos","Atendimento","Controle administrativo"],
+    produtos:[] },
+  { id:"agente-organizacao-escolar", titulo:"Agente de Organização Escolar", categoria:"apoio",
+    baseLegal:[],
+    atribuicoes:["Matrícula","Expedição documental","Histórico escolar","Vida escolar"],
+    produtos:[] },
+  { id:"agente-servicos-escolares", titulo:"Agente de Serviços Escolares", categoria:"apoio",
+    baseLegal:[],
+    atribuicoes:["Conservação","Limpeza","Apoio operacional","Zelo pelo patrimônio público"],
+    produtos:[] },
+  { id:"chefe-servico", titulo:"Chefe de Serviço", categoria:"tecnico",
+    baseLegal:["Decreto 69.665/2025 (verificar conflito com Decreto 66.800/2022)","Resolução SEDUC 108/2025"],
+    atribuicoes:["Coordenar unidades subordinadas","Controlar resultados","Distribuir demandas","Acompanhar desempenho das equipes"],
+    produtos:[] },
+  { id:"chefe-secao", titulo:"Chefe de Seção", categoria:"tecnico",
+    baseLegal:["Decreto 69.665/2025 (verificar conflito com Decreto 66.800/2022)","Resolução SEDUC 108/2025"],
+    atribuicoes:["Coordenar atividades da seção","Distribuir tarefas","Monitorar produtividade","Controlar prazos"],
+    produtos:[] }
+];
+
+const CATEGORIA_LABEL = {
+  direcao:"Direção", supervisao:"Supervisão", pedagogico:"Pedagógico",
+  tecnico:"Técnico/Administrativo", apoio:"Apoio Operacional"
+};
+
+const DIREITOS_SERVIDOR = ["Férias","Licença-Prêmio","Aposentadoria","Sexta-Parte","Adicional por Tempo de Serviço","Demais benefícios legais"];
+const DEVERES_SERVIDOR = ["Assiduidade","Pontualidade","Eficiência","Zelo pelo patrimônio público","Cumprimento das atribuições","Prestação de informações quando exigido","Respeito à hierarquia legal","Urbanidade"];
+const RESPONSABILIDADE_FUNCIONAL = ["Descumprimento das atribuições legais","Omissão administrativa","Não observância dos deveres funcionais","Ausência de registros obrigatórios","Desatendimento às normas institucionais","Desrespeito aos princípios da Administração Pública"];
+const ORGAOS_CONTROLE = ["Tribunal de Contas do Estado de São Paulo","Controladoria Geral do Estado","Corregedoria Geral da Administração","Ministério Público","Ouvidoria Geral","Controle Interno da SEDUC"];
+
+const compState = { categoria:"todos", busca:"" };
+
+function compFiltrar(){
+  const termo = legNormaliza(compState.busca);
+  return COMPETENCIAS_DATA.filter(item=>{
+    const catOk = compState.categoria === "todos" || item.categoria === compState.categoria;
+    if(!catOk) return false;
+    if(!termo) return true;
+    const alvo = legNormaliza([item.titulo, ...item.atribuicoes, ...item.baseLegal].join(" "));
+    return alvo.includes(termo);
+  });
+}
+
+function renderCompetencias(){
+  const lista = compFiltrar();
+  const container = document.getElementById("comp-lista");
+  const contador = document.getElementById("comp-contador");
+  if(!container) return;
+  contador.textContent = `${lista.length} cargo(s) encontrado(s)`;
+
+  if(lista.length === 0){
+    container.innerHTML = `<div class="leg-empty">Nenhum cargo encontrado para os filtros atuais.</div>`;
+    return;
+  }
+
+  container.innerHTML = lista.map(item => `
+    <div class="leg-item">
+      <div class="leg-item-head">
+        <span class="leg-item-titulo">${item.titulo}</span>
+        <span class="leg-badge ${item.categoria}">${CATEGORIA_LABEL[item.categoria]}</span>
+      </div>
+      ${item.baseLegal.length ? `
+        <div class="comp-bloco">
+          <div class="comp-bloco-titulo">Base Legal</div>
+          <ul class="comp-lista">${item.baseLegal.map(b => `<li>${b}</li>`).join("")}</ul>
+        </div>` : ""}
+      <div class="comp-bloco">
+        <div class="comp-bloco-titulo">Atribuições</div>
+        <ul class="comp-lista">${item.atribuicoes.map(a => `<li>${a}</li>`).join("")}</ul>
+      </div>
+      ${item.produtos.length ? `
+        <div class="comp-bloco">
+          <div class="comp-bloco-titulo">Produtos Obrigatórios</div>
+          <ul class="comp-lista">${item.produtos.map(p => `<li>${p}</li>`).join("")}</ul>
+        </div>` : ""}
+    </div>
+  `).join("");
+}
+
+function renderReferenciasCompetencias(){
+  const elDireitos = document.getElementById("comp-direitos");
+  const elDeveres = document.getElementById("comp-deveres");
+  const elResp = document.getElementById("comp-responsabilidade");
+  const elOrgaos = document.getElementById("comp-orgaos");
+  if(elDireitos) elDireitos.innerHTML = DIREITOS_SERVIDOR.map(d => `<li>${d}</li>`).join("");
+  if(elDeveres) elDeveres.innerHTML = DEVERES_SERVIDOR.map(d => `<li>${d}</li>`).join("");
+  if(elResp) elResp.innerHTML = RESPONSABILIDADE_FUNCIONAL.map(r => `<li>${r}</li>`).join("");
+  if(elOrgaos) elOrgaos.innerHTML = ORGAOS_CONTROLE.map(o => `<li>${o}</li>`).join("");
+}
+
+document.getElementById("comp-busca").addEventListener("input", e=>{
+  compState.busca = e.target.value;
+  renderCompetencias();
+});
+
+document.getElementById("comp-filtros").addEventListener("click", e=>{
+  const btn = e.target.closest(".leg-filtro-btn");
+  if(!btn) return;
+  compState.categoria = btn.dataset.categoria;
+  document.querySelectorAll("#comp-filtros .leg-filtro-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderCompetencias();
+});
+
+renderCompetencias();
+renderReferenciasCompetencias();
+
+
+  ///
+
+
+  
 function renderFrequencia(){
   const lista = freqFiltrar();
   const container = document.getElementById("freq-lista");
