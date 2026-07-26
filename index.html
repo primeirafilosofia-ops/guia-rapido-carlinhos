@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -215,7 +213,6 @@ font-family:inherit;
 }
 .leg-filtro-btn.active[data-area="todos"]{ background:var(--azul-escuro); color:white; }
 .leg-filtro-btn.active[data-area="educacional"]{ background:var(--azul); color:white; }
-.leg-filtro-btn.active[data-area="rfb"]{ background:var(--dourado); color:var(--azul-escuro); }
 .leg-contador{
 font-size:12px;
 color:var(--cinza);
@@ -259,7 +256,6 @@ text-transform:uppercase;
 white-space:nowrap;
 }
 .leg-badge.educacional{ background:rgba(15,76,129,.12); color:var(--azul); }
-.leg-badge.rfb{ background:rgba(201,168,118,.30); color:#8a6d2f; }
 .leg-item-desc{
 font-size:13px;
 color:var(--cinza);
@@ -337,11 +333,8 @@ padding-top:10px;
 border-top:1px solid #EEF1F4;
 }
 .freq-doc b{ color:var(--texto); }
-color:var(--cinza);
-padding:30px 0;
-font-size:14px;
-}
-  /* ===== MÓDULO COMPETÊNCIAS (reaproveita .leg-search / .leg-filtros / .leg-item shell) ===== */
+
+/* ===== MÓDULO COMPETÊNCIAS (reaproveita .leg-search / .leg-filtros / .leg-item shell) ===== */
 .leg-filtro-btn.active[data-categoria="todos"]{ background:var(--azul-escuro); color:white; }
 .leg-filtro-btn.active[data-categoria="direcao"]{ background:var(--azul); color:white; }
 .leg-filtro-btn.active[data-categoria="supervisao"]{ background:var(--dourado); color:var(--azul-escuro); }
@@ -357,28 +350,103 @@ font-size:14px;
 
 .comp-bloco{ margin-top:10px; }
 .comp-bloco-titulo{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.03em;
-  color:var(--cinza);
-  font-weight:700;
-  margin-bottom:4px;
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:.03em;
+color:var(--cinza);
+font-weight:700;
+margin-bottom:4px;
 }
 .comp-lista{
-  margin:0;
-  padding-left:16px;
-  font-size:12.5px;
-  color:var(--texto);
-  line-height:1.5;
+margin:0;
+padding-left:16px;
+font-size:12.5px;
+color:var(--texto);
+line-height:1.5;
 }
 .comp-lista li{ margin-bottom:2px; }
 .comp-ref-lista{
-  margin:0;
-  padding-left:18px;
-  font-size:13px;
-  color:var(--texto);
-  line-height:1.7;
+margin:0;
+padding-left:18px;
+font-size:13px;
+color:var(--texto);
+line-height:1.7;
 }
+
+/* ===================== MÓDULO GOVERNANÇA E CONTROLE ===================== */
+.gov-intro{
+color:var(--cinza);
+font-size:13.5px;
+max-width:760px;
+margin-bottom:16px;
+}
+.gov-dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+margin-bottom:24px;
+}
+.gov-card{
+background:white;
+border-radius:16px;
+padding:20px;
+box-shadow:var(--sombra);
+transition:.2s;
+border-top:4px solid var(--azul);
+}
+.gov-card:hover{ transform:translateY(-3px); }
+.gov-card h3{
+color:var(--azul-escuro);
+font-size:15px;
+margin-bottom:10px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+.gov-card p{
+font-size:12.5px;
+color:var(--cinza);
+line-height:1.55;
+margin-bottom:10px;
+}
+.gov-card ul{
+margin:0;
+padding-left:18px;
+font-size:12.5px;
+color:var(--texto);
+line-height:1.7;
+}
+.gov-card a{
+display:inline-block;
+margin-top:8px;
+font-size:12px;
+font-weight:600;
+color:var(--azul);
+text-decoration:none;
+}
+.gov-card a:hover{ text-decoration:underline; }
+.gov-card.controle{ border-top-color:var(--dourado); }
+.gov-card.principios{ border-top-color:#2e7d32; }
+.gov-alert{
+background:var(--aviso-bg);
+border-left:5px solid var(--aviso-borda);
+padding:16px 18px;
+border-radius:10px;
+color:#4B5563;
+font-size:12.5px;
+line-height:1.6;
+margin-bottom:20px;
+}
+.gov-alert strong{ color:var(--azul-escuro); }
+.gov-secao-titulo{
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:.04em;
+color:var(--azul-escuro);
+font-weight:700;
+margin:26px 0 12px;
+}
+.gov-secao-titulo:first-of-type{ margin-top:0; }
 
 /* ===================== PROCESSOS ESTRATÉGICOS - GESTÃO ADMINISTRATIVA ===================== */
 .proc-intro{
@@ -580,6 +648,7 @@ color:#9aa0a8;
 color:#9aa0a8;
 font-style:italic;
 }
+.proc-legislacao-tema{
 font-size:11.5px;
 text-transform:uppercase;
 letter-spacing:.04em;
@@ -620,12 +689,11 @@ margin-left:0;
 <nav class="menu">
 <a href="#inicio">🏠 Início</a>
 <a href="#biblioteca">📚 Biblioteca</a>
-<a href="#modelos">📄 Modelos</a>
 <a href="#legislacao">⚖️ Legislação</a>
-<a href="#escolas">🏫 Escolas</a>
 <a href="#processos">📋 Processos Estratégicos</a>
 <a href="#frequencia">🗓️ Registro de Frequência</a>
 <a href="#competencias">🧭 Competências</a>
+<a href="#governanca">🏛️ Governança e Controle</a>
 <a href="#setores">🏢 Setores</a>
 <a href="#links">🔗 Links Úteis</a>
 <a href="#documentos">📁 Documentos</a>
@@ -650,33 +718,32 @@ Espaço pessoal destinado à organização de informações, documentos, referê
 <h4>📚 Biblioteca Técnica</h4>
 <p>Materiais de apoio.</p>
 </a>
-<a href="#modelos" class="card">
-<h4>📄 Modelos</h4>
-<p>Documentos.</p>
-</a>
 <a href="#legislacao" class="card">
 <h4>⚖️ Legislação</h4>
 <p>Leis, decretos e resoluções.</p>
 </a>
-<a href="#escolas" class="card">
-<h4>🏫 Escolas</h4>
-<p>Informações das unidades acompanhadas.</p>
+<a href="#processos" class="card">
+<h4>📋 Processos Estratégicos</h4>
+<p>SEI, modelos e escolas.</p>
+</a>
+<a href="#governanca" class="card">
+<h4>🏛️ Governança e Controle</h4>
+<p>Princípios, órgãos e responsabilização.</p>
 </a>
 </div>
 
-<!-- ===================== NOVA SEÇÃO: BASE LEGAL ===================== -->
+<!-- ===================== SEÇÃO: BASE LEGAL ===================== -->
 <section id="legislacao">
   <h2 class="section-title">⚖️ Legislação — Base Legal</h2>
   <p style="color:var(--cinza); font-size:13.5px; max-width:700px; margin-bottom:10px;">
-    Compilado normativo aplicável à atuação como Assistente Técnico (URE-SBC / SEDUC-SP) e à Receita Federal (Área Fiscal).
+    Compilado normativo aplicável à atuação como Assistente Técnico na URE-SBC / SEDUC-SP.
   </p>
 
   <div class="leg-controls">
-    <input type="text" class="leg-search" id="leg-busca" placeholder="Buscar por lei, tema ou órgão (ex.: LRF, LDB, EC 132)...">
+    <input type="text" class="leg-search" id="leg-busca" placeholder="Buscar por lei, tema ou órgão (ex.: LDB, Decreto 66.800)...">
     <div class="leg-filtros" id="leg-filtros">
       <button class="leg-filtro-btn active" data-area="todos">Todos</button>
       <button class="leg-filtro-btn" data-area="educacional">Educacional (URE)</button>
-      <button class="leg-filtro-btn" data-area="rfb">Receita Federal - Área Fiscal</button>
     </div>
   </div>
 
@@ -684,7 +751,7 @@ Espaço pessoal destinado à organização de informações, documentos, referê
   <div id="leg-lista"></div>
 </section>
 
-<!-- ===================== NOVA SEÇÃO: PROCESSOS ESTRATÉGICOS ===================== -->
+<!-- ===================== SEÇÃO: PROCESSOS ESTRATÉGICOS ===================== -->
 <section id="processos">
   <h2 class="section-title">📋 Processos Estratégicos - Gestão Administrativa</h2>
   <p class="proc-intro">
@@ -723,7 +790,7 @@ Espaço pessoal destinado à organização de informações, documentos, referê
   </div>
 </section>
 
-<!-- ===================== NOVA SEÇÃO: REGISTRO DE FREQUÊNCIA ===================== -->
+<!-- ===================== SEÇÃO: REGISTRO DE FREQUÊNCIA ===================== -->
 <section id="frequencia">
   <h2 class="section-title">🗓️ Registro de Frequência — Quadro Normativo</h2>
   <p style="color:var(--cinza); font-size:13.5px; max-width:700px; margin-bottom:10px;">
@@ -743,31 +810,11 @@ Espaço pessoal destinado à organização de informações, documentos, referê
   <div id="freq-lista"></div>
 </section>
 
-<h2 class="section-title" id="links">Links Mais Utilizados</h2>
-<div class="links-grid">
-<a href="https://sei.sp.gov.br" class="link-card" target="_blank" rel="noopener">
-<h4>SEI</h4>
-<p>Sistema Eletrônico de Informações</p>
-</a>
-<a href="https://sed.educacao.sp.gov.br" class="link-card" target="_blank" rel="noopener">
-<h4>SED</h4>
-<p>Secretaria Escolar Digital</p>
-</a>
-<a href="https://portal.office.com" class="link-card" target="_blank" rel="noopener">
-<h4>Microsoft 365</h4>
-<p>Outlook, Teams e OneDrive</p>
-</a>
-<a href="https://copilot.microsoft.com" class="link-card" target="_blank" rel="noopener">
-<h4>Microsoft Copilot</h4>
-<p>Assistente de IA</p>
-</a>
-</div>
-
-  <!-- ===================== NOVA SEÇÃO: COMPETÊNCIAS ===================== -->
+<!-- ===================== SEÇÃO: COMPETÊNCIAS ===================== -->
 <section id="competencias">
   <h2 class="section-title">🧭 Competências e Responsabilidade Funcional</h2>
   <p style="color:var(--cinza); font-size:13.5px; max-width:700px; margin-bottom:10px;">
-    Atribuições legais, base normativa e produtos obrigatórios por cargo/função na estrutura da URE e Unidade Escolar. Consulte também Direitos e Deveres, Responsabilidade Funcional e Órgãos de Controle.
+    Quem é responsável: atribuições legais, base normativa e produtos obrigatórios por cargo/função na estrutura da URE e Unidade Escolar.
   </p>
 
   <div class="leg-controls">
@@ -796,19 +843,54 @@ Espaço pessoal destinado à organização de informações, documentos, referê
       <ul class="comp-ref-lista" id="comp-deveres"></ul>
     </div>
   </div>
+</section>
+
+<!-- ===================== SEÇÃO: GOVERNANÇA E CONTROLE ===================== -->
+<section id="governanca">
+  <h2 class="section-title">🏛️ Governança e Controle</h2>
+  <p class="gov-intro">
+    Por que é feito, quem controla e quem fiscaliza: princípios constitucionais da Administração Pública, órgãos de controle externo e interno, e hipóteses de responsabilização funcional aplicáveis à atuação da URE e das Unidades Escolares.
+  </p>
+
+  <div class="gov-alert">
+    <strong>Nota de conformidade:</strong> toda atuação administrativa deve possuir fundamento legal, competência definida, evidência documental e resultado verificável.
+  </div>
+
+  <div class="gov-secao-titulo">Princípios Constitucionais da Administração Pública</div>
+  <div class="gov-dashboard" id="gov-principios"></div>
+
+  <div class="gov-secao-titulo">Órgãos de Controle e Fiscalização</div>
+  <div class="gov-dashboard" id="gov-orgaos"></div>
+
+  <div class="gov-secao-titulo">Governança Interna</div>
+  <div class="gov-dashboard" id="gov-interna"></div>
 
   <div class="proc-card">
     <h3>Responsabilidade Funcional — Hipóteses</h3>
-    <ul class="comp-ref-lista" id="comp-responsabilidade"></ul>
-  </div>
-
-  <div class="proc-card">
-    <h3>Órgãos de Controle</h3>
-    <ul class="comp-ref-lista" id="comp-orgaos"></ul>
+    <ul class="comp-ref-lista" id="gov-responsabilidade"></ul>
   </div>
 </section>
 
-  
+<h2 class="section-title" id="links">Links Mais Utilizados</h2>
+<div class="links-grid">
+<a href="https://sei.sp.gov.br" class="link-card" target="_blank" rel="noopener">
+<h4>SEI</h4>
+<p>Sistema Eletrônico de Informações</p>
+</a>
+<a href="https://sed.educacao.sp.gov.br" class="link-card" target="_blank" rel="noopener">
+<h4>SED</h4>
+<p>Secretaria Escolar Digital</p>
+</a>
+<a href="https://portal.office.com" class="link-card" target="_blank" rel="noopener">
+<h4>Microsoft 365</h4>
+<p>Outlook, Teams e OneDrive</p>
+</a>
+<a href="https://copilot.microsoft.com" class="link-card" target="_blank" rel="noopener">
+<h4>Microsoft Copilot</h4>
+<p>Assistente de IA</p>
+</a>
+</div>
+
 <h2 class="section-title" id="documentos">
 📁 Biblioteca de Documentos
 </h2>
@@ -881,7 +963,22 @@ carregarDocumentos();
 /*
 Para adicionar um novo item, insira um novo objeto em LEGISLACAO_DATA
 seguindo a mesma estrutura: { area, modulo, titulo, descricao, link }
-area: "educacional" (URE/SEDUC-SP) ou "rfb" (concurso Auditor-Fiscal)
+area: "educacional" (único valor válido — escopo do portal restrito à
+atuação na URE-SBC / SEDUC-SP; conteúdo de concurso público federal
+(RFB) foi removido em definitivo desta seção).
+
+REVISÃO DE BASE LEGAL (verificação de duplicidade/contradição):
+- Decreto Estadual nº 66.800, de 31/05/2022: confirmado como o decreto
+  que "Dispõe sobre a concessão do Adicional de Transporte para
+  determinadas classes de servidores do Quadro do Magistério da
+  Secretaria da Educação do Estado de São Paulo." Referências
+  anteriores a um suposto "Decreto 66.880/2022" foram removidas do
+  código por não corresponderem a nenhuma norma confirmada — tratava-se
+  de erro de digitação do mesmo decreto.
+- A atribuição de "reorganização da SEDUC-SP / UREs" antes associada
+  ao Decreto 66.800/2022 foi removida deste item por não ser o objeto
+  da norma; se houver decreto específico de reorganização da SEDUC-SP,
+  cadastre-o como item separado quando confirmado.
 */
 const LEGISLACAO_DATA = [
   // ---------- EDUCACIONAL (SEDUC-SP / URE-SBC) ----------
@@ -924,8 +1021,8 @@ const LEGISLACAO_DATA = [
     link:"" },
 
   { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
-    titulo:"Decreto Estadual nº 66.800/2022",
-    descricao:"Reorganiza a SEDUC-SP e estabelece as atribuições das UREs e Diretorias de Ensino.",
+    titulo:"Decreto Estadual nº 66.800, de 31 de maio de 2022",
+    descricao:"Dispõe sobre a concessão do Adicional de Transporte para determinadas classes de servidores do Quadro do Magistério da Secretaria da Educação do Estado de São Paulo.",
     link:"https://www.al.sp.gov.br/legislacao/decreto-66800" },
   { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
     titulo:"Resolução SEDUC nº 15/2026",
@@ -939,7 +1036,6 @@ const LEGISLACAO_DATA = [
     titulo:"EC Estadual nº 49/2020 e LC Estadual nº 1.354/2020 (SPPREV)",
     descricao:"Reforma da Previdência dos servidores públicos estaduais de SP e regras de aposentadoria do magistério.",
     link:"https://www.spprev.sp.gov.br" },
-
   { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
     titulo:"Lei Complementar Estadual nº 1.080/2008",
     descricao:"Regula o cargo de Assistente Técnico e o Executivo Público na Administração Pública paulista.",
@@ -950,7 +1046,7 @@ const LEGISLACAO_DATA = [
     link:"" },
   { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
     titulo:"Decreto Estadual nº 69.665/2025",
-    descricao:"Reorganiza atribuições de cargos de direção/chefia (Chefe de Serviço e Chefe de Seção) na estrutura da SEDUC-SP. VERIFICAR: possível duplicidade/conflito com Decreto 66.800/2022 já cadastrado.",
+    descricao:"Reorganiza atribuições de cargos de direção/chefia (Chefe de Serviço e Chefe de Seção) na estrutura da SEDUC-SP.",
     link:"" },
   { area:"educacional", modulo:"1.3 Organização da URE, Atribuição e Previdência Paulista",
     titulo:"Resolução SEDUC nº 108/2025",
@@ -974,69 +1070,18 @@ const LEGISLACAO_DATA = [
     descricao:"CF art. 37, VII; Lei nº 7.783/1989; MI 670, 708 e 712 do STF — Tema 545 da Repercussão Geral (desconto de dias parados).",
     link:"https://jurisprudencia.stf.jus.br" },
 
-  // ---------- RFB (CONCURSO AUDITOR-FISCAL) ----------
-  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
-    titulo:"Constituição Federal — Arts. 37 a 41, 145 a 162, 163 a 169",
-    descricao:"Administração Pública, Sistema Tributário Nacional e Finanças Públicas.",
-    link:"https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" },
-  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
-    titulo:"Lei Federal nº 8.112/1990",
-    descricao:"Estatuto dos Servidores Públicos Civis da União — provimento, vacância, direitos, deveres e PAD.",
-    link:"https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm" },
-  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
-    titulo:"Lei Federal nº 14.133/2021",
-    descricao:"Nova Lei de Licitações e Contratos — regime unificado de licitações públicas e modalidades licitatórias.",
-    link:"https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm" },
-  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+  { area:"educacional", modulo:"1.5 Princípios, Transparência e Improbidade",
     titulo:"Lei Federal nº 9.784/1999",
-    descricao:"Regula o Processo Administrativo no âmbito da Administração Pública Federal.",
+    descricao:"Regula o Processo Administrativo no âmbito da Administração Pública Federal, aplicável subsidiariamente.",
     link:"https://www.planalto.gov.br/ccivil_03/leis/l9784.htm" },
-  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+  { area:"educacional", modulo:"1.5 Princípios, Transparência e Improbidade",
     titulo:"Lei Federal nº 8.429/1992 (alterada pela Lei nº 14.230/2021)",
     descricao:"Lei de Improbidade Administrativa e saneamento da gestão pública.",
     link:"https://www.planalto.gov.br/ccivil_03/leis/l8429.htm" },
-  { area:"rfb", modulo:"2.1 Direito Constitucional, Administrativo e Licitações",
+  { area:"educacional", modulo:"1.5 Princípios, Transparência e Improbidade",
     titulo:"Lei Federal nº 12.527/2011 (LAI) e Lei nº 13.709/2018 (LGPD)",
     descricao:"Transparência pública, acesso à informação e proteção de dados pessoais.",
-    link:"https://www.planalto.gov.br/ccivil_03/leis/l12527.htm" },
-
-  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
-    titulo:"Código Tributário Nacional — CTN (Lei nº 5.172/1966)",
-    descricao:"Normas gerais de direito tributário: obrigação, crédito, lançamento, imunidades e vigência.",
-    link:"https://www.planalto.gov.br/ccivil_03/leis/l5172compilado.htm" },
-  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
-    titulo:"Emenda Constitucional nº 132/2023 (Reforma Tributária)",
-    descricao:"Altera o Sistema Tributário Nacional, criando o IBS, CBS e Imposto Seletivo. Prioridade máxima para o concurso.",
-    link:"https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm" },
-  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
-    titulo:"Decreto nº 70.235/1972",
-    descricao:"Regulamenta o Processo Administrativo Fiscal (PAF) e o contencioso administrativo de créditos tributários federais.",
-    link:"https://www.planalto.gov.br/ccivil_03/decreto/d70235cons.htm" },
-  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
-    titulo:"Decreto nº 6.759/2009 (Regulamento Aduaneiro)",
-    descricao:"Administração das atividades aduaneiras, fiscalização, controle e tributação do comércio exterior.",
-    link:"https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/decreto/d6759.htm" },
-  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
-    titulo:"Lei nº 8.137/1990",
-    descricao:"Define os crimes contra a ordem tributária, econômica e contra as relações de consumo.",
-    link:"https://www.planalto.gov.br/ccivil_03/leis/l8137.htm" },
-  { area:"rfb", modulo:"2.2 Direito Tributário, Processual Fiscal e Legislação Aduaneira",
-    titulo:"Decreto-Lei nº 1.455/1976",
-    descricao:"Dispõe sobre bagagem, apreensão e pena de perdimento de mercadorias no comércio exterior.",
-    link:"https://www.planalto.gov.br/ccivil_03/decreto-lei/del1455.htm" },
-
-  { area:"rfb", modulo:"2.3 Direito Financeiro, Previdenciário e Responsabilidade Fiscal",
-    titulo:"Lei Complementar nº 101/2000 (LRF)",
-    descricao:"Lei de Responsabilidade Fiscal — normas de finanças públicas voltadas à responsabilidade na gestão fiscal.",
-    link:"https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm" },
-  { area:"rfb", modulo:"2.3 Direito Financeiro, Previdenciário e Responsabilidade Fiscal",
-    titulo:"Lei Federal nº 4.320/1964",
-    descricao:"Normas gerais de Direito Financeiro para elaboração e controle dos orçamentos e balanços públicos.",
-    link:"https://www.planalto.gov.br/ccivil_03/leis/l4320.htm" },
-  { area:"rfb", modulo:"2.3 Direito Financeiro, Previdenciário e Responsabilidade Fiscal",
-    titulo:"Lei Federal nº 8.212/1991 (Custeio) e Lei nº 8.213/1991 (Benefícios)",
-    descricao:"Organização da Seguridade Social, plano de custeio, contribuições sociais e benefícios do RGPS.",
-    link:"https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm" },
+    link:"https://www.planalto.gov.br/ccivil_03/leis/l12527.htm" }
 ];
 
 const legState = { area:"todos", busca:"" };
@@ -1086,7 +1131,7 @@ function renderLegislacao(){
         <div class="leg-item">
           <div class="leg-item-head">
             <span class="leg-item-titulo">${item.titulo}</span>
-            <span class="leg-badge ${item.area}">${item.area === 'educacional' ? 'URE' : 'RFB'}</span>
+            <span class="leg-badge educacional">URE</span>
           </div>
           <div class="leg-item-desc">${item.descricao}</div>
           <div class="leg-item-footer">
@@ -1357,167 +1402,6 @@ function freqFiltrar(){
   });
 }
 
-
-//
-
-/* ===================== MÓDULO: COMPETÊNCIAS E RESPONSABILIDADE FUNCIONAL ===================== */
-/*
-COMPETENCIAS_DATA: transcrito do "Manual de Competências, Responsabilidades
-e Conformidade Administrativa". categoria usada para filtro/badge.
-baseLegal segue o mesmo padrão de string-livre usado em PROCESSOS_SUPERVISAO
-(sem necessidade de referenciar IDs do LEGISLACAO_DATA).
-*/
-const COMPETENCIAS_DATA = [
-  { id:"dirigente-regional", titulo:"Coordenadora Geral – Dirigente Regional de Ensino", categoria:"direcao",
-    baseLegal:["LC 444/1985","LC 836/1997","Decreto 69.665/2025 (verificar conflito com Decreto 66.800/2022)","Resolução SEDUC 108/2025"],
-    atribuicoes:["Representar institucionalmente a URE","Gerir recursos humanos e materiais","Determinar prioridades administrativas","Acompanhar metas e indicadores","Responder pelos resultados regionais"],
-    produtos:[] },
-  { id:"supervisor-ensino", titulo:"Supervisor de Ensino", categoria:"supervisao",
-    baseLegal:["LC 444/1985","LC 836/1997","Normas da Supervisão Educacional"],
-    atribuicoes:["Fiscalizar unidades escolares","Produzir Termo de Visita","Emitir pareceres","Acompanhar atos escolares","Orientar equipes gestoras"],
-    produtos:["Termos de Visita","Relatórios","Pareceres Técnicos"] },
-  { id:"pec", titulo:"Professor Especialista em Currículo (PEC)", categoria:"pedagogico",
-    baseLegal:[],
-    atribuicoes:["Orientação curricular","Formação continuada","Acompanhamento pedagógico","Monitoramento dos indicadores"],
-    produtos:[] },
-  { id:"diretor-escolar", titulo:"Diretor Escolar", categoria:"direcao",
-    baseLegal:[],
-    atribuicoes:["Gestão pedagógica","Gestão administrativa","Prestação de contas","Cumprimento da legislação educacional"],
-    produtos:[] },
-  { id:"vice-diretor", titulo:"Vice-Diretor Escolar", categoria:"direcao",
-    baseLegal:[],
-    atribuicoes:["Auxiliar a direção","Substituir o diretor","Acompanhar frequência e rotina escolar"],
-    produtos:[] },
-  { id:"coordenador-pedagogico", titulo:"Coordenador de Gestão Pedagógica", categoria:"pedagogico",
-    baseLegal:[],
-    atribuicoes:["Planejamento pedagógico","Formação docente","Monitoramento da aprendizagem"],
-    produtos:[] },
-  { id:"professor", titulo:"Professor", categoria:"pedagogico",
-    baseLegal:[],
-    atribuicoes:["Planejamento das aulas","Avaliação dos estudantes","Registro escolar","Cumprimento da proposta pedagógica"],
-    produtos:[] },
-  { id:"assistente-tecnico", titulo:"Assistente Técnico", categoria:"tecnico",
-    baseLegal:["LC 1.080/2008","Lei 10.261/1968"],
-    atribuicoes:["Produção de pareceres","Monitoramento de processos","Análise técnica","Planejamento administrativo"],
-    produtos:[] },
-  { id:"executivo-publico", titulo:"Executivo Público", categoria:"tecnico",
-    baseLegal:["LC 1.034/2008","LC 1.080/2008","Lei 10.261/1968"],
-    atribuicoes:["Instrução processual","Produção de informações","Análise documental","Elaboração de relatórios"],
-    produtos:[] },
-  { id:"oficial-administrativo", titulo:"Oficial Administrativo", categoria:"tecnico",
-    baseLegal:[],
-    atribuicoes:["Organização documental","Protocolos","Atendimento","Controle administrativo"],
-    produtos:[] },
-  { id:"agente-organizacao-escolar", titulo:"Agente de Organização Escolar", categoria:"apoio",
-    baseLegal:[],
-    atribuicoes:["Matrícula","Expedição documental","Histórico escolar","Vida escolar"],
-    produtos:[] },
-  { id:"agente-servicos-escolares", titulo:"Agente de Serviços Escolares", categoria:"apoio",
-    baseLegal:[],
-    atribuicoes:["Conservação","Limpeza","Apoio operacional","Zelo pelo patrimônio público"],
-    produtos:[] },
-  { id:"chefe-servico", titulo:"Chefe de Serviço", categoria:"tecnico",
-    baseLegal:["Decreto 69.665/2025 (verificar conflito com Decreto 66.800/2022)","Resolução SEDUC 108/2025"],
-    atribuicoes:["Coordenar unidades subordinadas","Controlar resultados","Distribuir demandas","Acompanhar desempenho das equipes"],
-    produtos:[] },
-  { id:"chefe-secao", titulo:"Chefe de Seção", categoria:"tecnico",
-    baseLegal:["Decreto 69.665/2025 (verificar conflito com Decreto 66.800/2022)","Resolução SEDUC 108/2025"],
-    atribuicoes:["Coordenar atividades da seção","Distribuir tarefas","Monitorar produtividade","Controlar prazos"],
-    produtos:[] }
-];
-
-const CATEGORIA_LABEL = {
-  direcao:"Direção", supervisao:"Supervisão", pedagogico:"Pedagógico",
-  tecnico:"Técnico/Administrativo", apoio:"Apoio Operacional"
-};
-
-const DIREITOS_SERVIDOR = ["Férias","Licença-Prêmio","Aposentadoria","Sexta-Parte","Adicional por Tempo de Serviço","Demais benefícios legais"];
-const DEVERES_SERVIDOR = ["Assiduidade","Pontualidade","Eficiência","Zelo pelo patrimônio público","Cumprimento das atribuições","Prestação de informações quando exigido","Respeito à hierarquia legal","Urbanidade"];
-const RESPONSABILIDADE_FUNCIONAL = ["Descumprimento das atribuições legais","Omissão administrativa","Não observância dos deveres funcionais","Ausência de registros obrigatórios","Desatendimento às normas institucionais","Desrespeito aos princípios da Administração Pública"];
-const ORGAOS_CONTROLE = ["Tribunal de Contas do Estado de São Paulo","Controladoria Geral do Estado","Corregedoria Geral da Administração","Ministério Público","Ouvidoria Geral","Controle Interno da SEDUC"];
-
-const compState = { categoria:"todos", busca:"" };
-
-function compFiltrar(){
-  const termo = legNormaliza(compState.busca);
-  return COMPETENCIAS_DATA.filter(item=>{
-    const catOk = compState.categoria === "todos" || item.categoria === compState.categoria;
-    if(!catOk) return false;
-    if(!termo) return true;
-    const alvo = legNormaliza([item.titulo, ...item.atribuicoes, ...item.baseLegal].join(" "));
-    return alvo.includes(termo);
-  });
-}
-
-function renderCompetencias(){
-  const lista = compFiltrar();
-  const container = document.getElementById("comp-lista");
-  const contador = document.getElementById("comp-contador");
-  if(!container) return;
-  contador.textContent = `${lista.length} cargo(s) encontrado(s)`;
-
-  if(lista.length === 0){
-    container.innerHTML = `<div class="leg-empty">Nenhum cargo encontrado para os filtros atuais.</div>`;
-    return;
-  }
-
-  container.innerHTML = lista.map(item => `
-    <div class="leg-item">
-      <div class="leg-item-head">
-        <span class="leg-item-titulo">${item.titulo}</span>
-        <span class="leg-badge ${item.categoria}">${CATEGORIA_LABEL[item.categoria]}</span>
-      </div>
-      ${item.baseLegal.length ? `
-        <div class="comp-bloco">
-          <div class="comp-bloco-titulo">Base Legal</div>
-          <ul class="comp-lista">${item.baseLegal.map(b => `<li>${b}</li>`).join("")}</ul>
-        </div>` : ""}
-      <div class="comp-bloco">
-        <div class="comp-bloco-titulo">Atribuições</div>
-        <ul class="comp-lista">${item.atribuicoes.map(a => `<li>${a}</li>`).join("")}</ul>
-      </div>
-      ${item.produtos.length ? `
-        <div class="comp-bloco">
-          <div class="comp-bloco-titulo">Produtos Obrigatórios</div>
-          <ul class="comp-lista">${item.produtos.map(p => `<li>${p}</li>`).join("")}</ul>
-        </div>` : ""}
-    </div>
-  `).join("");
-}
-
-function renderReferenciasCompetencias(){
-  const elDireitos = document.getElementById("comp-direitos");
-  const elDeveres = document.getElementById("comp-deveres");
-  const elResp = document.getElementById("comp-responsabilidade");
-  const elOrgaos = document.getElementById("comp-orgaos");
-  if(elDireitos) elDireitos.innerHTML = DIREITOS_SERVIDOR.map(d => `<li>${d}</li>`).join("");
-  if(elDeveres) elDeveres.innerHTML = DEVERES_SERVIDOR.map(d => `<li>${d}</li>`).join("");
-  if(elResp) elResp.innerHTML = RESPONSABILIDADE_FUNCIONAL.map(r => `<li>${r}</li>`).join("");
-  if(elOrgaos) elOrgaos.innerHTML = ORGAOS_CONTROLE.map(o => `<li>${o}</li>`).join("");
-}
-
-document.getElementById("comp-busca").addEventListener("input", e=>{
-  compState.busca = e.target.value;
-  renderCompetencias();
-});
-
-document.getElementById("comp-filtros").addEventListener("click", e=>{
-  const btn = e.target.closest(".leg-filtro-btn");
-  if(!btn) return;
-  compState.categoria = btn.dataset.categoria;
-  document.querySelectorAll("#comp-filtros .leg-filtro-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  renderCompetencias();
-});
-
-renderCompetencias();
-renderReferenciasCompetencias();
-
-
-  ///
-
-
-  
 function renderFrequencia(){
   const lista = freqFiltrar();
   const container = document.getElementById("freq-lista");
@@ -1576,13 +1460,257 @@ document.getElementById("freq-filtros").addEventListener("click", e=>{
 
 renderFrequencia();
 
-/* ===================== PROCESSOS ESTRATÉGICOS — CONFIG + RENDER ===================== */
+/* ===================== MÓDULO: COMPETÊNCIAS ===================== */
+/*
+COMPETENCIAS_DATA: transcrito do "Manual de Competências, Responsabilidades
+e Conformidade Administrativa". categoria usada para filtro/badge.
+baseLegal segue o mesmo padrão de string-livre usado em PROCESSOS_SUPERVISAO
+(sem necessidade de referenciar IDs do LEGISLACAO_DATA).
+As hipóteses de Responsabilidade Funcional e os Órgãos de Controle foram
+deslocados para a seção Governança e Controle (#governanca), por serem
+"quem fiscaliza / por que se responde", não "quem é responsável pela
+execução". Este módulo mantém apenas Direitos e Deveres, que descrevem
+o próprio servidor.
+*/
+const COMPETENCIAS_DATA = [
+  { id:"dirigente-regional", titulo:"Coordenadora Geral – Dirigente Regional de Ensino", categoria:"direcao",
+    baseLegal:["LC 444/1985","LC 836/1997","Decreto 69.665/2025","Resolução SEDUC 108/2025"],
+    atribuicoes:["Representar institucionalmente a URE","Gerir recursos humanos e materiais","Determinar prioridades administrativas","Acompanhar metas e indicadores","Responder pelos resultados regionais"],
+    produtos:[] },
+  { id:"supervisor-ensino", titulo:"Supervisor de Ensino", categoria:"supervisao",
+    baseLegal:["LC 444/1985","LC 836/1997","Normas da Supervisão Educacional"],
+    atribuicoes:["Fiscalizar unidades escolares","Produzir Termo de Visita","Emitir pareceres","Acompanhar atos escolares","Orientar equipes gestoras"],
+    produtos:["Termos de Visita","Relatórios","Pareceres Técnicos"] },
+  { id:"pec", titulo:"Professor Especialista em Currículo (PEC)", categoria:"pedagogico",
+    baseLegal:[],
+    atribuicoes:["Orientação curricular","Formação continuada","Acompanhamento pedagógico","Monitoramento dos indicadores"],
+    produtos:[] },
+  { id:"diretor-escolar", titulo:"Diretor Escolar", categoria:"direcao",
+    baseLegal:[],
+    atribuicoes:["Gestão pedagógica","Gestão administrativa","Prestação de contas","Cumprimento da legislação educacional"],
+    produtos:[] },
+  { id:"vice-diretor", titulo:"Vice-Diretor Escolar", categoria:"direcao",
+    baseLegal:[],
+    atribuicoes:["Auxiliar a direção","Substituir o diretor","Acompanhar frequência e rotina escolar"],
+    produtos:[] },
+  { id:"coordenador-pedagogico", titulo:"Coordenador de Gestão Pedagógica", categoria:"pedagogico",
+    baseLegal:[],
+    atribuicoes:["Planejamento pedagógico","Formação docente","Monitoramento da aprendizagem"],
+    produtos:[] },
+  { id:"professor", titulo:"Professor", categoria:"pedagogico",
+    baseLegal:[],
+    atribuicoes:["Planejamento das aulas","Avaliação dos estudantes","Registro escolar","Cumprimento da proposta pedagógica"],
+    produtos:[] },
+  { id:"assistente-tecnico", titulo:"Assistente Técnico", categoria:"tecnico",
+    baseLegal:["LC 1.080/2008","Lei 10.261/1968"],
+    atribuicoes:["Produção de pareceres","Monitoramento de processos","Análise técnica","Planejamento administrativo"],
+    produtos:[] },
+  { id:"executivo-publico", titulo:"Executivo Público", categoria:"tecnico",
+    baseLegal:["LC 1.034/2008","LC 1.080/2008","Lei 10.261/1968"],
+    atribuicoes:["Instrução processual","Produção de informações","Análise documental","Elaboração de relatórios"],
+    produtos:[] },
+  { id:"oficial-administrativo", titulo:"Oficial Administrativo", categoria:"tecnico",
+    baseLegal:[],
+    atribuicoes:["Organização documental","Protocolos","Atendimento","Controle administrativo"],
+    produtos:[] },
+  { id:"agente-organizacao-escolar", titulo:"Agente de Organização Escolar", categoria:"apoio",
+    baseLegal:[],
+    atribuicoes:["Matrícula","Expedição documental","Histórico escolar","Vida escolar"],
+    produtos:[] },
+  { id:"agente-servicos-escolares", titulo:"Agente de Serviços Escolares", categoria:"apoio",
+    baseLegal:[],
+    atribuicoes:["Conservação","Limpeza","Apoio operacional","Zelo pelo patrimônio público"],
+    produtos:[] },
+  { id:"chefe-servico", titulo:"Chefe de Serviço", categoria:"tecnico",
+    baseLegal:["Decreto 69.665/2025","Resolução SEDUC 108/2025"],
+    atribuicoes:["Coordenar unidades subordinadas","Controlar resultados","Distribuir demandas","Acompanhar desempenho das equipes"],
+    produtos:[] },
+  { id:"chefe-secao", titulo:"Chefe de Seção", categoria:"tecnico",
+    baseLegal:["Decreto 69.665/2025","Resolução SEDUC 108/2025"],
+    atribuicoes:["Coordenar atividades da seção","Distribuir tarefas","Monitorar produtividade","Controlar prazos"],
+    produtos:[] }
+];
 
+const CATEGORIA_LABEL = {
+  direcao:"Direção", supervisao:"Supervisão", pedagogico:"Pedagógico",
+  tecnico:"Técnico/Administrativo", apoio:"Apoio Operacional"
+};
+
+const DIREITOS_SERVIDOR = ["Férias","Licença-Prêmio","Aposentadoria","Sexta-Parte","Adicional por Tempo de Serviço","Demais benefícios legais"];
+const DEVERES_SERVIDOR = ["Assiduidade","Pontualidade","Eficiência","Zelo pelo patrimônio público","Cumprimento das atribuições","Prestação de informações quando exigido","Respeito à hierarquia legal","Urbanidade"];
+
+const compState = { categoria:"todos", busca:"" };
+
+function compFiltrar(){
+  const termo = legNormaliza(compState.busca);
+  return COMPETENCIAS_DATA.filter(item=>{
+    const catOk = compState.categoria === "todos" || item.categoria === compState.categoria;
+    if(!catOk) return false;
+    if(!termo) return true;
+    const alvo = legNormaliza([item.titulo, ...item.atribuicoes, ...item.baseLegal].join(" "));
+    return alvo.includes(termo);
+  });
+}
+
+function renderCompetencias(){
+  const lista = compFiltrar();
+  const container = document.getElementById("comp-lista");
+  const contador = document.getElementById("comp-contador");
+  if(!container) return;
+  contador.textContent = `${lista.length} cargo(s) encontrado(s)`;
+
+  if(lista.length === 0){
+    container.innerHTML = `<div class="leg-empty">Nenhum cargo encontrado para os filtros atuais.</div>`;
+    return;
+  }
+
+  container.innerHTML = lista.map(item => `
+    <div class="leg-item">
+      <div class="leg-item-head">
+        <span class="leg-item-titulo">${item.titulo}</span>
+        <span class="leg-badge ${item.categoria}">${CATEGORIA_LABEL[item.categoria]}</span>
+      </div>
+      ${item.baseLegal.length ? `
+        <div class="comp-bloco">
+          <div class="comp-bloco-titulo">Base Legal</div>
+          <ul class="comp-lista">${item.baseLegal.map(b => `<li>${b}</li>`).join("")}</ul>
+        </div>` : ""}
+      <div class="comp-bloco">
+        <div class="comp-bloco-titulo">Atribuições</div>
+        <ul class="comp-lista">${item.atribuicoes.map(a => `<li>${a}</li>`).join("")}</ul>
+      </div>
+      ${item.produtos.length ? `
+        <div class="comp-bloco">
+          <div class="comp-bloco-titulo">Produtos Obrigatórios</div>
+          <ul class="comp-lista">${item.produtos.map(p => `<li>${p}</li>`).join("")}</ul>
+        </div>` : ""}
+    </div>
+  `).join("");
+}
+
+function renderReferenciasCompetencias(){
+  const elDireitos = document.getElementById("comp-direitos");
+  const elDeveres = document.getElementById("comp-deveres");
+  if(elDireitos) elDireitos.innerHTML = DIREITOS_SERVIDOR.map(d => `<li>${d}</li>`).join("");
+  if(elDeveres) elDeveres.innerHTML = DEVERES_SERVIDOR.map(d => `<li>${d}</li>`).join("");
+}
+
+document.getElementById("comp-busca").addEventListener("input", e=>{
+  compState.busca = e.target.value;
+  renderCompetencias();
+});
+
+document.getElementById("comp-filtros").addEventListener("click", e=>{
+  const btn = e.target.closest(".leg-filtro-btn");
+  if(!btn) return;
+  compState.categoria = btn.dataset.categoria;
+  document.querySelectorAll("#comp-filtros .leg-filtro-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderCompetencias();
+});
+
+renderCompetencias();
+renderReferenciasCompetencias();
+
+/* ===================== MÓDULO: GOVERNANÇA E CONTROLE ===================== */
+/*
+Terceiro pilar do portal: PROCESSOS (o que precisa ser feito) →
+COMPETÊNCIAS (quem é responsável) → GOVERNANÇA (por que é feito, quem
+controla e quem fiscaliza). Conteúdo estático de referência, sem
+busca/filtro (mesmo critério já usado nos blocos de Direitos/Deveres).
+*/
+const GOV_PRINCIPIOS = [
+  { titulo:"Legalidade", desc:"A Administração só pode agir conforme autorizado em lei." },
+  { titulo:"Impessoalidade", desc:"Atuação voltada ao interesse público, sem favorecimentos." },
+  { titulo:"Moralidade", desc:"Conduta ética e proba no exercício da função pública." },
+  { titulo:"Publicidade", desc:"Transparência dos atos administrativos, salvo sigilo legal." },
+  { titulo:"Eficiência", desc:"Boa gestão de recursos e resultados na prestação do serviço público." },
+  { titulo:"Transparência", desc:"Acesso à informação e clareza na tomada de decisões." },
+  { titulo:"Prestação de Contas", desc:"Dever de justificar o uso de recursos e o cumprimento de metas." }
+];
+
+const GOV_ORGAOS = [
+  { titulo:"Tribunal de Contas do Estado", icone:"⚖️",
+    itens:["Fiscalização de contratos","Controle patrimonial","Transporte escolar","Prestação de contas"],
+    link:"https://www.tce.sp.gov.br" },
+  { titulo:"Controladoria Geral do Estado", icone:"🔍",
+    itens:["Controle interno","Integridade institucional","Gestão de riscos","Auditoria"],
+    link:"https://www.cge.sp.gov.br" },
+  { titulo:"Corregedoria Geral da Administração", icone:"📋",
+    itens:["Sindicâncias","Processo Administrativo Disciplinar (PAD)","Responsabilidade funcional"],
+    link:"" },
+  { titulo:"Ministério Público", icone:"🏛️",
+    itens:["Direito à educação","Inclusão e acessibilidade","Proteção dos estudantes"],
+    link:"https://www.mpsp.mp.br" },
+  { titulo:"Ouvidoria", icone:"📣",
+    itens:["Canal de manifestação do cidadão","Recebimento de denúncias e sugestões","Acompanhamento de demandas"],
+    link:"https://www.ouvidoria.sp.gov.br" }
+];
+
+const GOV_INTERNA = [
+  { titulo:"Gestão por Resultados", classe:"principios",
+    desc:"Acompanhamento de metas e indicadores como base da atuação administrativa da URE." },
+  { titulo:"Gestão de Riscos", classe:"principios",
+    desc:"Identificação e mitigação preventiva de riscos operacionais e de conformidade." },
+  { titulo:"Integridade Pública", classe:"principios",
+    desc:"Conjunto de mecanismos de prevenção, detecção e remediação de fraude e corrupção." },
+  { titulo:"Normas Fundamentais", classe:"principios",
+    desc:"Constituição Federal, Constituição Estadual e legislação de regência da Administração Pública paulista." }
+];
+
+const GOV_RESPONSABILIDADE_FUNCIONAL = ["Descumprimento das atribuições legais","Omissão administrativa","Não observância dos deveres funcionais","Ausência de registros obrigatórios","Desatendimento às normas institucionais","Desrespeito aos princípios da Administração Pública"];
+
+function renderGovernanca(){
+  const elPrincipios = document.getElementById("gov-principios");
+  const elOrgaos = document.getElementById("gov-orgaos");
+  const elInterna = document.getElementById("gov-interna");
+  const elResp = document.getElementById("gov-responsabilidade");
+
+  if(elPrincipios){
+    elPrincipios.innerHTML = GOV_PRINCIPIOS.map(p => `
+      <div class="gov-card principios">
+        <h3>${p.titulo}</h3>
+        <p>${p.desc}</p>
+      </div>
+    `).join("");
+  }
+
+  if(elOrgaos){
+    elOrgaos.innerHTML = GOV_ORGAOS.map(o => `
+      <div class="gov-card controle">
+        <h3>${o.icone} ${o.titulo}</h3>
+        <ul>${o.itens.map(i => `<li>${i}</li>`).join("")}</ul>
+        ${o.link ? `<a href="${o.link}" target="_blank" rel="noopener">Site oficial ↗</a>` : ""}
+      </div>
+    `).join("");
+  }
+
+  if(elInterna){
+    elInterna.innerHTML = GOV_INTERNA.map(g => `
+      <div class="gov-card ${g.classe}">
+        <h3>${g.titulo}</h3>
+        <p>${g.desc}</p>
+      </div>
+    `).join("");
+  }
+
+  if(elResp){
+    elResp.innerHTML = GOV_RESPONSABILIDADE_FUNCIONAL.map(r => `<li>${r}</li>`).join("");
+  }
+}
+
+renderGovernanca();
+
+/* ===================== PROCESSOS ESTRATÉGICOS — CONFIG + RENDER ===================== */
 
 /*
 PROCESSOS_SUPERVISAO: números abaixo são EXEMPLO DE FORMATO
 (015.12345678/26-00). Substitua "numeroSei" pelo número real de cada
 processo assim que estiver disponível.
+O item "ptm" (Adicional de Transporte) referencia o Decreto Estadual
+nº 66.800/2022, norma correta e confirmada para esta matéria. Os
+demais itens (Termos de Visita e seu controle anual) não tratam de
+adicional de transporte e por isso não referenciam esse decreto.
 */
 const PROCESSOS_SUPERVISAO = [
   {
@@ -1591,6 +1719,7 @@ const PROCESSOS_SUPERVISAO = [
     numeroSei:"015.00468180/2024-31",
     baseLegal:[
       "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
+      "Decreto Estadual nº 66.800/2022 – Concessão do Adicional de Transporte ao Quadro do Magistério",
       "PTM – Registro e monitoramento mensal das atividades desenvolvidas"
     ]
   },
@@ -1600,7 +1729,7 @@ const PROCESSOS_SUPERVISAO = [
     numeroSei:"015.00023902/2026-93",
     baseLegal:[
       "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
-      "Decreto 66.800/2022 – Planejamento, acompanhamento e controle das atividades funcionais"
+      "Decreto 66.800/2022 (verificar aplicabilidade — norma trata de Adicional de Transporte)"
     ]
   },
   {
@@ -1609,7 +1738,7 @@ const PROCESSOS_SUPERVISAO = [
     numeroSei:"015.00024044/2026-02",
     baseLegal:[
       "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
-      "Decreto 66.800/2022 – Planejamento, acompanhamento e controle das atividades funcionais"
+      "Decreto Estadual nº 66.800/2022 – Concessão do Adicional de Transporte ao Quadro do Magistério"
     ]
   }
 ];
@@ -1630,17 +1759,17 @@ const LEGISLACAO_SUPERVISAO = [
         titulo:"Lei Complementar nº 679/1992",
         resumo:"Norma de base: institui e regulamenta o regime de trabalho, as atribuições e os critérios de avaliação de desempenho e controle das atividades dos servidores.",
         link:""
-      },
-      {
-        titulo:"Decreto nº 66.800/2022",
-        resumo:"Planejamento, acompanhamento e controle das atividades funcionais da Supervisão.",
-        link:""
       }
     ]
   },
   {
     tema:"Transporte Escolar",
     itens:[
+      {
+        titulo:"Decreto Estadual nº 66.800, de 31 de maio de 2022",
+        resumo:"Dispõe sobre a concessão do Adicional de Transporte para determinadas classes de servidores do Quadro do Magistério da Secretaria da Educação do Estado de São Paulo.",
+        link:""
+      },
       {
         titulo:"Resolução SEDUC nº 161/2025",
         resumo:"Institui o Programa de Transporte Escolar Paulista (TESP); revoga a Resolução SE nº 27/2011 e atualiza critérios de concessão, modalidades e procedimentos.",
@@ -1754,1046 +1883,166 @@ interface pública (o portal pode ser acessado por supervisores e
 escolas — nenhuma ação destrutiva fica visível para o usuário).
 */
 const ESCOLAS_PROCESSOS = [
-  {
-    id:"escola_009283",
-    codigo:"009283",
-    nome:"EE 20 De Agosto",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008936",
-    codigo:"008936",
-    nome:"EE Adail Luiz Miller, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009441",
-    codigo:"009441",
-    nome:"EE Alfredo Burkart, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009180",
-    codigo:"009180",
-    nome:"EE Amadeu Olivério, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009325",
-    codigo:"009325",
-    nome:"EE Anésia Loureiro Gama, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008990",
-    codigo:"008990",
-    nome:"EE Antonio Caputo",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009039",
-    codigo:"009039",
-    nome:"EE Antonio Nascimento, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_921105",
-    codigo:"921105",
-    nome:"EE Ayrton Senna da Silva",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009088",
-    codigo:"009088",
-    nome:"EE Baeta Neves, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009573",
-    codigo:"009573",
-    nome:"EE Bonifácio de Carvalho, Coronel",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_042055",
-    codigo:"042055",
-    nome:"EE Brazilia Tondi de Lima",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009246",
-    codigo:"009246",
-    nome:"EE Carlos Pezzolo, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_011809",
-    codigo:"011809",
-    nome:"EE Celso Furtado",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_915750",
-    codigo:"915750",
-    nome:"EE Célio Luiz Negrini, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_910764",
-    codigo:"910764",
-    nome:"EE Clarice de Magalhães Castro, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009124",
-    codigo:"009124",
-    nome:"EE Clóvis de Lucca, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009337",
-    codigo:"009337",
-    nome:"EE Cynira Pires dos Santos, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_041269",
-    codigo:"041269",
-    nome:"EE Domingos Peixoto da Silva, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009436",
-    codigo:"009436",
-    nome:"EE Edgar Alves da Cunha, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008849",
-    codigo:"008849",
-    nome:"EE Euclydes Deslandes, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_041257",
-    codigo:"041257",
-    nome:"EE Faustina Pinheiro da Silva, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008801",
-    codigo:"008801",
-    nome:"EE Fausto Cardoso Figueira de Mello, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_904958",
-    codigo:"904958",
-    nome:"EE Francisco Cristiano Lima Freitas",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008758",
-    codigo:"008758",
-    nome:"EE Francisco Emygdio Pereira Neto, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008886",
-    codigo:"008886",
-    nome:"EE Francisco Prestes Maia, Eng.º",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009581",
-    codigo:"009581",
-    nome:"EE Idalina Macedo Costa Sodré, Dona",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_046516",
-    codigo:"046516",
-    nome:"EE Ismael da Silva Junior, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008977",
-    codigo:"008977",
-    nome:"EE Jacob Casseb, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_041294",
-    codigo:"041294",
-    nome:"EE Jean Piaget",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008813",
-    codigo:"008813",
-    nome:"EE João Batista Bernardes",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008837",
-    codigo:"008837",
-    nome:"EE João Firmino Correia de Araújo, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009404",
-    codigo:"009404",
-    nome:"EE Joana Motta, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009261",
-    codigo:"009261",
-    nome:"EE João Ramalho",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"015.00058550/2026-97",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009167",
-    codigo:"009167",
-    nome:"EE Joaquim Moreira Bernardes, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009003",
-    codigo:"009003",
-    nome:"EE Jorge Rahme, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009106",
-    codigo:"009106",
-    nome:"EE José Fornari, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008928",
-    codigo:"008928",
-    nome:"EE José Gonçalves de Andrade Figueira, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008904",
-    codigo:"008904",
-    nome:"EE José Jorge do Amaral, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_041270",
-    codigo:"041270",
-    nome:"EE Julieta Vianna Simões de Sant'anna, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008825",
-    codigo:"008825",
-    nome:"EE Laudo Ferreira de Camargo, Ministro",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009234",
-    codigo:"009234",
-    nome:"EE Lauro Gomes de Almeida",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_902020",
-    codigo:"902020",
-    nome:"EE Luis dos Santos, Metalúrgico",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009155",
-    codigo:"009155",
-    nome:"EE Luiza Collaço Queiroz Fonseca, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_922924",
-    codigo:"922924",
-    nome:"EE Marco Antonio Prudente de Toledo, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_908757",
-    codigo:"908757",
-    nome:"EE Maria Auxiliadora Marques, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009477",
-    codigo:"009477",
-    nome:"EE Maria da Conceição Moura Branco, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_038519",
-    codigo:"038519",
-    nome:"EE Maria Cristina Schmidt Miranda, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009210",
-    codigo:"009210",
-    nome:"EE Maria Iracema Munhoz",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009118",
-    codigo:"009118",
-    nome:"EE Maria Luiza Ferrari Cícero, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_011808",
-    codigo:"011808",
-    nome:"EE Maria Nilde Mascellani",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_041282",
-    codigo:"041282",
-    nome:"EE Maria Osório Teixeira, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008916",
-    codigo:"008916",
-    nome:"EE Maria Pires, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_917515",
-    codigo:"917515",
-    nome:"EE Maria Regina Demarchi Fanani",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009350",
-    codigo:"009350",
-    nome:"EE Maria Trujilo Torloni",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_907182",
-    codigo:"907182",
-    nome:"EE Mario Franciscon",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_904971",
-    codigo:"904971",
-    nome:"EE Maristela Vieira, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008898",
-    codigo:"008898",
-    nome:"EE Mathias Octávio Roxo Nobre, Dr.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009131",
-    codigo:"009131",
-    nome:"EE Mauricio Antunes Ferraz, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_924428",
-    codigo:"924428",
-    nome:"EE Mauricio de Castro (São Pedro)",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009015",
-    codigo:"009015",
-    nome:"EE Mizuho Abundância",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_041300",
-    codigo:"041300",
-    nome:"EE Nail Franco de Mello Boni, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_921543",
-    codigo:"921543",
-    nome:"EE Nelson Monteiro Palma, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_908745",
-    codigo:"908745",
-    nome:"EE Neusa Figueiredo Marçal, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_913807",
-    codigo:"913807",
-    nome:"EE Omar Daibert, Reverendo",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008771",
-    codigo:"008771",
-    nome:"EE Omar Donato Bassani",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_042043",
-    codigo:"042043",
-    nome:"EE Palmira Grassiotto Ferreira da Silva, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008874",
-    codigo:"008874",
-    nome:"EE Robert Kennedy, Senador",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009313",
-    codigo:"009313",
-    nome:"EE Rudge Ramos",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_011806",
-    codigo:"011806",
-    nome:"EE Ruth de Souza",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_042031",
-    codigo:"042031",
-    nome:"EE Santa Dalmolin Demarchi",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_008941",
-    codigo:"008941",
-    nome:"EE Santa Olimpia",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_923904",
-    codigo:"923904",
-    nome:"EE Sergio Vieira De Mello, Diplomata",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_924210",
-    codigo:"924210",
-    nome:"EE Tereza Delta",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_908769",
-    codigo:"908769",
-    nome:"EE Vilma Aparecida Anselmo Silveira, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_039548",
-    codigo:"039548",
-    nome:"EE Vladimir Herzog, Jornalista",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_906669",
-    codigo:"906669",
-    nome:"EE Walker da Costa Barbosa, Prof.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009295",
-    codigo:"009295",
-    nome:"EE Wallace Cockrane Simonsen",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009258",
-    codigo:"009258",
-    nome:"EE Yolanda Noronha do Nascimento, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_009465",
-    codigo:"009465",
-    nome:"EE Yolanda Ascêncio, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  },
-  {
-    id:"escola_906670",
-    codigo:"906670",
-    nome:"EE Yvone Frutuoso Prodossimo, Profª.",
-    processos:{
-      planoTrabalhoDiretor:"",
-      horarioAdministrativo:"",
-      feriasDiretor:"",
-      compensacao:"",
-      recesso:"",
-      outros:""
-    }
-  }
+  { id:"escola_009283", codigo:"009283", nome:"EE 20 De Agosto",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008936", codigo:"008936", nome:"EE Adail Luiz Miller, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009441", codigo:"009441", nome:"EE Alfredo Burkart, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009180", codigo:"009180", nome:"EE Amadeu Olivério, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009325", codigo:"009325", nome:"EE Anésia Loureiro Gama, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008990", codigo:"008990", nome:"EE Antonio Caputo",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009039", codigo:"009039", nome:"EE Antonio Nascimento, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_921105", codigo:"921105", nome:"EE Ayrton Senna da Silva",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009088", codigo:"009088", nome:"EE Baeta Neves, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009573", codigo:"009573", nome:"EE Bonifácio de Carvalho, Coronel",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_042055", codigo:"042055", nome:"EE Brazilia Tondi de Lima",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009246", codigo:"009246", nome:"EE Carlos Pezzolo, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_011809", codigo:"011809", nome:"EE Celso Furtado",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_915750", codigo:"915750", nome:"EE Célio Luiz Negrini, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_910764", codigo:"910764", nome:"EE Clarice de Magalhães Castro, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009124", codigo:"009124", nome:"EE Clóvis de Lucca, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009337", codigo:"009337", nome:"EE Cynira Pires dos Santos, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_041269", codigo:"041269", nome:"EE Domingos Peixoto da Silva, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009436", codigo:"009436", nome:"EE Edgar Alves da Cunha, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008849", codigo:"008849", nome:"EE Euclydes Deslandes, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_041257", codigo:"041257", nome:"EE Faustina Pinheiro da Silva, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008801", codigo:"008801", nome:"EE Fausto Cardoso Figueira de Mello, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_904958", codigo:"904958", nome:"EE Francisco Cristiano Lima Freitas",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008758", codigo:"008758", nome:"EE Francisco Emygdio Pereira Neto, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008886", codigo:"008886", nome:"EE Francisco Prestes Maia, Eng.º",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009581", codigo:"009581", nome:"EE Idalina Macedo Costa Sodré, Dona",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_046516", codigo:"046516", nome:"EE Ismael da Silva Junior, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008977", codigo:"008977", nome:"EE Jacob Casseb, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_041294", codigo:"041294", nome:"EE Jean Piaget",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008813", codigo:"008813", nome:"EE João Batista Bernardes",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008837", codigo:"008837", nome:"EE João Firmino Correia de Araújo, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009404", codigo:"009404", nome:"EE Joana Motta, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009261", codigo:"009261", nome:"EE João Ramalho",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"015.00058550/2026-97", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009167", codigo:"009167", nome:"EE Joaquim Moreira Bernardes, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009003", codigo:"009003", nome:"EE Jorge Rahme, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009106", codigo:"009106", nome:"EE José Fornari, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008928", codigo:"008928", nome:"EE José Gonçalves de Andrade Figueira, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008904", codigo:"008904", nome:"EE José Jorge do Amaral, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_041270", codigo:"041270", nome:"EE Julieta Vianna Simões de Sant'anna, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008825", codigo:"008825", nome:"EE Laudo Ferreira de Camargo, Ministro",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009234", codigo:"009234", nome:"EE Lauro Gomes de Almeida",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_902020", codigo:"902020", nome:"EE Luis dos Santos, Metalúrgico",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009155", codigo:"009155", nome:"EE Luiza Collaço Queiroz Fonseca, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_922924", codigo:"922924", nome:"EE Marco Antonio Prudente de Toledo, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_908757", codigo:"908757", nome:"EE Maria Auxiliadora Marques, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009477", codigo:"009477", nome:"EE Maria da Conceição Moura Branco, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_038519", codigo:"038519", nome:"EE Maria Cristina Schmidt Miranda, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009210", codigo:"009210", nome:"EE Maria Iracema Munhoz",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009118", codigo:"009118", nome:"EE Maria Luiza Ferrari Cícero, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_011808", codigo:"011808", nome:"EE Maria Nilde Mascellani",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_041282", codigo:"041282", nome:"EE Maria Osório Teixeira, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008916", codigo:"008916", nome:"EE Maria Pires, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_917515", codigo:"917515", nome:"EE Maria Regina Demarchi Fanani",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009350", codigo:"009350", nome:"EE Maria Trujilo Torloni",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_907182", codigo:"907182", nome:"EE Mario Franciscon",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_904971", codigo:"904971", nome:"EE Maristela Vieira, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008898", codigo:"008898", nome:"EE Mathias Octávio Roxo Nobre, Dr.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009131", codigo:"009131", nome:"EE Mauricio Antunes Ferraz, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_924428", codigo:"924428", nome:"EE Mauricio de Castro (São Pedro)",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009015", codigo:"009015", nome:"EE Mizuho Abundância",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_041300", codigo:"041300", nome:"EE Nail Franco de Mello Boni, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_921543", codigo:"921543", nome:"EE Nelson Monteiro Palma, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_908745", codigo:"908745", nome:"EE Neusa Figueiredo Marçal, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_913807", codigo:"913807", nome:"EE Omar Daibert, Reverendo",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008771", codigo:"008771", nome:"EE Omar Donato Bassani",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_042043", codigo:"042043", nome:"EE Palmira Grassiotto Ferreira da Silva, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008874", codigo:"008874", nome:"EE Robert Kennedy, Senador",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009313", codigo:"009313", nome:"EE Rudge Ramos",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_011806", codigo:"011806", nome:"EE Ruth de Souza",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_042031", codigo:"042031", nome:"EE Santa Dalmolin Demarchi",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_008941", codigo:"008941", nome:"EE Santa Olimpia",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_923904", codigo:"923904", nome:"EE Sergio Vieira De Mello, Diplomata",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_924210", codigo:"924210", nome:"EE Tereza Delta",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_908769", codigo:"908769", nome:"EE Vilma Aparecida Anselmo Silveira, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_039548", codigo:"039548", nome:"EE Vladimir Herzog, Jornalista",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_906669", codigo:"906669", nome:"EE Walker da Costa Barbosa, Prof.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009295", codigo:"009295", nome:"EE Wallace Cockrane Simonsen",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009258", codigo:"009258", nome:"EE Yolanda Noronha do Nascimento, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_009465", codigo:"009465", nome:"EE Yolanda Ascêncio, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
+  { id:"escola_906670", codigo:"906670", nome:"EE Yvone Frutuoso Prodossimo, Profª.",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } }
 ];
 
 const PROC_STORAGE_KEY = "processosEstrategicos_v1";
