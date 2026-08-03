@@ -1461,17 +1461,6 @@ document.getElementById("freq-filtros").addEventListener("click", e=>{
 renderFrequencia();
 
 /* ===================== MÓDULO: COMPETÊNCIAS ===================== */
-/*
-COMPETENCIAS_DATA: transcrito do "Manual de Competências, Responsabilidades
-e Conformidade Administrativa". categoria usada para filtro/badge.
-baseLegal segue o mesmo padrão de string-livre usado em PROCESSOS_SUPERVISAO
-(sem necessidade de referenciar IDs do LEGISLACAO_DATA).
-As hipóteses de Responsabilidade Funcional e os Órgãos de Controle foram
-deslocados para a seção Governança e Controle (#governanca), por serem
-"quem fiscaliza / por que se responde", não "quem é responsável pela
-execução". Este módulo mantém apenas Direitos e Deveres, que descrevem
-o próprio servidor.
-*/
 const COMPETENCIAS_DATA = [
   { id:"dirigente-regional", titulo:"Coordenadora Geral – Dirigente Regional de Ensino", categoria:"direcao",
     baseLegal:["LC 444/1985","LC 836/1997","Decreto 69.665/2025","Resolução SEDUC 108/2025"],
@@ -1613,12 +1602,6 @@ renderCompetencias();
 renderReferenciasCompetencias();
 
 /* ===================== MÓDULO: GOVERNANÇA E CONTROLE ===================== */
-/*
-Terceiro pilar do portal: PROCESSOS (o que precisa ser feito) →
-COMPETÊNCIAS (quem é responsável) → GOVERNANÇA (por que é feito, quem
-controla e quem fiscaliza). Conteúdo estático de referência, sem
-busca/filtro (mesmo critério já usado nos blocos de Direitos/Deveres).
-*/
 const GOV_PRINCIPIOS = [
   { titulo:"Legalidade", desc:"A Administração só pode agir conforme autorizado em lei." },
   { titulo:"Impessoalidade", desc:"Atuação voltada ao interesse público, sem favorecimentos." },
@@ -1703,20 +1686,11 @@ renderGovernanca();
 
 /* ===================== PROCESSOS ESTRATÉGICOS — CONFIG + RENDER ===================== */
 
-/*
-PROCESSOS_SUPERVISAO: números abaixo são EXEMPLO DE FORMATO
-(015.12345678/26-00). Substitua "numeroSei" pelo número real de cada
-processo assim que estiver disponível.
-O item "ptm" (Adicional de Transporte) referencia o Decreto Estadual
-nº 66.800/2022, norma correta e confirmada para esta matéria. Os
-demais itens (Termos de Visita e seu controle anual) não tratam de
-adicional de transporte e por isso não referenciam esse decreto.
-*/
 const PROCESSOS_SUPERVISAO = [
   {
     id:"ptm",
     nome:"Plano de Trabalho Mensal dos Supervisores de Ensino – Adicional de Transporte – Mês/Ano",
-    numeroSei:"015.00468180/2024-31",
+    numeroSei:"",
     baseLegal:[
       "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
       "Decreto Estadual nº 66.800/2022 – Concessão do Adicional de Transporte ao Quadro do Magistério",
@@ -1726,7 +1700,7 @@ const PROCESSOS_SUPERVISAO = [
   {
     id:"termos-visita",
     nome:"Termos de Visita",
-    numeroSei:"015.00023902/2026-93",
+    numeroSei:"",
     baseLegal:[
       "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
       "Decreto 66.800/2022 (verificar aplicabilidade — norma trata de Adicional de Transporte)"
@@ -1735,22 +1709,30 @@ const PROCESSOS_SUPERVISAO = [
   {
     id:"relatorios-supervisao",
     nome:"Controle dos Planos de Trabalho Mensais dos Supervisores de Ensino – Adicional de Transporte – Ano",
-    numeroSei:"015.00024044/2026-02",
+    numeroSei:"",
     baseLegal:[
       "LC 679/1992 – Atribuições e responsabilidades do Supervisor de Ensino",
       "Decreto Estadual nº 66.800/2022 – Concessão do Adicional de Transporte ao Quadro do Magistério"
     ]
+  },
+  {
+    id:"ptm-diretores",
+    nome:"Plano de Trabalho Mensal dos Diretores – Adicional de Transporte – Mês/Ano",
+    numeroSei:"",
+    // Base legal específica de atribuição do Diretor a confirmar antes de publicar
+    baseLegal:[
+      "Decreto Estadual nº 66.800/2022 – Concessão do Adicional de Transporte ao Quadro do Magistério"
+    ]
+  },
+  {
+    id:"horario-administrativo",
+    nome:"Horário Administrativo",
+    numeroSei:"",
+    // Base legal a confirmar antes de publicar
+    baseLegal:[]
   }
 ];
 
-/*
-LEGISLACAO_SUPERVISAO: subsídios rápidos organizados por TEMA, cobrindo
-as normas que mais impactam a rotina da Equipe de Supervisão (além da
-base legal específica de cada processo SEI, que fica na aba Processos SEI).
-Formato: { tema, itens:[{ titulo, resumo, link }] }.
-Temas com itens:[] são placeholders — adicione as normas conforme
-identificar a necessidade (pecar pelo excesso é intencional aqui).
-*/
 const LEGISLACAO_SUPERVISAO = [
   {
     tema:"Atribuições do Supervisor de Ensino",
@@ -1796,22 +1778,6 @@ const LEGISLACAO_SUPERVISAO = [
   }
 ];
 
-/*
-MODELOS_FORMULARIOS: cada item aponta para um arquivo no ONEDRIVE
-INSTITUCIONAL (conta corporativa SEDUC-SP), não pessoal — mantendo o
-GitHub Pages "limpo", só com código.
-
-Formato esperado do link de compartilhamento do OneDrive/SharePoint
-institucional:
-https://[tenant]-my.sharepoint.com/:b:/g/personal/usuario_seduc_sp_gov_br/ID?e=xxxx
-(ou o link de biblioteca/pasta do SharePoint, se for compartilhamento em
-pasta institucional em vez de arquivo individual)
-
-Como obter: no OneDrive/SharePoint > clique direito no arquivo >
-Compartilhar > copiar link > confirme que o nível de acesso está de
-acordo com a política da SEDUC-SP (ex.: "Pessoas da organização com o
-link"). Substitua cada "COLE_AQUI_LINK_ONEDRIVE" pelo link copiado.
-*/
 const MODELOS_FORMULARIOS = [
   { categoria:"TRE", nome:"TRE - Solicitação", url:"COLE_AQUI_LINK_ONEDRIVE" },
   { categoria:"TRE", nome:"TRE - Despacho", url:"COLE_AQUI_LINK_ONEDRIVE" },
@@ -1823,11 +1789,6 @@ const MODELOS_FORMULARIOS = [
   { categoria:"PTM", nome:"PTM - Plano de Trabalho do Diretor", url:"COLE_AQUI_LINK_ONEDRIVE" }
 ];
 
-/*
-LEGISLACAO_ESCOLAS: subsídios rápidos por TEMA para a Unidade Escolar —
-mesmo critério da Equipe de Supervisão. Temas com itens:[] são
-placeholders para você preencher conforme a demanda das escolas.
-*/
 const LEGISLACAO_ESCOLAS = [
   {
     tema:"Transporte Escolar",
@@ -1860,13 +1821,7 @@ const LEGISLACAO_ESCOLAS = [
     itens:[]
   }
 ];
-/*
-TIPOS_PROCESSO_ESCOLAR: os 3 primeiros são fixos/obrigatórios para toda
-escola. Compensação e Recesso são opcionais (nem toda escola tem).
-baseLegal: breve fundamentação (uma linha) do processo. Deixado em ""
-onde não pude confirmar a norma exata via busca — preencha com a
-resolução/portaria que você usa na prática antes de publicar.
-*/
+
 const TIPOS_PROCESSO_ESCOLAR = [
   { id:"planoTrabalhoDiretor", nome:"Plano de Trabalho Mensal - Diretor", obrigatorio:true, baseLegal:"" },
   { id:"horarioAdministrativo", nome:"Horário Administrativo", obrigatorio:true, baseLegal:"" },
@@ -1877,12 +1832,13 @@ const TIPOS_PROCESSO_ESCOLAR = [
 ];
 
 /*
-ESCOLAS_PROCESSOS: adicione ou remova unidades escolares EDITANDO ESTE
-ARRAY diretamente no código-fonte. Não há botão de adicionar/remover na
-interface pública (o portal pode ser acessado por supervisores e
-escolas — nenhuma ação destrutiva fica visível para o usuário).
-*/
-const ESCOLAS_PROCESSOS = [
+ESCOLAS_PROCESSOS_COMPLETO — referência das 80 unidades escolares da
+URE-SBC, comentada temporariamente enquanto o array ativo abaixo usa
+apenas um exemplo genérico ("EE Abcde Fghij Kl"). Para reativar a
+lista completa: descomente este bloco, renomeie a constante para
+ESCOLAS_PROCESSOS e remova o array de exemplo único logo abaixo.
+
+const ESCOLAS_PROCESSOS_COMPLETO = [
   { id:"escola_009283", codigo:"009283", nome:"EE 20 De Agosto",
     processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } },
   { id:"escola_008936", codigo:"008936", nome:"EE Adail Luiz Miller, Dr.",
@@ -2044,6 +2000,12 @@ const ESCOLAS_PROCESSOS = [
   { id:"escola_906670", codigo:"906670", nome:"EE Yvone Frutuoso Prodossimo, Profª.",
     processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } }
 ];
+*/
+
+const ESCOLAS_PROCESSOS = [
+  { id:"escola_exemplo", codigo:"000000", nome:"EE Abcde Fghij Kl",
+    processos:{ planoTrabalhoDiretor:"", horarioAdministrativo:"", feriasDiretor:"", compensacao:"", recesso:"", outros:"" } }
+];
 
 const PROC_STORAGE_KEY = "processosEstrategicos_v1";
 
@@ -2058,10 +2020,6 @@ function procCarregarEstado(){
   };
 }
 
-// Nota: os valores digitados no campo "Nº SEI" ficam salvos apenas no
-// navegador de quem edita (localStorage é local, não sincroniza entre
-// visitantes). A fonte oficial dos números é sempre o CONFIG acima —
-// mantenha-o atualizado antes de publicar.
 let procState = procCarregarEstado();
 
 function procSalvar(){
